@@ -1,0 +1,15 @@
+tox-libtoxcore
+
+Sources: https://github.com/irungentoo/toxcore
+Build History: https://travis-ci.org/irungentoo/toxcore/builds
+
+# Prepare
+
+Use last successful build from build history.
+
+# Compile
+
+Arch         - use libsodium package from community repo
+CentOS 6     - use yasm, autoconf268 and opus-devel packages from EPEL-6
+CentOS 7     - use yasm package from EPEL-7
+Ubuntu 12.04 - use libopus-dev and libconfig packages from separate tox backports repo

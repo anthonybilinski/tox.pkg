@@ -1,0 +1,78 @@
+%global _project    tox
+%global _prefix     /usr
+%global _libdir     %{_prefix}/%{_project}/lib
+%global _includedir %{_prefix}/%{_project}/include
+
+Name:           %PACKAGE%
+Version:        %VERSION%
+Release:        1
+Summary:        Ncurses-based CLI tox-based instant messenging client
+License:        GPL-3
+Group:          Applications/Internet
+URL:            https://github.com/Tox/toxic
+BuildRequires:  pkg-config, asciidoc, gettext, libconfig-devel, ncurses-devel, libX11-devel, openal-devel, freealut-devel, libvpx-devel, tox-libsodium-devel, tox-libtoxcore-devel
+Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+Patch0:         https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/centos.notify.c.patch
+Patch1:         https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/opensuse.Makefile.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?centos} == 7
+BuildRequires: libnotify-devel gnome-shell
+%else
+BuildRequires: libnotify-devel
+%endif
+
+%if 0%{?suse_version}
+BuildRequires: libopus-devel
+%else
+BuildRequires: opus-devel
+%endif
+
+%description
+Ncurses-based CLI tox-based instant messenging client
+
+
+%prep
+%setup -q -n %{name}
+
+debian/patch.sh
+
+%if 0%{?centos} == 6
+%patch0
+%endif
+
+%if 0%{?suse_version} == 1310
+%patch1
+%endif
+
+
+%build
+%global USER_CFLAGS  ${RPM_OPT_FLAGS} -I%{_includedir}
+%global USER_LDFLAGS ${RPM_LD_FLAGS} -L%{_libdir}
+
+export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
+
+%if 0%{?suse_version} == 1310
+%global USER_LDFLAGS %{USER_LDFLAGS} -lncursesw
+%endif
+
+make PREFIX=%{_prefix} USER_CFLAGS="%{USER_CFLAGS}" USER_LDFLAGS="%{USER_LDFLAGS}" %{?_smp_mflags}
+
+
+%install
+make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
+
+
+%files
+%defattr(-,root,root,-)
+%doc COPYING README.md
+
+%{_bindir}/*
+%{_datadir}/man/*/*
+%{_datadir}/%{name}
+%{_datadir}/applications/*
+
+
+%changelog
+* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+- Initial

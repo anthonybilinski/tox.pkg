@@ -1,0 +1,96 @@
+%global _project    tox
+%global _prefix     /usr
+%global _libdir     %{_prefix}/%{_project}/lib
+%global _includedir %{_prefix}/%{_project}/include
+
+Name:           %PACKAGE%
+Version:        %VERSION%
+Release:        1
+Summary:        qTox is a powerful Tox client
+License:        GPL-3
+Group:          Applications/Internet
+URL:            https://github.com/tux3/qTox
+BuildRequires:  git, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libvpx-devel, libv4l-devel, tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel
+Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?suse_version}
+BuildRequires:  libbz2-devel, libopus-devel, gdk-pixbuf-devel, libQt5Svg-devel, libqt5-qtbase-devel, libqt5-qttools-devel
+%else
+BuildRequires:  bzip2-devel, opus-devel, gdk-pixbuf2-devel, qt5-qtsvg-devel, qt5-qtbase-devel, qt5-qttools-devel
+%endif
+
+%if 0%{?fedora}
+BuildRequires:  gcc >= 4.9
+%else
+BuildRequires:  tox-gcc
+%endif
+
+%description
+qTox is a powerful Tox client that follows the Tox design guidelines.
+Tox is a decentralized and encrypted replacement for Skype, supporting
+chats, audio, and video calls.
+
+
+%prep
+%setup -q -n %{name}
+
+mv qTox.desktop qtox.desktop
+
+debian/patch.sh
+
+
+%build
+export QT_SELECT=5
+
+export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
+
+%global QMAKE_LIBS -L%{_libdir} -lavfilter -lswresample -lpostproc
+
+%if 0%{?fedora}
+%global QMAKE_CC  %{__cc}
+%global QMAKE_CXX %{__cxx}
+%else
+%global GCC_DIR    %{_prefix}/%{_project}
+%global QMAKE_CC   %{GCC_DIR}/bin/gcc
+%global QMAKE_CXX  %{GCC_DIR}/bin/g++
+%global QMAKE_LIBS %{QMAKE_LIBS} -L%{GCC_DIR}/lib -L%{GCC_DIR}/lib64
+%endif
+
+qmake-qt5 \
+    "QMAKE_CPPFLAGS *= ${RPM_OPT_FLAGS}" \
+    "QMAKE_CFLAGS   *= ${RPM_OPT_FLAGS}" \
+    "QMAKE_CXXFLAGS *= ${RPM_OPT_FLAGS}" \
+    "QMAKE_LFLAGS   *= ${RPM_LD_FLAGS}"  \
+    "LIBS           *= %{QMAKE_LIBS}"    \
+    "INCLUDEPATH    *= %{_includedir}"   \
+    "QMAKE_CC        = %{QMAKE_CC}"      \
+    "QMAKE_CXX       = %{QMAKE_CXX}"     \
+    qtox.pro
+
+make %{?_smp_mflags}
+
+
+%install
+install -d %{buildroot}%{_bindir}
+install -d %{buildroot}%{_datadir}/applications
+
+install -m755 %{name}         %{buildroot}%{_bindir}/%{name}
+install -m644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+debian/icons.sh %{name} %{buildroot}
+
+
+%files
+%defattr(-,root,root,-)
+%doc README.md
+
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.svg
+
+
+%changelog
+* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+- Initial

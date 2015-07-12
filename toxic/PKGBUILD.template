@@ -1,0 +1,30 @@
+# Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+
+pkgname=%PACKAGE%
+pkgver=%VERSION%
+pkgrel=1
+pkgdesc="Ncurses-based CLI tox-based instant messenging client"
+arch=('i686' 'x86_64')
+url="https://github.com/Tox/toxic"
+license=('GPL-3')
+depends=('asciidoc' 'gettext' 'libconfig' 'ncurses' 'openal' 'freealut' 'libnotify' 'tox-libtoxcore')
+conflicts=('toxic-git')
+provides=($pkgname)
+source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+sha512sums=('%SHA_512%')
+
+build() {
+    cd "${pkgname}"
+    make PREFIX=/usr USER_CFLAGS="${CPPFLAGS} ${CFLAGS}" USER_LDFLAGS="${LDFLAGS}"
+}
+
+package() {
+    cd "${pkgname}"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+
+    install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}"
+    install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -m 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -m 644 COPYING   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}

@@ -1,0 +1,19 @@
+--- qtox.pro.orig	2015-07-12 21:09:41.795639371 +0300
++++ qtox.pro	2015-07-12 21:11:24.574075904 +0300
+@@ -17,7 +17,7 @@
+ #    See the COPYING file for more details.
+ 
+ 
+-QT       += core gui network xml opengl sql svg
++QT       += core gui network xml sql svg
+ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+ 
+ TARGET    = qtox
+@@ -170,7 +170,7 @@
+                 LIBS += -Wl,-Bdynamic -lv4l1 -lv4l2 -lavformat -lavcodec -lavutil -lswscale -lusb-1.0
+                 LIBS += -lqrencode
+             } else {
+-                LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavformat -lavdevice -lavcodec -lavutil -lswscale
++                LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavdevice -lavfilter -lswscale -lpostproc -lavformat -lavcodec -lswresample -lavutil -lopus -lz -lbz2
+                 LIBS += -lqrencode
+             }

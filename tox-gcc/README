@@ -1,0 +1,11 @@
+tox-gcc
+
+GCC 4.9 for for tox packages (qTox)
+Sources: https://gcc.gnu.org/gcc-4.9/
+
+# Prepare
+
+Use release tarball named gcc-%ver%.tar.(gz|bz2)
+
+Repack original tarball as
+tox-gcc-%ver%/tox-gcc_%ver%.orig.tar.bz2

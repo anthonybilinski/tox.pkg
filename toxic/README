@@ -1,0 +1,8 @@
+toxic
+
+Sources: https://github.com/Tox/toxic
+Build History: https://travis-ci.org/Tox/toxic/builds
+
+# Prepare
+
+Use last successful build from build history.

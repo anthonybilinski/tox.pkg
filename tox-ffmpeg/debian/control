@@ -1,0 +1,28 @@
+Source: tox-ffmpeg
+Section: libs
+Priority: optional
+Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), yasm
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Standards-Version: 3.9.4
+Homepage: https://www.ffmpeg.org
+
+Package: tox-ffmpeg
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: any
+Description: Digital VCR and streaming server
+ FFmpeg is a complete and free Internet live audio and video
+ broadcasting solution for Linux/Unix. It also includes a digital
+ VCR. It can encode in real time in many formats including MPEG1 audio
+ and video, MPEG4, h263, ac3, asf, avi, real, mjpeg, and flash.
+ This version enable more support about codecs, require PostInstaller repo enable.
+
+Package: tox-ffmpeg-dev
+Section: libdevel
+Depends: ${misc:Depends}, tox-ffmpeg (= ${binary:Version})
+Architecture: any
+Description: Digital VCR and streaming server
+ FFmpeg is a complete and free Internet live audio and video
+ broadcasting solution for Linux/Unix. It also includes a digital
+ VCR. It can encode in real time in many formats including MPEG1 audio
+ and video, MPEG4, h263, ac3, asf, avi, real, mjpeg, and flash.
+ This version enable more support about codecs, require PostInstaller repo enable.

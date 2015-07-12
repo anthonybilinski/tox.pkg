@@ -1,0 +1,19 @@
+Source: qtox
+Section: net
+Priority: optional
+Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc-4.9 | tox-gcc, zlib1g-dev, libbz2-dev,
+ libxss-dev, libglib2.0-dev, libqrencode-dev, libgtk2.0-dev, libgdk-pixbuf2.0-dev,
+ qtbase5-dev, qttools5-dev-tools, libqt5svg5-dev,
+ libvpx-dev, libopenal-dev, libopus-dev (>= 0.9.14),
+ tox-libsodium-dev, tox-libtoxcore-dev, tox-libfilteraudio-dev, tox-ffmpeg-dev
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Standards-Version: 3.9.4
+Homepage: https://github.com/tux3/qTox
+
+Package: qtox
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: any
+Description: qTox is a powerful Tox client
+ qTox is a powerful Tox client that follows the Tox design guidelines.
+ Tox is a decentralized and encrypted replacement for Skype, supporting
+ chats, audio, and video calls.

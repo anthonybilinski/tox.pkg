@@ -1,0 +1,14 @@
+--- utox.desktop
++++ utox.desktop
+@@ -3,9 +3,10 @@
+ Type=Application
+ Name=uTox
+ Comment=A lightweight Tox client
++GenericName=A lightweight Tox client
+ TryExec=utox
+ Exec=utox
+ Icon=utox
+-Categories=InstantMessaging;AudioVideo;Network;
++Categories=Network;InstantMessaging;P2P;
+ Terminal=false
+ MimeType=x-scheme-handler/tox;

@@ -1,0 +1,11 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ffmpeg
+Source: https://www.ffmpeg.org
+
+Files: *
+Copyright: FFMpeg project
+License: GPL-2
+
+Files: debian/*
+Copyright: 2015 Anton Batenev <antonbatenev@yandex.ru>
+License: GPL-2

@@ -1,0 +1,30 @@
+# Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+
+pkgname=%PACKAGE%
+pkgver=%VERSION%
+pkgrel=1
+pkgdesc="Lightweight Tox client"
+arch=('i686' 'x86_64')
+url="https://github.com/notsecure/uTox"
+license=('GPL-3')
+depends=('git' 'libconfig' 'fontconfig' 'freetype2' 'openal' 'opus' 'libvpx' 'libx11' 'libxext' 'libxrender' 'libdbus' 'v4l-utils' 'tox-libtoxcore' 'tox-libfilteraudio')
+conflicts=('utox-git')
+provides=($pkgname)
+source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+sha512sums=('%SHA_512%')
+
+build() {
+    cd "${pkgname}"
+    make PREFIX=/usr USER_CFLAGS="${CFLAGS}" USER_LDFLAGS="${LDFLAGS}"
+}
+
+package() {
+    cd "${pkgname}"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+
+    install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}"
+    install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -m 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -m 644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

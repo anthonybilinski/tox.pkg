@@ -1,0 +1,44 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+PROJECT = tox
+PREFIX  = /usr/$(PROJECT)
+
+CONFIGURE_OPTS = \
+    --prefix=$(PREFIX)         \
+    --with-treads=posix        \
+    --enable-languages=c,c++   \
+    --disable-multilib         \
+    --disable-profiling        \
+    --enable-ld                \
+    --disable-libgcj           \
+    --disable-java             \
+    --disable-gcj              \
+    --disable-libgcj-multifile \
+    --disable-plugin           \
+    --with-tune=generic
+
+CFLAGS   = -g -O2 -fstack-protector --param=ssp-buffer-size=4
+CXXFLAGS = -g -O2 -fstack-protector --param=ssp-buffer-size=4
+
+override_dh_auto_test:
+	/bin/true
+
+override_dh_auto_configure:
+	./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_build:
+	make
+
+override_dh_auto_install:
+	make DESTDIR=$(shell pwd)/debian/tmp install
+	find debian/tmp -name 'libstdc++.so*' -delete
+
+%:
+	dh $@

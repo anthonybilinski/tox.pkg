@@ -1,0 +1,16 @@
+tox-libsodium
+
+Sources:  https://github.com/jedisct1/libsodium
+Releases: https://download.libsodium.org/libsodium/releases
+Docs:     http://doc.libsodium.org/
+
+# Prepare
+
+Use release tarball named libsodium_%ver%.tar.gz
+
+Repack original tarball as
+tox-libsodium-%ver%/tox-libsodium_%ver%.orig.tar.bz2
+
+# Usage
+
+Arch - use libsodium package from community repo.

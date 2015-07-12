@@ -1,0 +1,18 @@
+tox-ffmpeg
+
+Sources: https://www.ffmpeg.org/download.html
+Use last release.
+
+# Prepare
+
+Repack original tarball as
+tox-ffmpeg-2.7.1/tox-ffmpeg_2.7.1.orig.tar.bz2
+
+# Usage
+
+Arch - use ffmpeg package from extra repo
+
+# Compile
+
+CentOS 6 - use yasm from EPEL-6
+CentOS 7 - use yasm from EPEL-7

@@ -1,0 +1,5 @@
+tox-libsodium (1.0.3-3) unstable; urgency=low
+
+  * Backport from sid.
+
+ -- Anton Batenev <antonbatenev@yandex.ru>  Wed, 24 Jun 2015 17:03:00 +0300

@@ -1,0 +1,11 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: gcc
+Source: https://gcc.gnu.org/gcc-4.9/
+
+Files: *
+Copyright: GNU GCC project
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2015 Anton Batenev <antonbatenev@yandex.ru>
+License: GPL-2+

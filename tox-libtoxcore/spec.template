@@ -1,0 +1,112 @@
+%global _project    tox
+%global _prefix     /usr/%{_project}
+%global _libdir     %{_prefix}/lib
+%global _includedir %{_prefix}/include
+
+Name:           %PACKAGE%
+Version:        %VERSION%
+Release:        1
+Summary:        The future of online communications
+License:        GPL-3
+Group:          System/Libraries
+URL:            https://github.com/irungentoo/toxcore
+BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel, libvpx-devel, tox-libsodium-devel
+Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?centos} == 6
+BuildRequires: autoconf268
+%else
+BuildRequires: autoconf
+%endif
+
+%if 0%{?suse_version}
+BuildRequires: libopus-devel >= 0.9.14
+%else
+BuildRequires: opus-devel >= 0.9.14
+%endif
+
+%description
+Tox aims to be an easy to use, all-in-one communication platform
+that ensures their users full privacy and secure message delivery.
+
+
+%package        devel
+Summary:        Development files for %{name}
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}-%{release}
+
+%description    devel
+This package contains libraries and header files for
+developing applications that use %{name} libraries.
+
+
+%prep
+%setup -q -n %{name}
+
+
+%build
+export CFLAGS="${RPM_OPT_FLAGS} -I%{_includedir}"
+export LDFLAGS="${RPM_LD_FLAGS} -L%{_libdir}"
+export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig"
+
+%if 0%{?centos} == 6
+/usr/bin/autoreconf268 -if
+%else
+./autogen.sh
+%endif
+
+./configure \
+    --prefix=%{_prefix}         \
+    --libdir=%{_libdir}         \
+    --includedir=%{_includedir} \
+    --disable-silent-rules      \
+    --enable-daemon             \
+    --disable-tests             \
+    --disable-shared
+
+
+make %{?_smp_mflags}
+
+
+%post -p /sbin/ldconfig
+
+
+%postun -p /sbin/ldconfig
+
+
+%install
+make DESTDIR=%{buildroot} install
+
+install -d %{buildroot}%{_datadir}/%{name}
+
+install -m 644 other/bootstrap_daemon/tox-bootstrapd.conf    %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.conf
+install -m 644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.service
+install -m 755 other/bootstrap_daemon/tox-bootstrapd.sh      %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.sh
+
+
+%files
+%defattr(-,root,root,-)
+%doc COPYING README.md
+
+%if 0%{?suse_version}
+%dir %{_bindir}
+%dir %{_datadir}
+%dir %{_datadir}/%{name}
+%endif
+
+%{_bindir}/*
+%{_datadir}/%{name}/tox-bootstrapd.conf
+%{_datadir}/%{name}/tox-bootstrapd.service
+%{_datadir}/%{name}/tox-bootstrapd.sh
+
+
+%files devel
+%defattr(-,root,root,-)
+%{_includedir}
+%{_libdir}
+
+
+%changelog
+* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+- Initial

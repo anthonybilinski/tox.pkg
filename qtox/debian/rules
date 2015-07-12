@@ -1,0 +1,60 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+PROJECT    = tox
+NAME       = qtox
+PREFIX     = /usr
+LIBDIR     = $(PREFIX)/$(PROJECT)/lib
+INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
+QMAKE_LIBS = -L$(LIBDIR) -lavfilter -lswresample -lpostproc
+DESTDIR    = $(shell pwd)/debian/tmp
+CODENAME   = $(shell /usr/bin/lsb_release --codename --short)
+
+ifneq (,$(filter wheezy precise trusty, $(CODENAME)))
+    GCC_DIR     = $(PREFIX)/$(PROJECT)
+    QMAKE_CC    = $(GCC_DIR)/bin/gcc
+    QMAKE_CXX   = $(GCC_DIR)/bin/g++
+    QMAKE_LIBS += -L$(GCC_DIR)/lib -L$(GCC_DIR)/lib64
+else
+    QMAKE_CC  = $(CC)
+    QMAKE_CXX = $(CXX)
+endif
+
+export QT_SELECT=5
+
+override_dh_auto_configure:
+	mv qTox.desktop qtox.desktop
+
+	debian/patch.sh
+
+	qmake -qt=5 \
+		"QMAKE_CPPFLAGS *= $(shell dpkg-buildflags --get CPPFLAGS)" \
+		"QMAKE_CFLAGS   *= $(shell dpkg-buildflags --get CFLAGS)"   \
+		"QMAKE_CXXFLAGS *= $(shell dpkg-buildflags --get CXXFLAGS)" \
+		"QMAKE_LFLAGS   *= $(shell dpkg-buildflags --get LDFLAGS)"  \
+		"LIBS           *= $(QMAKE_LIBS)"                           \
+		"INCLUDEPATH    *= $(INCLUDEDIR)"                           \
+		"QMAKE_CC        = $(QMAKE_CC)"                             \
+		"QMAKE_CXX       = $(QMAKE_CXX)"                            \
+		qtox.pro
+
+override_dh_auto_install:
+	install -d $(DESTDIR)/usr/bin
+	install -d $(DESTDIR)/usr/share/applications
+
+	install -m755 $(NAME)         $(DESTDIR)/usr/bin/$(NAME)
+	install -m644 $(NAME).desktop $(DESTDIR)/usr/share/applications/$(NAME).desktop
+
+	debian/icons.sh $(NAME) $(DESTDIR)
+
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
+
+%:
+	dh $@

@@ -1,0 +1,11 @@
+--- Makefile.orig
++++ Makefile
+@@ -3,7 +3,7 @@
+ 
+ -include $(CFG_DIR)/global_vars.mk
+ 
+-LIBS = libtoxcore ncursesw libconfig
++LIBS = libtoxcore libconfig
+ 
+ CFLAGS = -std=gnu99 -pthread -Wall -g
+ CFLAGS += '-DTOXICVER="$(VERSION)"' -DHAVE_WIDECHAR -D_XOPEN_SOURCE_EXTENDED -D_FILE_OFFSET_BITS=64

@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+PROJECT    = tox
+PREFIX     = /usr
+LIBDIR     = $(PREFIX)/$(PROJECT)/lib
+INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
+
+CFLAGS  += -I$(INCLUDEDIR)
+LDFLAGS += -L$(LIBDIR)
+
+USER_CFLAGS  := $(CFLAGS)
+USER_LDFLAGS := $(LDFLAGS)
+
+export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDIR)/pkgconfig
+
+override_dh_auto_build:
+	debian/patch.sh
+	make PREFIX=$(PREFIX) USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)"
+
+override_dh_auto_install:
+	make PREFIX=$(PREFIX) DESTDIR=debian/tmp install
+
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
+
+%:
+	dh $@
