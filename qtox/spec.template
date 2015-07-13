@@ -10,20 +10,21 @@ Summary:        qTox is a powerful Tox client
 License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/tux3/qTox
-BuildRequires:  git, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libvpx-devel, libv4l-devel, tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel
+BuildRequires:  git, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libvpx-devel, libv4l-devel
+BuildRequires:  tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
-BuildRequires:  libbz2-devel, libopus-devel, gdk-pixbuf-devel, libQt5Svg-devel, libqt5-qtbase-devel, libqt5-qttools-devel
+BuildRequires:  libbz2-devel, libopus-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.2.0, libqt5-qttools-devel >= 5.2.0, libqt5-qtsvg-devel >= 5.2.0
 %else
-BuildRequires:  bzip2-devel, opus-devel, gdk-pixbuf2-devel, qt5-qtsvg-devel, qt5-qtbase-devel, qt5-qttools-devel
+BuildRequires:  bzip2-devel, opus-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.2.0, qt5-qttools-devel >= 5.2.0, qt5-qtsvg-devel >= 5.2.0
 %endif
 
-%if 0%{?fedora}
-BuildRequires:  gcc >= 4.9
-%else
+%if 0%{?centos} == 6
 BuildRequires:  tox-gcc
+%else
+BuildRequires:  gcc >= 4.8
 %endif
 
 %description
@@ -47,14 +48,14 @@ export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pk
 
 %global QMAKE_LIBS -L%{_libdir} -lavfilter -lswresample -lpostproc
 
-%if 0%{?fedora}
-%global QMAKE_CC  %{__cc}
-%global QMAKE_CXX %{__cxx}
-%else
+%if 0%{?centos} == 6
 %global GCC_DIR    %{_prefix}/%{_project}
 %global QMAKE_CC   %{GCC_DIR}/bin/gcc
 %global QMAKE_CXX  %{GCC_DIR}/bin/g++
 %global QMAKE_LIBS %{QMAKE_LIBS} -L%{GCC_DIR}/lib -L%{GCC_DIR}/lib64
+%else
+%global QMAKE_CC  %{__cc}
+%global QMAKE_CXX %{__cxx}
 %endif
 
 qmake-qt5 \

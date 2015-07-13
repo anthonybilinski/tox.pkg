@@ -16,7 +16,7 @@ QMAKE_LIBS = -L$(LIBDIR) -lavfilter -lswresample -lpostproc
 DESTDIR    = $(shell pwd)/debian/tmp
 CODENAME   = $(shell /usr/bin/lsb_release --codename --short)
 
-ifneq (,$(filter wheezy precise trusty, $(CODENAME)))
+ifneq (,$(filter wheezy precise, $(CODENAME)))
     GCC_DIR     = $(PREFIX)/$(PROJECT)
     QMAKE_CC    = $(GCC_DIR)/bin/gcc
     QMAKE_CXX   = $(GCC_DIR)/bin/g++
