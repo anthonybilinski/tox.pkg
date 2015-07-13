@@ -86,6 +86,12 @@ debian/icons.sh %{name} %{buildroot}
 %defattr(-,root,root,-)
 %doc README.md
 
+%if 0%{?suse_version}
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
+%endif
+
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
