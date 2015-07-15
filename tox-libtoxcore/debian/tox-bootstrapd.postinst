@@ -20,7 +20,7 @@ set -e
 case "$1" in
 	configure)
 		if [ ! getent passwd tox-bootstrapd > /dev/null 2>&1 ]; then
-			useradd \
+			/usr/sbin/useradd \
 				--home-dir /var/lib/tox-bootstrapd                    \
 				--create-home                                         \
 				--system                                              \
