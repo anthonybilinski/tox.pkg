@@ -31,6 +31,8 @@ override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_build:
+	debian/patch.sh
+
 	dh_auto_build
 
 	# strip .sh extension

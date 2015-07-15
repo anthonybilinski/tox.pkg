@@ -43,6 +43,7 @@ developing applications that use %{name} libraries.
 
 %prep
 %setup -q -n %{name}
+debian/patch.sh
 
 
 %build
