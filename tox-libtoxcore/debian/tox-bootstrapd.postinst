@@ -20,13 +20,7 @@ set -e
 case "$1" in
 	configure)
 		if [ ! getent passwd tox-bootstrapd > /dev/null 2>&1 ]; then
-			/usr/sbin/useradd \
-				--home-dir /var/lib/tox-bootstrapd                    \
-				--create-home                                         \
-				--system                                              \
-				--shell /sbin/nologin                                 \
-				--comment "Account to run Tox's DHT bootstrap daemon" \
-				--user-group tox-bootstrapd
+			/usr/sbin/useradd --home-dir /var/lib/tox-bootstrapd --create-home --system --shell /sbin/nologin --comment "Account to run Tox's DHT bootstrap daemon" --user-group tox-bootstrapd
 			chmod 700 /var/lib/tox-bootstrapd
 		fi
 
