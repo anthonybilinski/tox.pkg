@@ -23,3 +23,10 @@ Architecture: any
 Description: The future of online communications - headers
  Tox aims to be an easy to use, all-in-one communication platform
  that ensures their users full privacy and secure message delivery.
+
+Package: tox-bootstrapd
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: any
+Description: Tox DHT Bootstrap Daemon
+ Tox aims to be an easy to use, all-in-one communication platform
+ that ensures their users full privacy and secure message delivery.

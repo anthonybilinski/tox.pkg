@@ -1,0 +1,3 @@
+other/bootstrap_daemon/tox-bootstrapd.conf    /etc
+other/bootstrap_daemon/tox-bootstrapd         /etc/init.d
+usr/tox/bin/tox-bootstrapd                    /usr/bin

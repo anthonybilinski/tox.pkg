@@ -1,4 +1,1 @@
-usr/tox/bin
-other/bootstrap_daemon/tox-bootstrapd.conf    /usr/tox/share/tox-libtoxcore
-other/bootstrap_daemon/tox-bootstrapd.service /usr/tox/share/tox-libtoxcore
-other/bootstrap_daemon/tox-bootstrapd.sh      /usr/tox/share/tox-libtoxcore
+usr/tox/bin/DHT_bootstrap /usr/tox/bin
