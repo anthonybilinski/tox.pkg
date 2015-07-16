@@ -1,0 +1,8 @@
+# pytox
+
+Original sources: https://github.com/aitjcize/PyTox
+Current sources: https://github.com/kitech/PyTox/tree/newapi
+
+# Prepare
+
+Use newapi branch from current sources while new api not merged into base repo.

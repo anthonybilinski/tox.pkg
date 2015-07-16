@@ -1,0 +1,11 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: PyTox
+Source: https://github.com/aitjcize/PyTox
+
+Files: *
+Copyright: 2015 AZ Huang <aitjcize@gmail.com>
+License: GPL-3
+
+Files: debian/*
+Copyright: 2015 Anton Batenev <antonbatenev@yandex.ru>
+License: GPL-3

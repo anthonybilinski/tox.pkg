@@ -21,7 +21,7 @@ CONFIGURE_OPTS = \
     --disable-tests            \
     --disable-shared
 
-CFLAGS  += -I$(INCLUDEDIR)
+CFLAGS  += -fPIC -I$(INCLUDEDIR)
 LDFLAGS += -L$(LIBDIR)
 
 override_dh_auto_test:

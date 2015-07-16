@@ -1,0 +1,41 @@
+--- setup.py
++++ setup.py
+@@ -1,22 +1,4 @@
+ from distutils.core import setup, Extension
+-from subprocess import Popen, PIPE
+-
+-
+-def supports_av():
+-    h = Popen("ld -ltoxav", shell=True, stderr=PIPE)
+-    out, err = h.communicate()
+-    return 'toxav' not in str(err)
+-
+-sources = ["pytox/pytox.c", "pytox/core.c", "pytox/util.c"]
+-libraries = ["toxcore"]
+-cflags = ["-Wall", "-Wno-declaration-after-statement"]
+-
+-if supports_av():
+-    libraries.append("toxav")
+-    sources.append("pytox/av.c")
+-    cflags.append("-DENABLE_AV")
+-else:
+-    print("Warning: AV support not found, disabled.")
+ 
+ setup(
+     name="PyTox",
+@@ -29,9 +11,12 @@
+     ext_modules=[
+         Extension(
+             "pytox",
+-            sources,
+-            extra_compile_args=cflags,
+-            libraries=libraries
++            sources            = ["pytox/pytox.c", "pytox/core.c", "pytox/util.c", "pytox/av.c"],
++            define_macros      = [("ENABLE_AV", 1)],
++            include_dirs       = ["/usr/tox/include"],
++            library_dirs       = ["/usr/tox/lib"],
++            extra_compile_args = ["-Wall", "-Wno-declaration-after-statement"],
++            libraries          = ["toxcore", "toxav"]
+         )
+     ]
+ )
