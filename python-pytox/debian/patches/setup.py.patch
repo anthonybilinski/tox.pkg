@@ -35,7 +35,7 @@
 +            include_dirs       = ["/usr/tox/include"],
 +            library_dirs       = ["/usr/tox/lib"],
 +            extra_compile_args = ["-Wall", "-Wno-declaration-after-statement"],
-+            libraries          = ["toxcore", "toxav"]
++            libraries          = ["toxcore", "toxav", "sodium", "opus", "vpx", "rt"]
          )
      ]
  )
