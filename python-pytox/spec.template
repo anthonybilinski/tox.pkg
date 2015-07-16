@@ -1,0 +1,47 @@
+Name:           %PACKAGE%
+Version:        %VERSION%
+Release:        1
+Summary:        Python binding for Tox
+License:        GPL-3
+Group:          Applications/Internet
+URL:            https://github.com/aitjcize/PyTox
+BuildRequires:  python-devel, tox-libtoxcore-devel
+Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?suse_version}
+BuildRequires: libopus-devel
+%else
+BuildRequires: opus-devel
+%endif
+
+%description
+PyTox provides a Pythonic binding, i.e Object-oriented instead of C style, raise exception instead of returning error code
+
+
+%prep
+%setup -q -n %{name}
+debian/patch.sh
+
+
+%build
+python setup.py build
+
+
+%install
+python setup.py install --prefix=%{buildroot}/usr
+
+
+%files
+%defattr(-,root,root,-)
+%doc README.rst AUTHORS
+
+%{_libdir}/pyshared/python*/*.so
+%{_libdir}/python*/dist-packages/*.so
+%{_libdir}/python*/dist-packages/*.egg-info
+%{_datadir}/pyshared/*.egg-info
+
+
+%changelog
+* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+- Initial

@@ -6,7 +6,7 @@ set -e
 # see https://github.com/aitjcize/PyTox/pull/45
 GIT_REV="newapi"
 
-PACKAGE_NAME="pytox"
+PACKAGE_NAME="python-pytox"
 PACKAGE_DATE=$(LC_ALL=C date "+%a, %d %b %Y %H:%M:%S %z")
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M")
 SPEC_DATE=$(LC_ALL=C date '+%a %b %d %Y')
