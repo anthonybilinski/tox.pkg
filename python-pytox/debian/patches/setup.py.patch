@@ -30,12 +30,12 @@
 -            sources,
 -            extra_compile_args=cflags,
 -            libraries=libraries
-+            sources            = ["pytox/pytox.c", "pytox/core.c", "pytox/util.c", "pytox/av.c"],
-+            define_macros      = [("ENABLE_AV", 1)],
++            sources            = ["pytox/pytox.c", "pytox/core.c", "pytox/util.c"],
++            define_macros      = [],
 +            include_dirs       = ["/usr/tox/include"],
 +            library_dirs       = ["/usr/tox/lib"],
 +            extra_compile_args = ["-Wall", "-Wno-declaration-after-statement"],
-+            libraries          = ["toxcore", "toxav", "sodium", "opus", "vpx", "rt"]
++            libraries          = ["toxcore", "sodium", "rt"]
          )
      ]
  )
