@@ -14,7 +14,7 @@ Upstream tox client packages and development libraries for popular linux distros
 * [tox-libtoxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore)
 * [tox-libfilteraudio](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libfilteraudio)
 * [tox-ffmpeg](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-ffmpeg)
-* [python-pytox](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-pytox) (without ToxAV support)
+* [python-toxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-toxcore)
 
 ### Additional separate repositories
 
