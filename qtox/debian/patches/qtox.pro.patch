@@ -1,5 +1,5 @@
---- qtox.pro.orig	2015-07-12 21:09:41.795639371 +0300
-+++ qtox.pro	2015-07-12 21:11:24.574075904 +0300
+--- qtox.pro
++++ qtox.pro
 @@ -17,7 +17,7 @@
  #    See the COPYING file for more details.
  
