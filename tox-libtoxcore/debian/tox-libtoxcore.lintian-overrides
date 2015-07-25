@@ -1,1 +1,4 @@
+tox-libtoxcore: file-in-unusual-dir
+tox-libtoxcore: non-standard-dir-in-usr
+tox-libtoxcore: description-synopsis-starts-with-article
 tox-libtoxcore: copyright-should-refer-to-common-license-file-for-gpl
