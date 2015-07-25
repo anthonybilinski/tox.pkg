@@ -1,0 +1,2 @@
+tox-libtoxcore-dev: non-empty-dependency_libs-in-la-file
+tox-libtoxcore-dev: copyright-should-refer-to-common-license-file-for-gpl

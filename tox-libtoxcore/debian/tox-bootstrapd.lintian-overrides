@@ -1,0 +1,2 @@
+tox-bootstrapd: copyright-should-refer-to-common-license-file-for-gpl
+tox-bootstrapd: init.d-script-does-not-implement-required-option etc/init.d/tox-bootstrapd force-reload
