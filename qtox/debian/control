@@ -14,6 +14,6 @@ Package: qtox
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: qTox is a powerful Tox client
- qTox is a powerful Tox client that follows the Tox design guidelines.
+ Powerful Tox client that follows the Tox design guidelines.
  Tox is a decentralized and encrypted replacement for Skype, supporting
  chats, audio, and video calls.
