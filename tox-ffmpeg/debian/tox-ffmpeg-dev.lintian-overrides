@@ -1,0 +1,3 @@
+tox-ffmpeg-dev: file-in-unusual-dir
+tox-ffmpeg-dev: non-standard-dir-in-usr
+tox-ffmpeg-dev: copyright-should-refer-to-common-license-file-for-gpl

@@ -5,7 +5,7 @@
 
 Summary:        Digital VCR and streaming server
 Name:           %{_project}-ffmpeg
-Version:        2.7.1
+Version:        2.7.2
 Release:        3
 License:        GPL-3
 Group:          System/Libraries
@@ -65,7 +65,7 @@ make install DESTDIR=%{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc README.md LICENSE.md
+%doc README.md
 
 
 %files devel
@@ -81,5 +81,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Mon Jun 24 2015 Anton Batenev <antonbatenev@yandex.ru> - 2.7.1-1
+* Sat Jul 25 2015 Anton Batenev <antonbatenev@yandex.ru> - 2.7.2-1
 - Initial

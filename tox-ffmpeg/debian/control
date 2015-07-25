@@ -14,7 +14,8 @@ Description: Digital VCR and streaming server
  broadcasting solution for Linux/Unix. It also includes a digital
  VCR. It can encode in real time in many formats including MPEG1 audio
  and video, MPEG4, h263, ac3, asf, avi, real, mjpeg, and flash.
- This version enable more support about codecs, require PostInstaller repo enable.
+ This version enable more support about codecs, require PostInstaller
+ repo enable.
 
 Package: tox-ffmpeg-dev
 Section: libdevel
@@ -25,4 +26,5 @@ Description: Digital VCR and streaming server
  broadcasting solution for Linux/Unix. It also includes a digital
  VCR. It can encode in real time in many formats including MPEG1 audio
  and video, MPEG4, h263, ac3, asf, avi, real, mjpeg, and flash.
- This version enable more support about codecs, require PostInstaller repo enable.
+ This version enable more support about codecs, require PostInstaller
+ repo enable.
