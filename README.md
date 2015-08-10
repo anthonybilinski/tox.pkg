@@ -24,8 +24,3 @@ Upstream tox client packages and development libraries for popular linux distros
 ### How to use
 
 Click on interesting package name, follow "Download package" link, choose your distro, follow instructions, enjoy!
-
-### Testing
-
-You can test your clients with bot:
-23E9BC878454ACE6B36A93DA395A617109C1524955E00E41D2DCA212A0FE324E6BDAFFA5B96F
