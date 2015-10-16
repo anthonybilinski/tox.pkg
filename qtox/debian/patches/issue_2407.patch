@@ -1,0 +1,11 @@
+--- src/widget/tool/screenshotgrabber.cpp
++++ src/widget/tool/screenshotgrabber.cpp
+@@ -111,7 +111,7 @@
+             restoreHiddenWindows();
+ 
+         window->hide();
+-        QTimer::singleShot(350, this, &ScreenshotGrabber::reInit);
++        QTimer::singleShot(350, this, SLOT(reInit()));
+     }
+     else
+         return false;
