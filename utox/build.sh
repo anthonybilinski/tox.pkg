@@ -18,7 +18,7 @@ mkdir -p "${BUILD_DIR}"
 
 if [ ! -d "${SOURCE_DIR}/.git" ]; then
 	rm -rf "${SOURCE_DIR}"
-	git clone --recursive https://github.com/notsecure/uTox "${SOURCE_DIR}"
+	git clone --recursive https://github.com/GrayHatter/uTox "${SOURCE_DIR}"
 else
 	rm -rf "${SOURCE_DIR}/debian"
 fi
