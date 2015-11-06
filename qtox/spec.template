@@ -48,17 +48,20 @@ export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pk
 
 %global QMAKE_LIBS -L%{_libdir} -lavfilter -lswresample -lpostproc
 
+%global QMAKE_FLAGS ENABLE_SYSTRAY_UNITY_BACKEND=NO
+
 %if 0%{?centos} == 6
-%global GCC_DIR    %{_prefix}/%{_project}
-%global QMAKE_CC   %{GCC_DIR}/bin/gcc
-%global QMAKE_CXX  %{GCC_DIR}/bin/g++
-%global QMAKE_LIBS %{QMAKE_LIBS} -L%{GCC_DIR}/lib -L%{GCC_DIR}/lib64
+%global GCC_DIR     %{_prefix}/%{_project}
+%global QMAKE_CC    %{GCC_DIR}/bin/gcc
+%global QMAKE_CXX   %{GCC_DIR}/bin/g++
+%global QMAKE_LIBS  %{QMAKE_LIBS} -L%{GCC_DIR}/lib -L%{GCC_DIR}/lib64
+%global QMAKE_FLAGS %{QMAKE_FLAGS} ENABLE_SYSTRAY_GTK_BACKEND=NO
 %else
 %global QMAKE_CC  %{__cc}
 %global QMAKE_CXX %{__cxx}
 %endif
 
-qmake-qt5 \
+qmake-qt5 ${QMAKE_FLAGS} \
     "QMAKE_CPPFLAGS *= ${RPM_OPT_FLAGS}" \
     "QMAKE_CFLAGS   *= ${RPM_OPT_FLAGS}" \
     "QMAKE_CXXFLAGS *= ${RPM_OPT_FLAGS}" \
