@@ -1,2 +1,3 @@
 toxic.desktop.patch
 verbose.Makefile.patch
+name_lookup.c.patch
