@@ -6,7 +6,7 @@
  
 -CFLAGS += -g -Wall -Wshadow -pthread -std=gnu99
 -CFLAGS += $(shell pkg-config --cflags $(DEPS))
--LDFLAGS = -pthread -lm
+-LDFLAGS += -pthread -lm
 +CFLAGS   = -g -Wall -Wshadow -pthread -std=gnu99
 +CFLAGS  += $(shell pkg-config --cflags $(DEPS))
 +LDFLAGS  = -pthread -lm
