@@ -28,6 +28,12 @@ BuildRequires: libopus-devel
 BuildRequires: opus-devel
 %endif
 
+%if 0%{?centos}
+BuildRequires: curl-devel
+%else
+BuildRequires: libcurl-devel
+%endif
+
 %description
 Ncurses-based CLI tox-based instant messenging client
 
