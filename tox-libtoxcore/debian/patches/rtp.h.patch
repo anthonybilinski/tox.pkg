@@ -1,0 +1,20 @@
+--- toxav/rtp.h
++++ toxav/rtp.h
+@@ -65,7 +65,7 @@
+ } __attribute__ ((packed));
+ 
+ /* Check alignment */
+-typedef char __fail_if_misaligned [ sizeof(struct RTPHeader) == 80 ? 1 : -1 ];
++typedef char __fail_if_misaligned_rtp_header [ sizeof(struct RTPHeader) == 80 ? 1 : -1 ];
+ 
+ struct RTPMessage {
+     uint16_t len;
+@@ -75,7 +75,7 @@
+ } __attribute__ ((packed));
+ 
+ /* Check alignment */
+-typedef char __fail_if_misaligned [ sizeof(struct RTPMessage) == 82 ? 1 : -1 ];
++typedef char __fail_if_misaligned_rtp_message [ sizeof(struct RTPMessage) == 82 ? 1 : -1 ];
+ 
+ /**
+  * RTP control session.
