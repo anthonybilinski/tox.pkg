@@ -61,7 +61,7 @@ export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pk
 %global QMAKE_CXX %{__cxx}
 %endif
 
-qmake-qt5 ${QMAKE_FLAGS} \
+qmake-qt5 %{QMAKE_FLAGS} \
     "QMAKE_CPPFLAGS *= ${RPM_OPT_FLAGS}" \
     "QMAKE_CFLAGS   *= ${RPM_OPT_FLAGS}" \
     "QMAKE_CXXFLAGS *= ${RPM_OPT_FLAGS}" \
