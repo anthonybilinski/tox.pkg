@@ -1,5 +1,25 @@
 --- Makefile
 +++ Makefile
+@@ -16,6 +16,9 @@
+ OBJ += log.o misc_tools.o prompt.o settings.o toxic.o toxic_strings.o windows.o message_queue.o
+ OBJ += group_commands.o term_mplex.o avatars.o name_lookup.o
+ 
++# Include all needed checks
++-include $(CFG_DIR)/checks/check_features.mk
++
+ # Check on wich system we are running
+ UNAME_S = $(shell uname -s)
+ ifeq ($(UNAME_S), Linux)
+@@ -46,9 +49,6 @@
+     -include $(CFG_DIR)/platforms/arm.mk
+ endif
+ 
+-# Include all needed checks
+--include $(CFG_DIR)/checks/check_features.mk
+-
+ # Fix path for object files
+ OBJ := $(addprefix $(BUILD_DIR)/, $(OBJ))
+ 
 @@ -57,19 +57,19 @@
  
  $(BUILD_DIR)/toxic: $(OBJ)
