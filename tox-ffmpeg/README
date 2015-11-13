@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-ffmpeg-2.8/tox-ffmpeg_2.8.orig.tar.bz2
+tox-ffmpeg-2.8.x/tox-ffmpeg_2.8.x.orig.tar.bz2
 
 # Usage
 
