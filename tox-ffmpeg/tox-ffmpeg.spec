@@ -34,6 +34,9 @@ and video, MPEG4, h263, ac3, asf, avi, real, mjpeg, and flash.
 This package contains development files for %{name}
 
 
+%define debug_package %{nil}
+
+
 %prep
 %setup -q
 

@@ -31,6 +31,9 @@ This package contains libraries and header files for
 developing applications that use %{name} libraries.
 
 
+%define debug_package %{nil}
+
+
 %prep
 %setup -q
 
