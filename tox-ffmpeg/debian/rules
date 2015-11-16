@@ -21,13 +21,18 @@ CONFIGURE_OPTS = \
     --disable-programs                 \
     --disable-doc                      \
     --enable-gpl                       \
-    --enable-nonfree
+    --enable-nonfree                   \
+    --enable-pic
 
 override_dh_auto_clean:
 	/bin/true
 
 override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_build:
+	export V=1
+	dh_auto_build
 
 override_dh_auto_install:
 	make DESTDIR=debian/tmp install

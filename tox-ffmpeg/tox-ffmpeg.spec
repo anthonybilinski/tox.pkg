@@ -6,7 +6,7 @@
 Summary:        Digital VCR and streaming server
 Name:           %{_project}-ffmpeg
 Version:        2.8.2
-Release:        1
+Release:        13
 License:        GPL-3
 Group:          System/Libraries
 URL:            http://ffmpeg.org/
@@ -51,9 +51,10 @@ This package contains development files for %{name}
     --disable-programs                  \
     --disable-doc                       \
     --enable-gpl                        \
-    --enable-nonfree
+    --enable-nonfree                    \
+    --enable-pic
 
-make %{?_smp_mflags}
+V=1 make %{?_smp_mflags}
 
 
 %post -p /sbin/ldconfig
