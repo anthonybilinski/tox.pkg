@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+PROJECT    = tox
+PREFIX     = /usr/$(PROJECT)
+LIBDIR     = $(PREFIX)/lib
+INCLUDEDIR = $(PREFIX)/include
+
+CONFIGURE_OPTS =       \
+    -opensource        \
+    -confirm-license   \
+    -release           \
+    -static            \
+    -nomake tests      \
+    -nomake examples   \
+    -qt-sql-sqlite     \
+    -prefix $(PREFIX)
+
+override_dh_auto_configure:
+	./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_install:
+	make INSTALL_ROOT=debian/tmp install
+
+override_dh_auto_test:
+	/bin/true
+
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
+
+%:
+	dh $@

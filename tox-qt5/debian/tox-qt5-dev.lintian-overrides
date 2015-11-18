@@ -1,0 +1,4 @@
+tox-qt5-dev: file-in-unusual-dir
+tox-qt5-dev: non-standard-dir-in-usr
+tox-qt5-dev: new-package-should-close-itp-bug
+tox-qt5-dev: copyright-should-refer-to-common-license-file-for-gpl

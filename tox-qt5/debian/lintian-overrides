@@ -1,0 +1,2 @@
+tox-qt5: new-package-should-close-itp-bug
+tox-qt5: copyright-should-refer-to-common-license-file-for-gpl

@@ -1,0 +1,9 @@
+tox-qt5
+
+Sources: http://www.qt.io/ru/download-open-source/
+Use last release.
+
+# Prepare
+
+Repack original tarball as
+tox-qt5-5.5.x/tox-qt5_5.5.x.orig.tar.bz2
