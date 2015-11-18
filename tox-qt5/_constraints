@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <size unit="M">7168</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">8</size>
+    </disk>
+  </hardware>
+</constraints>
