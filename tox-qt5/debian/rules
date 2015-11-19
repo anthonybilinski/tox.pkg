@@ -12,20 +12,20 @@ PREFIX     = /usr/$(PROJECT)
 LIBDIR     = $(PREFIX)/lib
 INCLUDEDIR = $(PREFIX)/include
 
-CONFIGURE_OPTS =       \
-    -prefix $(PREFIX)  \
-    -opensource        \
-    -confirm-license   \
-    -release           \
-    -static            \
-    -no-rpath          \
-    -nomake tests      \
-    -nomake examples   \
-    -dbus-linked       \
-    -no-sql-sqlite2    \
-    -qt-sql-sqlite     \
-    -system-sqlite     \
-    -optimized-qmake   \
+CONFIGURE_OPTS =      \
+    -prefix $(PREFIX) \
+    -opensource       \
+    -confirm-license  \
+    -release          \
+    -static           \
+    -no-rpath         \
+    -nomake tests     \
+    -nomake examples  \
+    -dbus-linked      \
+    -no-sql-sqlite2   \
+    -qt-sql-sqlite    \
+    -system-sqlite    \
+    -optimized-qmake  \
     -verbose
 
 override_dh_auto_configure:
