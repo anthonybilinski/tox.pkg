@@ -25,7 +25,6 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), bison, flex, perl, py
  libfontconfig1-dev,
  libfreetype6-dev,
  libharfbuzz-dev | lsb-release,
- libdirectfb-dev,
  libinput-dev | lsb-release,
  libx11-dev,
  libxext-dev,
