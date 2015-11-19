@@ -29,6 +29,10 @@ CONFIGURE_OPTS =      \
     -verbose
 
 override_dh_auto_configure:
+	free
+	df -h
+	env
+
 	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_install:
