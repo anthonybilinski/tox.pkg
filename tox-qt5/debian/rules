@@ -36,7 +36,7 @@ override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_install:
-	make INSTALL_ROOT=debian/tmp install
+	make INSTALL_ROOT=$(CURDIR)/debian/tmp install
 
 override_dh_auto_test:
 	/bin/true
