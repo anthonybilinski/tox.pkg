@@ -28,10 +28,6 @@ CONFIGURE_OPTS =      \
     -optimized-qmake
 
 override_dh_auto_configure:
-	free
-	df -h
-	env
-
 	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_install:
