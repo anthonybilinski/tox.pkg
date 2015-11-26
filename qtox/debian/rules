@@ -10,6 +10,7 @@ include /usr/share/dpkg/buildflags.mk
 PROJECT    = tox
 NAME       = qtox
 PREFIX     = /usr
+BINDIR     = $(PREFIX)/$(PROJECT)/bin
 LIBDIR     = $(PREFIX)/$(PROJECT)/lib
 INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
 QMAKE_LIBS = -L$(LIBDIR) -lavfilter -lswresample -lpostproc
@@ -33,7 +34,7 @@ override_dh_auto_configure:
 
 	debian/patch.sh
 
-	qmake -qt=5 \
+	$(BINDIR)/qmake \
 		"QMAKE_CPPFLAGS *= $(shell dpkg-buildflags --get CPPFLAGS)" \
 		"QMAKE_CFLAGS   *= $(shell dpkg-buildflags --get CFLAGS)"   \
 		"QMAKE_CXXFLAGS *= $(shell dpkg-buildflags --get CXXFLAGS)" \

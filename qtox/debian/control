@@ -3,9 +3,34 @@ Section: net
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc-4.9 | gcc-4.8 | tox-gcc, zlib1g-dev, libbz2-dev,
  libxss-dev, libglib2.0-dev, libqrencode-dev, libgtk2.0-dev, libgdk-pixbuf2.0-dev,
- qtbase5-dev (>= 5.2.0), qttools5-dev-tools (>= 5.2.0), libqt5svg5-dev (>= 5.2.0),
  libvpx-dev, libopenal-dev, libopus-dev (>= 0.9.14),
- tox-libsodium-dev, tox-libtoxcore-dev, tox-libfilteraudio-dev, tox-ffmpeg-dev
+ tox-libsodium-dev, tox-libtoxcore-dev, tox-libfilteraudio-dev, tox-ffmpeg-dev,
+ qtbase5-dev (>= 5.4.0) | tox-qt5-dev, qttools5-dev-tools (>= 5.4.0) | tox-qt5-dev, libqt5svg5-dev (>= 5.4.0) | tox-qt5-dev,
+ libudev-dev,
+ libdbus-1-dev,
+ libicu-dev,
+ libsqlite3-dev,
+ libjpeg-dev,
+ libmng-dev,
+ libwebp-dev,
+ libtiff-dev,
+ libmtdev-dev,
+ libgl1-mesa-dev,
+ libegl1-mesa-dev,
+ libx11-xcb-dev,
+ libxcb-glx0-dev,
+ libxcb-sync0-dev,
+ libxcb-image0-dev,
+ libxcb-icccm4-dev,
+ libxcb-randr0-dev,
+ libxcb-shape0-dev,
+ libxcb-xfixes0-dev,
+ libxcb-keysyms1-dev,
+ libxcb-render-util0-dev,
+ libxcb-xkb-dev | lsb-release,
+ libxkbcommon-dev | lsb-release,
+ libxkbcommon-x11-dev | lsb-release,
+ libinput-dev | lsb-release
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: https://github.com/tux3/qTox
