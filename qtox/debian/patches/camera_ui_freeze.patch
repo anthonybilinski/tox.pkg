@@ -1,0 +1,17 @@
+--- src/video/camerasource.cpp
++++ src/video/camerasource.cpp
+@@ -31,6 +31,7 @@
+ #include "camerasource.h"
+ #include "cameradevice.h"
+ #include "videoframe.h"
++#include <unistd.h>
+ 
+ CameraSource* CameraSource::instance{nullptr};
+ 
+@@ -358,6 +359,7 @@
+         while (streamBlocker)
+             QThread::yieldCurrentThread();
+         QThread::yieldCurrentThread();
++        usleep(1000000 / 30); // 1/30 sec between frames
+     }
+ }
