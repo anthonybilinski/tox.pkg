@@ -1,0 +1,11 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libvpx
+Source: http://www.webmproject.org
+
+Files: *
+Copyright: Google Inc.
+License: BSD-like
+
+Files: debian/*
+Copyright: 2015 Anton Batenev <antonbatenev@yandex.ru>
+License: BSD-like

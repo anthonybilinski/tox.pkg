@@ -1,0 +1,3 @@
+tox-libvpx-dev: file-in-unusual-dir
+tox-libvpx-dev: non-standard-dir-in-usr
+tox-libvpx-dev: new-package-should-close-itp-bug

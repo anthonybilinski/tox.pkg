@@ -1,0 +1,18 @@
+tox-libvpx
+
+Sources: http://www.webmproject.org/code/releases/
+Use last release.
+
+# Prepare
+
+Repack original tarball as
+tox-libvpx-1.5.x/tox-libvpx_1.5.x.orig.tar.bz2
+
+# Usage
+
+Arch - use libvpx package from extra repo
+
+# Compile
+
+CentOS 6 - use yasm from EPEL-6
+CentOS 7 - use yasm from EPEL-7

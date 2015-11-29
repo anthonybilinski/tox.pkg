@@ -1,0 +1,51 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+PROJECT    = tox
+PREFIX     = /usr/$(PROJECT)
+LIBDIR     = $(PREFIX)/lib
+INCLUDEDIR = $(PREFIX)/include
+
+CONFIGURE_OPTS =                    \
+    --prefix=$(PREFIX)              \
+    --enable-pic                    \
+    --enable-vp8                    \
+    --enable-vp9                    \
+    --enable-postproc               \
+    --enable-vp9-postproc           \
+    --enable-runtime-cpu-detect     \
+    --enable-multi-res-encoding     \
+    --enable-vp9-temporal-denoising \
+    --disable-docs                  \
+    --disable-examples              \
+    --disable-install-docs          \
+    --disable-install-srcs          \
+    --extra-cflags="-fvisibility=hidden"
+
+override_dh_auto_clean:
+	/bin/true
+
+override_dh_auto_configure:
+	./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_build:
+	export V=1
+	dh_auto_build
+
+override_dh_auto_install:
+	make DESTDIR=debian/tmp install
+
+override_dh_auto_test:
+	/bin/true
+
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
+
+%:
+	dh $@

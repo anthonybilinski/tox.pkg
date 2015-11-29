@@ -10,7 +10,7 @@ Summary:        The future of online communications
 License:        GPL-3
 Group:          System/Libraries
 URL:            https://github.com/irungentoo/toxcore
-BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel, libvpx-devel, tox-libsodium-devel
+BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel, tox-libvpx-devel, tox-libsodium-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
