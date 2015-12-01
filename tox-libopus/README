@@ -1,0 +1,14 @@
+tox-libopus
+
+Sources: https://www.opus-codec.org/downloads/
+Use last release.
+
+# Prepare
+
+Repack original tarball as
+tox-libopus-1.1.x/tox-libopus_1.1.x.orig.tar.bz2
+
+# Usage
+
+Arch   - use opus package from extra repo
+Fedora - use opus package from standard repo

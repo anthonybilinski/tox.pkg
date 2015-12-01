@@ -1,0 +1,24 @@
+Source: tox-libopus
+Section: libs
+Priority: optional
+Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1)
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Standards-Version: 3.9.4
+Homepage: https://www.opus-codec.org
+
+Package: tox-libopus
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: any
+Description: Opus codec runtime library
+ The Opus codec is designed for interactive speech and audio transmission over
+ the Internet. It is designed by the IETF Codec Working Group and incorporates
+ technology from Skype's SILK codec and Xiph.Org's CELT codec.
+
+Package: tox-libopus-dev
+Section: libdevel
+Depends: ${misc:Depends}, tox-libopus (= ${binary:Version})
+Architecture: any
+Description: Opus codec runtime library
+ The Opus codec is designed for interactive speech and audio transmission over
+ the Internet. It is designed by the IETF Codec Working Group and incorporates
+ technology from Skype's SILK codec and Xiph.Org's CELT codec.

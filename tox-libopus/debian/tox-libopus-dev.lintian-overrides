@@ -1,0 +1,3 @@
+tox-libopus-dev: file-in-unusual-dir
+tox-libopus-dev: non-standard-dir-in-usr
+tox-libopus-dev: new-package-should-close-itp-bug
