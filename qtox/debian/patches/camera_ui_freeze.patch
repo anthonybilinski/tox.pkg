@@ -1,17 +1,39 @@
 --- src/video/camerasource.cpp
 +++ src/video/camerasource.cpp
-@@ -31,6 +31,7 @@
- #include "camerasource.h"
- #include "cameradevice.h"
- #include "videoframe.h"
-+#include <unistd.h>
+@@ -139,7 +139,7 @@
  
- CameraSource* CameraSource::instance{nullptr};
+     // Synchronize with our stream thread
+     while (streamFuture.isRunning())
+-        QThread::yieldCurrentThread();
++        QThread::msleep(0);
+ }
  
-@@ -358,6 +359,7 @@
+ bool CameraSource::subscribe()
+@@ -195,7 +195,7 @@
+ 
+         // Synchronize with our stream thread
+         while (streamFuture.isRunning())
+-            QThread::yieldCurrentThread();
++            QThread::msleep(0);
+     }
+     else
+     {
+@@ -270,7 +270,7 @@
+ 
+     // Synchronize with our stream thread
+     while (!streamFuture.isRunning())
+-        QThread::yieldCurrentThread();
++        QThread::msleep(0);
+ 
+     emit deviceOpened();
+ 
+@@ -356,8 +356,8 @@
+         // Give a chance to other functions to pick up the lock if needed
+         biglock.unlock();
          while (streamBlocker)
-             QThread::yieldCurrentThread();
-         QThread::yieldCurrentThread();
-+        usleep(1000000 / 30); // 1/30 sec between frames
+-            QThread::yieldCurrentThread();
+-        QThread::yieldCurrentThread();
++            QThread::msleep(0);
++        QThread::msleep(0);
      }
  }
