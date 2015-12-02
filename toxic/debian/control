@@ -3,8 +3,8 @@ Section: net
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, asciidoc, gettext,
  libconfig-dev, libncursesw5-dev, libqrencode-dev, libx11-dev, libnotify-dev, libcurl4-openssl-dev,
- libopenal-dev, libalut-dev, libopus-dev (>= 0.9.14),
- tox-libvpx-dev, tox-libsodium-dev, tox-libtoxcore-dev
+ libopenal-dev, libalut-dev,
+ tox-libvpx-dev, tox-libopus-dev, tox-libsodium-dev, tox-libtoxcore-dev
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: https://github.com/Tox/toxic

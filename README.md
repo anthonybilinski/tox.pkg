@@ -15,6 +15,7 @@ Upstream tox client packages and development libraries for popular linux distros
 * [tox-libfilteraudio](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libfilteraudio)
 * [tox-ffmpeg](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-ffmpeg)
 * [tox-libvpx](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libvpx)
+* [tox-libopus](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libopus)
 
 ### Bindings
 

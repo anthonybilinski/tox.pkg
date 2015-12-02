@@ -11,14 +11,14 @@ License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/tux3/qTox
 BuildRequires:  git, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libv4l-devel
-BuildRequires:  tox-libvpx-devel, tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel
+BuildRequires:  tox-libvpx-devel, tox-libopus-devel, tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
-BuildRequires:  libbz2-devel, libopus-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.4.0, libqt5-qttools-devel >= 5.4.0, libqt5-qtsvg-devel >= 5.4.0
+BuildRequires:  libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.4.0, libqt5-qttools-devel >= 5.4.0, libqt5-qtsvg-devel >= 5.4.0
 %else
-BuildRequires:  bzip2-devel, opus-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.4.0, qt5-qttools-devel >= 5.4.0, qt5-qtsvg-devel >= 5.4.0
+BuildRequires:  bzip2-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.4.0, qt5-qttools-devel >= 5.4.0, qt5-qtsvg-devel >= 5.4.0
 %endif
 
 %if 0%{?centos} == 6

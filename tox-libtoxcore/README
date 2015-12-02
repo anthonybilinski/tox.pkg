@@ -10,6 +10,6 @@ Use last successful build from build history.
 # Compile
 
 Arch         - use libsodium package from community repo
-CentOS 6     - use yasm, autoconf268 and opus-devel packages from EPEL-6
+CentOS 6     - use yasm and autoconf268 package from EPEL-6
 CentOS 7     - use yasm package from EPEL-7
-Ubuntu 12.04 - use libopus-dev and libconfig packages from separate tox backports repo
+Ubuntu 12.04 - use libconfig package from separate tox backports repo
