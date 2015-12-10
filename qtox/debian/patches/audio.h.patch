@@ -1,0 +1,10 @@
+--- src/audio/audio.h
++++ src/audio/audio.h
+@@ -33,6 +33,7 @@
+ #else
+  #include <AL/al.h>
+  #include <AL/alc.h>
++ #include <AL/alext.h>
+ #endif
+ 
+ class QString;
