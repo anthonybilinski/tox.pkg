@@ -4,7 +4,7 @@
 %global _includedir %{_prefix}/include
 
 Name:           %{_project}-libsodium
-Version:        1.0.6
+Version:        1.0.7
 Release:        1
 Summary:        A fork of networking and cryptography library with compatible APIs
 License:        ISC
@@ -74,5 +74,5 @@ make DESTDIR=%{buildroot} install
 
 
 %changelog
-* Fri Nov 6 2015 Anton Batenev <antonbatenev@yandex.ru> - 1.0.6-1
+* Tue Dec 8 2015 Anton Batenev <antonbatenev@yandex.ru> - 1.0.7-1
 - Initial

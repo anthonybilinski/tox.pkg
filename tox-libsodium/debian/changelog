@@ -1,5 +1,5 @@
-tox-libsodium (1.0.6-1) unstable; urgency=low
+tox-libsodium (1.0.7-1) unstable; urgency=low
 
-  * Backport from sid.
+  * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 06 Nov 2015 17:36:00 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 08 Dec 2015 16:04:00 +0000
