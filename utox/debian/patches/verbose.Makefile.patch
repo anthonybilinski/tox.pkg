@@ -1,43 +1,54 @@
 --- Makefile
 +++ Makefile
-@@ -26,9 +26,9 @@
+@@ -2,7 +2,7 @@
+ # set to anything else to disable them
+ DBUS = 1
+ V4LCONVERT = 1
+-FILTER_AUDIO = 0
++FILTER_AUDIO = 1
+ UNITY = 0
  
- UNAME_S := $(shell uname -s)
+ DEPS = libtoxav libtoxcore openal vpx libsodium
+@@ -11,8 +11,8 @@
+ UNAME_O := $(shell uname -o)
+ ARCH    := $(shell uname -m)
  
 -CFLAGS += -g -Wall -Wshadow -pthread -std=gnu99
--CFLAGS += $(shell pkg-config --cflags $(DEPS))
 -LDFLAGS += -pthread -lm
-+CFLAGS   = -g -Wall -Wshadow -pthread -std=gnu99
-+CFLAGS  += $(shell pkg-config --cflags $(DEPS))
-+LDFLAGS  = -pthread -lm
- LDFLAGS += $(shell pkg-config --libs $(DEPS))
++CFLAGS  = -g -Wall -Wshadow -pthread -std=gnu99
++LDFLAGS = -pthread -lm
  
- ifneq ($(DBUS), 1)
-@@ -51,6 +51,9 @@
-     LDFLAGS += -lresolv -ldl
+ ifeq ($(FILTER_AUDIO), 1)
+ 	DEPS += filteraudio
+@@ -73,6 +73,8 @@
+ 	TRAY_OBJ = icon.o
  endif
  
 +CFLAGS  += $(USER_CFLAGS)
 +LDFLAGS += $(USER_LDFLAGS)
-+
+ 
  DESTDIR ?=
  PREFIX ?= /usr/local
+@@ -86,7 +88,7 @@
  
-@@ -62,7 +65,7 @@
- 
- utox: $(OBJ)
+ utox: $(OBJ) $(OS_OBJ) tray-icon
  	@echo "  LD    $@"
--	@$(CC) $(CFLAGS) -o utox $(OBJ) $(LDFLAGS)
-+	$(CC) $(CFLAGS) -o utox $(OBJ) $(LDFLAGS)
+-	@$(CC) $(CFLAGS) -o $(OUT_FILE) $(OBJ) $(OS_OBJ) $(TRAY_OBJ) $(LDFLAGS)
++	$(CC) $(CFLAGS) -o $(OUT_FILE) $(OBJ) $(OS_OBJ) $(TRAY_OBJ) $(LDFLAGS)
  
  install: utox
  	mkdir -p $(DESTDIR)$(PREFIX)/bin
-@@ -110,7 +113,7 @@
+@@ -132,11 +134,11 @@
  
- .c.o:
+ $(OBJ): %.o: %.c $(HEADERS)
  	@echo "  CC    $@"
 -	@$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
 +	$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
  
- clean:
- 	rm -f utox *.o png/*.o
+ $(OS_OBJ): %.o: %.c $(HEADERS)
+ 	@echo "  CC    $@"
+-	@$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
++	$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
+ 
+ tray-icon:
+ 	$(TRAY_GEN)
