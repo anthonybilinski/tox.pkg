@@ -1,0 +1,48 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+PROJECT    = tox
+PREFIX     = /usr/$(PROJECT)
+BINDIR     = $(PREFIX)/bin
+LIBDIR     = $(PREFIX)/lib
+INCLUDEDIR = $(PREFIX)/include
+
+# http://www.sqlite.org/compile.html
+USER_CFLAGS = "$(CFLAGS) -fPIC       \
+    -DSQLITE_HAS_CODEC               \
+    -DSQLITE_DEFAULT_AUTOVACUUM=2    \
+    -DSQLITE_DEFAULT_FOREIGN_KEYS=1  \
+    -DSQLITE_DEFAULT_PAGE_SIZE=32768 \
+    -DSQLITE_ENABLE_STAT4            \
+    -I."
+
+USER_LDFLAGS = "$(LDFLAGS) -lcrypto"
+
+CONFIGURE_OPTS =            \
+    --prefix=$(PREFIX)      \
+    --disable-shared        \
+    --enable-tempstore=yes  \
+    --disable-tcl           \
+    CFLAGS=$(USER_CFLAGS)   \
+    LDFLAGS=$(USER_LDFLAGS)
+
+override_dh_auto_configure:
+	./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_install:
+	make DESTDIR=$(CURDIR)/debian/tmp install
+
+override_dh_auto_test:
+	/bin/true
+
+override_dh_shlibdeps:
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
+
+%:
+	dh $@ --parallel

@@ -1,0 +1,13 @@
+tox-sqlcipher
+
+Sources: https://github.com/sqlcipher/sqlcipher
+Use last release.
+
+# Prepare
+
+Repack original tarball as
+tox-sqlcipher-3.3.x/tox-sqlcipher_3.3.x.orig.tar.bz2
+
+# Usage
+
+Arch - use sqlcipher package from community repo

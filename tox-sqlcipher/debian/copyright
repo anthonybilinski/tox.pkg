@@ -1,0 +1,25 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: SQLCipher
+Upstream-Contact: Stephen Lombardo <sjlombardo@zetetic.net>
+Source: https://github.com/sqlcipher/sqlcipher
+
+Files: *
+Copyright: 2000-2012, D. Richard Hipp <drh@hwaci.com>
+License: public-domain
+ The author disclaims all copyright. The library is in the public domain.
+ The author disclaims copyright to this source code.
+
+
+Files: src/crypto.h src/crypto.c src/crypto_impl.c src/crypto_impl.c
+Copyright: 2008-2012, Zetetic LLC
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of the ZETETIC LLC nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
