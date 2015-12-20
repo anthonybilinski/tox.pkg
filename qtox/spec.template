@@ -10,8 +10,8 @@ Summary:        qTox is a powerful Tox client
 License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/tux3/qTox
-BuildRequires:  git, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libv4l-devel
-BuildRequires:  tox-libvpx-devel, tox-libopus-devel, tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel
+BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libv4l-devel, openssl-devel,
+BuildRequires:  tox-libvpx-devel, tox-libopus-devel, tox-libsodium-devel, tox-libtoxcore-devel, tox-libfilteraudio-devel, tox-ffmpeg-devel, tox-sqlcipher-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

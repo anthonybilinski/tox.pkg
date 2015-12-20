@@ -9,11 +9,14 @@
  greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
  
  TARGET    = qtox
-@@ -170,7 +170,7 @@
+@@ -183,8 +183,8 @@
                  LIBS += -Wl,-Bdynamic -lv4l1 -lv4l2 -lavformat -lavcodec -lavutil -lswscale -lusb-1.0
-                 LIBS += -lqrencode
+                 LIBS += -lqrencode -lsqlcipher
              } else {
 -                LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavformat -lavdevice -lavcodec -lavutil -lswscale
+-                LIBS += -lqrencode -lsqlcipher
 +                LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavdevice -lavfilter -lswscale -lpostproc -lavformat -lavcodec -lswresample -lavutil -lopus -lz -lbz2
-                 LIBS += -lqrencode
++                LIBS += -lqrencode -lsqlcipher -lcrypto -ldl
              }
+ 
+             contains(DEFINES, QTOX_PLATFORM_EXT) {
