@@ -1,5 +1,5 @@
---- utox.desktop
-+++ utox.desktop
+--- src/utox.desktop
++++ src/utox.desktop
 @@ -3,9 +3,10 @@
  Type=Application
  Name=uTox
