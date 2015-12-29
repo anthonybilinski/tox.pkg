@@ -1,5 +1,5 @@
-tox-ffmpeg (2.8.3-1) unstable; urgency=low
+tox-ffmpeg (2.8.4-1) unstable; urgency=low
 
   * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 01 Dec 2015 14:47:26 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 29 Dec 2015 16:53:34 +0300
