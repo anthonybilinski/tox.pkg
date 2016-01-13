@@ -1,5 +1,5 @@
---- src/xlib/v4l.c.orig	2016-01-14 02:36:44.037181670 +0300
-+++ src/xlib/v4l.c	2016-01-14 02:39:28.006440928 +0300
+--- src/xlib/v4l.c
++++ src/xlib/v4l.c
 @@ -312,7 +312,10 @@
  
      /* assumes planes are continuous memory */
