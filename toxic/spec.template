@@ -42,7 +42,7 @@ debian/patch.sh
 %patch0
 %endif
 
-%if 0%{?suse_version} == 1310
+%if 0%{?suse_version} == 1310 || 0%{?suse_version} == 1315
 %patch1
 %endif
 
@@ -53,7 +53,7 @@ debian/patch.sh
 
 export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
 
-%if 0%{?suse_version} == 1310
+%if 0%{?suse_version} == 1310 || 0%{?suse_version} == 1315
 %global USER_LDFLAGS %{USER_LDFLAGS} -lncursesw
 %endif
 
