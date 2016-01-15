@@ -25,6 +25,7 @@ have per-database or page-by-page encryption using AES-256 from OpenSSL.
 Summary:        Development package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Provides:       sqlcipher-devel = %{version}-%{release}
 
 %description    devel
 SQLCipher is a C library that implements an encryption in the SQLite 3
