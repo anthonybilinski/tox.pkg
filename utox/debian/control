@@ -4,7 +4,10 @@ Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, git,
  libfontconfig1-dev, libfreetype6-dev, libx11-dev, libxext-dev, libxrender-dev, libdbus-1-dev,
  libopenal-dev, libalut-dev, libv4l-dev,
- tox-libvpx-dev, tox-libopus-dev, tox-libsodium-dev, tox-libtoxcore-dev, tox-libfilteraudio-dev
+ libopus-dev (>= 1.1.2) | tox-libopus-dev,
+ libvpx-dev (>= 1.5.0) | tox-libvpx-dev,
+ libsodium-dev (>= 1.0.8) | tox-libsodium-dev,
+ tox-libtoxcore-dev, tox-libfilteraudio-dev
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: https://github.com/GrayHatter/uTox
