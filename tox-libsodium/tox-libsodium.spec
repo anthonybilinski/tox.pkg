@@ -25,6 +25,7 @@ cryptographic tools.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Provides:       libsodium-devel = %{version}-%{release}
 
 %description    devel
 This package contains libraries and header files for

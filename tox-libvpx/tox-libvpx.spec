@@ -23,6 +23,7 @@ on which the Theora codec was based.
 Summary:        Development package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Provides:       libvpx-devel = %{version}-%{release}
 
 %description    devel
 VP8 and VP9 are open video codecs, originally developed by On2 and released

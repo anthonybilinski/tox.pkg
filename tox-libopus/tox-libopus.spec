@@ -25,6 +25,7 @@ technology from Skype's SILK codec and Xiph.Org's CELT codec.
 Summary:        Development package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Provides:       libopus-devel = %{version}-%{release}
 
 %description    devel
 Opus codec runtime library
