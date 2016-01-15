@@ -11,7 +11,7 @@ License:        GPL-3
 Group:          System/Libraries
 URL:            https://github.com/irungentoo/toxcore
 BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel
-BuildRequires:  tox-libvpx-devel, tox-libopus-devel, tox-libsodium-devel
+BuildRequires:  libsodium-devel, libvpx-devel, libopus-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -88,6 +88,7 @@ install -m 755 other/bootstrap_daemon/tox-bootstrapd.sh      %{buildroot}%{_data
 %doc COPYING README.md
 
 %if 0%{?suse_version}
+%dir %{_prefix}
 %dir %{_bindir}
 %dir %{_datadir}
 %dir %{_datadir}/%{name}
