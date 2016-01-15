@@ -25,6 +25,7 @@ This version enable more support about codecs, require PostInstaller repo enable
 Summary:        Development package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Provides:       ffmpeg-devel = %{version}-%{release}
 
 %description    devel
 FFmpeg is a complete and free Internet live audio and video
