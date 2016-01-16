@@ -25,10 +25,15 @@ technology from Skype's SILK codec and Xiph.Org's CELT codec.
 Summary:        Development package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+
+%if 0%{?suse_version}
 Provides:       libopus-devel = %{version}-%{release}
+%else
+Provides:       opus-devel = %{version}-%{release}
+%endif
 
 %description    devel
-Opus codec runtime library
+Opus codec development library
 The Opus codec is designed for interactive speech and audio transmission over
 the Internet. It is designed by the IETF Codec Working Group and incorporates
 technology from Skype's SILK codec and Xiph.Org's CELT codec.

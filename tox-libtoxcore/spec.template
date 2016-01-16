@@ -11,9 +11,15 @@ License:        GPL-3
 Group:          System/Libraries
 URL:            https://github.com/irungentoo/toxcore
 BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel
-BuildRequires:  libsodium-devel, libvpx-devel, libopus-devel >= 0.5.0
+BuildRequires:  libsodium-devel >= 0.5.0, libvpx-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?suse_version}
+BuildRequires:  libopus-devel
+%else
+BuildRequires:  opus-devel
+%endif
 
 %if 0%{?centos} == 6
 BuildRequires:  autoconf268
