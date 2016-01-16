@@ -8,11 +8,7 @@ Use last release.
 Repack original tarball as
 tox-ffmpeg-2.8.x/tox-ffmpeg_2.8.x.orig.tar.bz2
 
-# Usage
-
-Arch - use ffmpeg package from extra repo
-
 # Compile
 
-CentOS 6 - use yasm from EPEL-6
-CentOS 7 - use yasm from EPEL-7
+* CentOS 6 - use yasm from EPEL-6
+* CentOS 7 - use yasm from EPEL-7
