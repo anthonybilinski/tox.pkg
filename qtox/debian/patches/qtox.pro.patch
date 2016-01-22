@@ -9,7 +9,15 @@
  greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
  
  TARGET    = qtox
-@@ -183,8 +183,8 @@
+@@ -59,7 +59,6 @@
+ # This hack returns 0 on batch (windows), but executes "date +%s" or return 0 if it fails on bash (linux/mac)
+ TIMESTAMP = $$system($1 2>null||echo 0||a;rm null;date +%s||echo 0) # I'm so sorry
+ DEFINES += TIMESTAMP=$$TIMESTAMP
+-DEFINES += LOG_TO_FILE
+ DEFINES += QT_MESSAGELOGCONTEXT
+ 
+ android {
+@@ -192,8 +191,8 @@
                  LIBS += -Wl,-Bdynamic -lv4l1 -lv4l2 -lavformat -lavcodec -lavutil -lswscale -lusb-1.0
                  LIBS += -lqrencode -lsqlcipher
              } else {
