@@ -1,0 +1,2 @@
+tox-libtoxcore-gc: quilt-series-but-no-build-dep
+tox-libtoxcore-gc: missing-license-paragraph-in-dep5-copyright
