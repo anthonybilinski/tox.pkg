@@ -7,7 +7,10 @@ pkgdesc="The future of online communications"
 arch=('i686' 'x86_64')
 url="https://github.com/irungentoo/toxcore"
 license=('GPL-3')
-depends=('libtool' 'autoconf' 'automake' 'yasm' 'libconfig' 'opus' 'libvpx' 'libsodium')
+depends=('opus' 'libvpx' 'libsodium')
+makedepends=('libtool' 'autoconf' 'automake' 'yasm' 'libconfig')
+conflicts=('toxcore')
+provides=('toxcore')
 source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha512sums=('%SHA_512%')
 
@@ -23,6 +26,9 @@ package() {
     cd ${pkgname}
 
     make DESTDIR=${pkgdir} install
+
+    sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.sh
+    sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.service
 
     install -d -m 755 ${pkgdir}/usr/share/doc/${pkgname}
     install -d -m 755 ${pkgdir}/usr/share/licenses/${pkgname}
