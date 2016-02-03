@@ -35,6 +35,10 @@ override_dh_auto_build:
 
 	dh_auto_build
 
+	# fix paths
+	sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.sh
+	sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.service
+
 	# strip .sh extension
 	cp other/bootstrap_daemon/tox-bootstrapd.sh other/bootstrap_daemon/tox-bootstrapd
 
