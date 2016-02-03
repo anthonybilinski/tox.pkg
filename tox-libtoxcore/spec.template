@@ -84,6 +84,9 @@ make DESTDIR=%{buildroot} install
 
 install -d %{buildroot}%{_datadir}/%{name}
 
+sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.sh
+sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.service
+
 install -m 644 other/bootstrap_daemon/tox-bootstrapd.conf    %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.conf
 install -m 644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.service
 install -m 755 other/bootstrap_daemon/tox-bootstrapd.sh      %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.sh
