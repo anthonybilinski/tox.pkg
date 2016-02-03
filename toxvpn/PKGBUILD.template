@@ -1,0 +1,32 @@
+# Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+
+pkgname=%PACKAGE%
+pkgver=%VERSION%
+pkgrel=1
+pkgdesc="Tool to make tunneled point to point connections over Tox"
+arch=('i686' 'x86_64')
+url="https://github.com/cleverca22/toxvpn"
+license=('GPL-3')
+depends=('jsoncpp' 'libcap' 'opus' 'libvpx' 'libsodium' 'tox-libtoxcore')
+makedepends=('cmake')
+provides=($pkgname)
+source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+sha512sums=('%SHA_512%')
+
+build() {
+    cd "${pkgname}"
+
+    cmake -DSTATIC=1 -DTOX_PREFIX=/usr/tox -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS=-lrt .
+    CFLAGS="-Wno-conversion" make
+}
+
+package() {
+    cd "${pkgname}"
+    make DESTDIR="${pkgdir}" install
+
+    install -d -m 755 "${pkgdir}/usr/share/doc/${pkgname}"
+    install -d -m 755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    install -m 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -m 644 COPYING   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}

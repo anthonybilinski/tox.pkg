@@ -1,0 +1,11 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: toxvpn
+Source: https://github.com/cleverca22/toxvpn
+
+Files: *
+Copyright: cleverca22
+License: GPL-3.0+
+
+Files: debian/*
+Copyright: 2015 Anton Batenev <antonbatenev@yandex.ru>
+License: GPL-3.0+
