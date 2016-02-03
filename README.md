@@ -8,6 +8,14 @@ Upstream tox client packages and development libraries for popular linux distros
 * [utox](https://build.opensuse.org/package/show/home:antonbatenev:tox/utox)
 * [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic)
 
+### Bindings
+
+* [python-toxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-toxcore)
+
+### Utils
+
+* [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn)
+
 ### Development libraries
 
 * [tox-libtoxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore)
@@ -17,10 +25,6 @@ Upstream tox client packages and development libraries for popular linux distros
 * [tox-libvpx](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libvpx)
 * [tox-libopus](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libopus)
 * [tox-sqlcipher](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-sqlcipher)
-
-### Bindings
-
-* [python-toxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-toxcore)
 
 ### Additional separate repositories
 
