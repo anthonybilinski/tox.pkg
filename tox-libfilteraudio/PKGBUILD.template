@@ -3,13 +3,14 @@
 pkgname=%PACKAGE%
 pkgver=%VERSION%
 pkgrel=1
-pkgdesc="Lightweight audio filtering library made from webrtc code."
+pkgdesc="An easy to use audio filtering library made from webrtc code"
 arch=('i686' 'x86_64')
 url="https://github.com/irungentoo/filter_audio"
 license=('BSD 3-clause')
-depends=('make')
-provides=('libfilteraudio' 'filter_audio')
-conflicts=('libfilteraudio-git')
+depends=('glibc')
+makedepends=('git' 'make')
+provides=('libfilteraudio' 'filter_audio' 'libfilteraudio-git')
+conflicts=('libfilteraudio' 'filter_audio' 'libfilteraudio-git')
 source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha512sums=('%SHA_512%')
 
