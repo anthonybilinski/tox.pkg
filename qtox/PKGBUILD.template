@@ -3,14 +3,14 @@
 pkgname=%PACKAGE%
 pkgver=%VERSION%
 pkgrel=1
-pkgdesc='qTox is a powerful Tox client'
+pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines'
 arch=('i686' 'x86_64')
 url='https://github.com/tux3/qTox'
 license=('GPL3')
-depends=('desktop-file-utils' 'libxkbcommon-x11' 'libxss' 'opencv' 'libx264' 'ffmpeg' 'openal' 'qt5-svg' 'qrencode' 'sqlcipher' 'tox-libtoxcore' 'tox-libfilteraudio')
+depends=('desktop-file-utils' 'libxkbcommon-x11' 'libxss' 'opencv' 'libx264' 'ffmpeg' 'openal' 'qt5-svg' 'qrencode' 'sqlcipher' 'toxcore' 'libfilteraudio')
 makedepends=('git' 'qt5-tools')
-provides=("%PACKAGE%")
-conflicts=("%PACKAGE%-git")
+provides=('qtox' 'qtox-git')
+conflicts=('qtox' 'qtox-git')
 source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha512sums=('%SHA_512%')
 
