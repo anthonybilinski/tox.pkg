@@ -62,5 +62,3 @@ sed -e "s/%PACKAGE%/${PACKAGE_NAME}/g" "${BASE}/PKGBUILD.template" | \
 sed -e "s/%VERSION%/${PACKAGE_VERSION}/g"                          | \
 sed -e "s/%SHA_512%/${SHA_512}/g"                                    \
 > "${BUILD_DIR}/PKGBUILD"
-
-cp "${BASE}"/*.patch "${BUILD_DIR}"
