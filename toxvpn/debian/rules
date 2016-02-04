@@ -12,12 +12,16 @@ PREFIX        = /usr
 TOX_PREFIX    = $(PREFIX)/$(PROJECT)
 SODIUM_PREFIX = $(TOX_PREFIX)
 
-CFLAGS += -Wno-conversion
+USER_CFLAGS := $(CFLAGS) -Wno-conversion
 
 export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDIR)/pkgconfig
 
 override_dh_auto_configure:
-	cmake -DSTATIC=1 -DTOX_PREFIX=$(TOX_PREFIX) -DSODIUM_PREFIX=$(SODIUM_PREFIX) -DCMAKE_INSTALL_PREFIX=$(PREFIX) -DCMAKE_EXE_LINKER_FLAGS=-lrt .
+	debian/patch.sh
+	cmake -DSTATIC=1 -DTOX_PREFIX=$(TOX_PREFIX) -DSODIUM_PREFIX=$(SODIUM_PREFIX) -DCMAKE_INSTALL_PREFIX=$(PREFIX) .
+
+override_dh_auto_build:
+	make VERBOSE=1 CFLAGS="$(USER_CFLAGS)"
 
 override_dh_auto_install:
 	make DESTDIR=$(CURDIR)/debian/tmp install

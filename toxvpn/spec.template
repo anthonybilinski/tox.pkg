@@ -31,16 +31,17 @@ reliable enrypted tunneling.
 %prep
 %setup -q -n %{name}
 
+debian/patch.sh
+
 
 %build
 
-%global USER_CFLAGS  ${RPM_OPT_FLAGS} -Wno-conversion
-%global USER_LDFLAGS ${RPM_LD_FLAGS}
+%global USER_CFLAGS ${RPM_OPT_FLAGS} -Wno-conversion
 
 export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
 
-cmake -DSTATIC=1 -DTOX_PREFIX=%{_tox_prefix} -DSODIUM_PREFIX=%{_sodium_prefix} -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS=-lrt .
-make CFLAGS="%{USER_CFLAGS}" LDFLAGS="%{USER_LDFLAGS}" %{?_smp_mflags}
+cmake -DSTATIC=1 -DTOX_PREFIX=%{_tox_prefix} -DSODIUM_PREFIX=%{_sodium_prefix} -DCMAKE_INSTALL_PREFIX=/usr .
+make VERBOSE=1 CFLAGS="%{USER_CFLAGS}" %{?_smp_mflags}
 
 
 %install
