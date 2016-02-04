@@ -1,3 +1,5 @@
 qtox.pro.patch
 qtox.desktop.patch
 camera_ui_freeze.patch
+mjpeg.patch
+max_thread.patch

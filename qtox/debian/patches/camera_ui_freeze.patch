@@ -5,7 +5,7 @@
      // Synchronize with our stream thread
      while (streamFuture.isRunning())
 -        QThread::yieldCurrentThread();
-+        QThread::msleep(0);
++        QThread::msleep(5);
  }
  
  bool CameraSource::subscribe()
@@ -14,7 +14,7 @@
          // Synchronize with our stream thread
          while (streamFuture.isRunning())
 -            QThread::yieldCurrentThread();
-+            QThread::msleep(0);
++            QThread::msleep(5);
      }
      else
      {
@@ -23,7 +23,7 @@
      // Synchronize with our stream thread
      while (!streamFuture.isRunning())
 -        QThread::yieldCurrentThread();
-+        QThread::msleep(0);
++        QThread::msleep(5);
  
      emit deviceOpened();
  
@@ -33,7 +33,7 @@
          while (streamBlocker)
 -            QThread::yieldCurrentThread();
 -        QThread::yieldCurrentThread();
-+            QThread::msleep(0);
-+        QThread::msleep(0);
++            QThread::msleep(5);
++        QThread::msleep(5);
      }
  }
