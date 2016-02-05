@@ -48,3 +48,13 @@ Description: Powerful Tox client
  Powerful Tox client that follows the Tox design guidelines.
  Tox is a decentralized and encrypted replacement for Skype, supporting
  chats, audio, and video calls.
+
+Package: qtox-dbg
+Section: debug
+Priority: extra
+Depends: qtox (= ${binary:Version}), ${misc:Depends}
+Architecture: any
+Description: Debug symbols for qTox
+ Powerful Tox client that follows the Tox design guidelines.
+ Tox is a decentralized and encrypted replacement for Skype, supporting
+ chats, audio, and video calls.
