@@ -18,3 +18,13 @@ Description: Tool to make tunneled point to point connections over Tox
  toxvpn is a powerful tool that allows one to make tunneled point to point
  connections over Tox. Using Tox for transport allows fast, efficient and
  reliable enrypted tunneling.
+
+Package: toxvpn-dbg
+Section: debug
+Priority: extra
+Depends: toxvpn (= ${binary:Version}), ${misc:Depends}
+Architecture: any
+Description: Debug symbols for toxvpn
+ toxvpn is a powerful tool that allows one to make tunneled point to point
+ connections over Tox. Using Tox for transport allows fast, efficient and
+ reliable enrypted tunneling.

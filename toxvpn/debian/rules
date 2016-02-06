@@ -26,6 +26,9 @@ override_dh_auto_build:
 override_dh_auto_install:
 	make DESTDIR=$(CURDIR)/debian/tmp install
 
+override_dh_strip:
+	dh_strip --dbg-package=toxvpn-dbg
+
 override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
 
