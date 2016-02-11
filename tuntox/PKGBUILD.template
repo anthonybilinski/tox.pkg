@@ -1,0 +1,25 @@
+# Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+
+pkgname=%PACKAGE%
+pkgver=%VERSION%
+pkgrel=1
+pkgdesc="Tunnel TCP connections over the Tox protocol"
+arch=('i686' 'x86_64')
+url="https://github.com/gjedeer/tuntox"
+license=('GPL-3')
+depends=('toxcore')
+makedepends=('git')
+provides=($pkgname)
+conflicts=($pkgname)
+source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+sha512sums=('%SHA_512%')
+
+build() {
+    cd "${pkgname}"
+    make USER_CFLAGS="-I/usr/tox/include" USER_LDFLAGS="-L/usr/tox/lib"
+}
+
+package() {
+    cd "${pkgname}"
+    install -D -m755 tuntox "${pkgdir}/usr/bin/tuntox"
+}

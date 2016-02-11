@@ -1,0 +1,5 @@
+%PACKAGE% (%VERSION%) unstable; urgency=low
+
+  * Build upstream version from git (@%REVISION%)
+
+ -- Anton Batenev <antonbatenev@yandex.ru>  %DATE%
