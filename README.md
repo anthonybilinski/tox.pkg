@@ -36,3 +36,7 @@ Upstream tox client packages and development libraries for popular linux distros
 ### How to use
 
 Click on interesting package name, follow "Download package" link, choose your distro, follow instructions, enjoy!
+
+### Feedback
+
+If you find some package useful, please email me which distro and package name(s) you are using.
