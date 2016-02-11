@@ -14,7 +14,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Utils
 
-* [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn)
+* [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn) (experimental)
 
 ### Development libraries
 
@@ -29,7 +29,7 @@ Upstream tox client packages and development libraries for popular linux distros
 ### Additional separate repositories
 
 * [tox:gcc](https://build.opensuse.org/package/show/home:antonbatenev:tox:gcc/tox-gcc) - GCC 4.9 package to compile qtox on CentOS 6, Debian 7.0 (wheezy) and Ubuntu 12.04 (precise)
-* [tox:qt5](https://build.opensuse.org/package/show/home:antonbatenev:tox:qt5/tox-qt5) - Qt 5.5.1 static package to compile qtox on Debian and Ubuntu
+* [tox:qt5](https://build.opensuse.org/package/show/home:antonbatenev:tox:qt5/tox-qt5) - Qt 5 static package to compile qtox on Debian and Ubuntu
 * [tox:precise](https://build.opensuse.org/project/show/home:antonbatenev:tox:precise) - Development and release backports for Ubuntu 12.04 (precise)
 
 ### How to use
