@@ -1,7 +1,11 @@
-%global _project    tox
-%global _prefix     /usr/%{_project}
-%global _libdir     %{_prefix}/lib
-%global _includedir %{_prefix}/include
+%global _project        tox
+%global _tox_prefix     /usr/%{_project}
+%global _tox_libdir     %{_tox_prefix}/lib
+%global _tox_includedir %{_tox_prefix}/include
+
+%if 0%{?centos} == 7 || 0%{?fedora} >= 15 || 0%{?suse_version} >= 1210
+%define with_systemd 1
+%endif
 
 Name:           %PACKAGE%
 Version:        %VERSION%
@@ -42,6 +46,25 @@ This package contains libraries and header files for
 developing applications that use %{name} libraries.
 
 
+%package -n     tox-bootstrapd
+Summary:        Tox DHT Bootstrap Daemon
+Group:          Productivity/Networking/Talk/Servers
+Requires:       %{name} = %{version}-%{release}
+%if 0%{?suse_version}
+Requires(pre):  pwdutils
+%else
+Requires(pre):  shadow-utils
+%endif
+
+%if 0%{?with_systemd}
+BuildRequires:  systemd
+%{?systemd_requires}
+%endif
+
+%description -n tox-bootstrapd
+This package contains tox DHT Bootstrap Daemon
+
+
 %define debug_package %{nil}
 
 
@@ -51,9 +74,9 @@ debian/patch.sh
 
 
 %build
-export CFLAGS="${RPM_OPT_FLAGS} -Wno-return-type -fPIC -I%{_includedir}"
-export LDFLAGS="${RPM_LD_FLAGS} -L%{_libdir}"
-export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig"
+export CFLAGS="${RPM_OPT_FLAGS} -Wno-return-type -fPIC -I%{_tox_includedir}"
+export LDFLAGS="${RPM_LD_FLAGS} -L%{_tox_libdir}"
+export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_tox_libdir}/pkgconfig"
 
 %if 0%{?centos} == 6
 /usr/bin/autoreconf268 -if
@@ -62,57 +85,124 @@ export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_libdir}/p
 %endif
 
 ./configure \
-    --prefix=%{_prefix}         \
-    --libdir=%{_libdir}         \
-    --includedir=%{_includedir} \
-    --disable-silent-rules      \
-    --enable-daemon             \
-    --disable-tests             \
+    --prefix=%{_prefix}             \
+    --libdir=%{_tox_libdir}         \
+    --includedir=%{_tox_includedir} \
+    --disable-silent-rules          \
+    --enable-daemon                 \
+    --disable-tests                 \
     --disable-shared
 
 make %{?_smp_mflags}
 
 
-%post -p /sbin/ldconfig
+%pre -n tox-bootstrapd
+if ! getent passwd tox-bootstrapd > /dev/null 2>&1 ; then
+    useradd -c "Account to run Tox's DHT bootstrap daemon" -r -d /var/lib/tox-bootstrapd -m -s /sbin/nologin -U tox-bootstrapd
+    chmod 700 /var/lib/tox-bootstrapd
+fi
+%if 0%{?with_systemd}
+%service_add_pre tox-bootstrapd.service
+%endif
 
 
-%postun -p /sbin/ldconfig
+%post devel
+/sbin/ldconfig
+
+%post -n tox-bootstrapd
+%if 0%{?with_systemd}
+%service_add_post tox-bootstrapd.service
+%else
+%fillup_and_insserv -f -y tox-bootstrapd
+%endif
+
+
+%preun -n tox-bootstrapd
+%if 0%{?with_systemd}
+%service_del_preun tox-bootstrapd.service
+%else
+%stop_on_removal tox-bootstrapd
+%endif
+
+
+%postun devel
+/sbin/ldconfig
+
+%postun -n tox-bootstrapd
+%if 0%{?with_systemd}
+%service_del_postun tox-bootstrapd.service
+%else
+%restart_on_update tox-bootstrapd
+%insserv_cleanup
+%endif
+
 
 
 %install
 make DESTDIR=%{buildroot} install
 
-install -d %{buildroot}%{_datadir}/%{name}
+rm -f %{buildroot}%{_bindir}/DHT_bootstrap
 
-sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.sh
-sed -i "s|/usr/local|/usr|" other/bootstrap_daemon/tox-bootstrapd.service
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.conf %{buildroot}%{_sysconfdir}/tox-bootstrapd.conf
 
-install -m 644 other/bootstrap_daemon/tox-bootstrapd.conf    %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.conf
-install -m 644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.service
-install -m 755 other/bootstrap_daemon/tox-bootstrapd.sh      %{buildroot}%{_datadir}/%{name}/tox-bootstrapd.sh
+%if 0%{?suse_version}
+install -d -m 0755 %{buildroot}%{_sbindir}
+%endif
+
+%if 0%{?with_systemd}
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_unitdir}/tox-bootstrapd.service
+sed -i "s|/usr/local|/usr|" %{buildroot}%{_unitdir}/tox-bootstrapd.service
+%if 0%{?suse_version}
+ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/tox-bootstrapd
+%endif
+%else
+install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
+sed -i "s|/usr/local|/usr|" %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
+%if 0%{?suse_version}
+ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-bootstrapd
+%endif
+%endif
 
 
 %files
 %defattr(-,root,root,-)
 %doc COPYING README.md
 
-%if 0%{?suse_version}
-%dir %{_prefix}
-%dir %{_bindir}
-%dir %{_datadir}
-%dir %{_datadir}/%{name}
-%endif
-
-%{_bindir}/*
-%{_datadir}/%{name}/tox-bootstrapd.conf
-%{_datadir}/%{name}/tox-bootstrapd.service
-%{_datadir}/%{name}/tox-bootstrapd.sh
-
 
 %files devel
 %defattr(-,root,root,-)
-%{_includedir}
-%{_libdir}
+
+%if 0%{?suse_version}
+%dir %{_tox_prefix}
+%endif
+
+%{_tox_prefix}
+
+
+%files -n tox-bootstrapd
+%defattr(-,root,root,-)
+
+%if 0%{?suse_version}
+%dir %{_bindir}
+%dir %{_sysconfdir}
+%dir %{_sbindir}
+%if 0%{?with_systemd}
+%dir %{_unitdir}
+%else
+%dir %{_sysconfdir}/init.d
+%endif
+%endif
+
+%{_bindir}
+%{_sysconfdir}
+
+%if 0%{?suse_version}
+%{_sbindir}
+%endif
+
+%if 0%{?with_systemd}
+%{_unitdir}
+%endif
 
 
 %changelog
