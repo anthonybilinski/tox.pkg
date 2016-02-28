@@ -102,6 +102,7 @@ make %{?_smp_mflags}
 if ! getent passwd tox-bootstrapd > /dev/null 2>&1 ; then
     useradd -c "Account to run Tox's DHT bootstrap daemon" -r -d /var/lib/tox-bootstrapd -m -s /sbin/nologin -U tox-bootstrapd
     chmod 700 /var/lib/tox-bootstrapd
+    chown -R tox-bootstrapd:tox-bootstrapd /var/lib/tox-bootstrapd
 fi
 %if 0%{?with_systemd}
 %if 0%{?suse_version}
