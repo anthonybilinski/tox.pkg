@@ -31,6 +31,7 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.changes
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
+cp -f "${BASE}/tox-bootstrapd.conf" "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.conf"
 
 cd "${SOURCE_DIR}"
 
@@ -49,6 +50,8 @@ sed -i -e "s/%DATE%/${PACKAGE_DATE}/g"         "debian/changelog"
 sed -i -e "s/%VERSION%/${PACKAGE_VERSION}/g"   "debian/changelog"
 sed -i -e "s/%REVISION%/${PACKAGE_REVISION}/g" "debian/changelog"
 
+sed -i -e "s/%VERSION%/${PACKAGE_VERSION}/g" "other/bootstrap_daemon/tox-bootstrapd.conf"
+
 debuild -S
 
 SHA_512=$(openssl sha512 "${BUILD_DIR}/${PACKAGE_NAME}_${PACKAGE_VERSION}.tar.bz2" | awk '{ print $NF; }')
@@ -62,6 +65,3 @@ sed -e "s/%PACKAGE%/${PACKAGE_NAME}/g" "${BASE}/PKGBUILD.template" | \
 sed -e "s/%VERSION%/${PACKAGE_VERSION}/g"                          | \
 sed -e "s/%SHA_512%/${SHA_512}/g"                                    \
 > "${BUILD_DIR}/PKGBUILD"
-
-sed -e "s/%VERSION%/${PACKAGE_VERSION}/g" "${BASE}/tox-bootstrapd.conf" \
-> "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.conf"
