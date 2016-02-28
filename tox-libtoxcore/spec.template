@@ -70,7 +70,6 @@ This package contains tox DHT Bootstrap Daemon
 
 %prep
 %setup -q -n %{name}
-debian/patch.sh
 
 
 %build
@@ -165,13 +164,12 @@ install -d -m 0755 %{buildroot}%{_sbindir}
 
 %if 0%{?with_systemd}
 install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_unitdir}/tox-bootstrapd.service
-sed -i "s|/usr/local|/usr|" %{buildroot}%{_unitdir}/tox-bootstrapd.service
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.temp    %{buildroot}%{_tmpfilesdir}/tox-bootstrapd.conf
 %if 0%{?suse_version}
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rctox-bootstrapd
 %endif
 %else
 install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
-sed -i "s|/usr/local|/usr|" %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
 %if 0%{?suse_version}
 ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-bootstrapd
 %endif
@@ -199,6 +197,7 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %if 0%{?suse_version}
 %if 0%{?with_systemd}
 %dir %{_unitdir}
+%dir %{_tmpfilesdir}
 %else
 %dir %{_sysconfdir}/init.d
 %endif
@@ -210,6 +209,7 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 
 %if 0%{?with_systemd}
 %{_unitdir}/tox-bootstrapd.service
+%{_tmpfilesdir}/tox-bootstrapd.conf
 %else
 %{_sysconfdir}/init.d/tox-bootstrapd
 %endif

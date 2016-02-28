@@ -31,7 +31,11 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.changes
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
-cp -f "${BASE}/tox-bootstrapd.conf" "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.conf"
+
+cp -f "${BASE}/tox-bootstrapd.conf"    "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.conf"
+cp -f "${BASE}/tox-bootstrapd.service" "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.service"
+cp -f "${BASE}/tox-bootstrapd.sh"      "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.sh"
+cp -f "${BASE}/tox-bootstrapd.temp"    "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.temp"
 
 cd "${SOURCE_DIR}"
 
