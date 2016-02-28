@@ -117,6 +117,7 @@ fi
 %else
 %systemd_post tox-bootstrapd.service
 %endif
+systemd-tmpfiles --create tox-bootstrapd.conf
 %else
 %fillup_and_insserv tox-bootstrapd
 %endif
@@ -163,8 +164,8 @@ install -d -m 0755 %{buildroot}%{_sbindir}
 %endif
 
 %if 0%{?with_systemd}
-install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_unitdir}/tox-bootstrapd.service
-install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.temp    %{buildroot}%{_tmpfilesdir}/tox-bootstrapd.conf
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service  %{buildroot}%{_unitdir}/tox-bootstrapd.service
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.tmpfiles %{buildroot}%{_tmpfilesdir}/tox-bootstrapd.conf
 %if 0%{?suse_version}
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rctox-bootstrapd
 %endif
@@ -203,7 +204,7 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %endif
 %endif
 
-%{_bindir}
+%{_bindir}/tox-bootstrapd
 
 %config(noreplace) %{_sysconfdir}/tox-bootstrapd.conf
 
