@@ -117,11 +117,10 @@ fi
 %if 0%{?with_systemd}
 %if 0%{?suse_version}
 %service_add_post tox-bootstrapd.service
-%tmpfiles_create tox-bootstrapd.conf
 %else
 %systemd_post tox-bootstrapd.service
-systemd-tmpfiles --create tox-bootstrapd.conf
 %endif
+systemd-tmpfiles --create tox-bootstrapd.conf
 %else
 %if 0%{?suse_version}
 %fillup_and_insserv tox-bootstrapd
