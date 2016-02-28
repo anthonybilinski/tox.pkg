@@ -102,7 +102,9 @@ if ! getent passwd tox-bootstrapd > /dev/null 2>&1 ; then
     chmod 700 /var/lib/tox-bootstrapd
 fi
 %if 0%{?with_systemd}
+%if 0%{?suse_version}
 %service_add_pre tox-bootstrapd.service
+%endif
 %endif
 
 
@@ -111,15 +113,23 @@ fi
 
 %post -n tox-bootstrapd
 %if 0%{?with_systemd}
+%if 0%{?suse_version}
 %service_add_post tox-bootstrapd.service
 %else
-%fillup_and_insserv -f -y tox-bootstrapd
+%systemd_post tox-bootstrapd.service
+%endif
+%else
+%fillup_and_insserv tox-bootstrapd
 %endif
 
 
 %preun -n tox-bootstrapd
 %if 0%{?with_systemd}
+%if 0%{?suse_version}
 %service_del_preun tox-bootstrapd.service
+%else
+%systemd_preun tox-bootstrapd.service
+%endif
 %else
 %stop_on_removal tox-bootstrapd
 %endif
@@ -130,7 +140,11 @@ fi
 
 %postun -n tox-bootstrapd
 %if 0%{?with_systemd}
+%if 0%{?suse_version}
 %service_del_postun tox-bootstrapd.service
+%else
+%systemd_postun tox-bootstrapd.service
+%endif
 %else
 %restart_on_update tox-bootstrapd
 %insserv_cleanup
