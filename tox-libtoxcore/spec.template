@@ -153,7 +153,7 @@ install -d -m 0755 %{buildroot}%{_sbindir}
 install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service %{buildroot}%{_unitdir}/tox-bootstrapd.service
 sed -i "s|/usr/local|/usr|" %{buildroot}%{_unitdir}/tox-bootstrapd.service
 %if 0%{?suse_version}
-ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/tox-bootstrapd
+ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rctox-bootstrapd
 %endif
 %else
 install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
@@ -183,9 +183,6 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %defattr(-,root,root,-)
 
 %if 0%{?suse_version}
-%dir %{_bindir}
-%dir %{_sysconfdir}
-%dir %{_sbindir}
 %if 0%{?with_systemd}
 %dir %{_unitdir}
 %else
@@ -194,14 +191,17 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %endif
 
 %{_bindir}
-%{_sysconfdir}
 
-%if 0%{?suse_version}
-%{_sbindir}
-%endif
+%config(noreplace) %{_sysconfdir}/tox-bootstrapd.conf
 
 %if 0%{?with_systemd}
-%{_unitdir}
+%{_unitdir}/tox-bootstrapd.service
+%else
+%{_sysconfdir}/init.d/tox-bootstrapd
+%endif
+
+%if 0%{?suse_version}
+%{_sbindir}/rctox-bootstrapd
 %endif
 
 
