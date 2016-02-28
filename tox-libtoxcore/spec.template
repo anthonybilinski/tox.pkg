@@ -58,6 +58,9 @@ Requires(pre):  shadow-utils
 
 %if 0%{?with_systemd}
 BuildRequires:  systemd
+%if 0%{?suse_version}
+BuildRequires:  systemd-rpm-macros
+%endif
 %{?systemd_requires}
 %endif
 
@@ -114,12 +117,17 @@ fi
 %if 0%{?with_systemd}
 %if 0%{?suse_version}
 %service_add_post tox-bootstrapd.service
+%tmpfiles_create tox-bootstrapd.conf
 %else
 %systemd_post tox-bootstrapd.service
-%endif
 systemd-tmpfiles --create tox-bootstrapd.conf
+%endif
 %else
+%if 0%{?suse_version}
 %fillup_and_insserv tox-bootstrapd
+%else
+/sbin/chkconfig --add tox-bootstrapd
+%endif
 %endif
 
 
@@ -131,7 +139,14 @@ systemd-tmpfiles --create tox-bootstrapd.conf
 %systemd_preun tox-bootstrapd.service
 %endif
 %else
+%if 0%{?suse_version}
 %stop_on_removal tox-bootstrapd
+%else
+if [ $1 -eq 0 ]; then
+    /sbin/service tox-bootstrapd stop > /dev/null 2>&1 || :
+    /sbin/chkconfig --del tox-bootstrapd
+fi
+%endif
 %endif
 
 
@@ -143,13 +158,19 @@ systemd-tmpfiles --create tox-bootstrapd.conf
 %if 0%{?suse_version}
 %service_del_postun tox-bootstrapd.service
 %else
-%systemd_postun tox-bootstrapd.service
+%systemd_postun_with_restart tox-bootstrapd.service
 %endif
 %else
+%if 0%{?suse_version}
 %restart_on_update tox-bootstrapd
 %insserv_cleanup
+%else
+if [ $1 -ge 1 ]; then
+    /sbin/service tox-bootstrapd status  > /dev/null 2>&1 || exit 0
+    /sbin/service tox-bootstrapd restart > /dev/null 2>&1 || echo "Restart failed, please check system log"
+fi
 %endif
-
+%endif
 
 
 %install

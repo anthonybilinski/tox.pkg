@@ -79,7 +79,7 @@ case "$1" in
 		esac
 	;;
 
-	 stop)
+	stop)
 		[ "$VERBOSE" != no ] && log_daemon_msg "Stopping $DESC" "$NAME"
 		do_stop
 		case "$?" in
