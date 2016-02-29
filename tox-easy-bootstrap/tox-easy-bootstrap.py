@@ -296,12 +296,14 @@ if __name__ == "__main__":
         if not len(cfgfile):
             cfgfile = "tox-easy-bootstrap.conf"
             if not os.path.isfile(cfgfile):
+                cfgfile = "/usr/local/etc/tox-easy-bootstrap.conf"
+            if not os.path.isfile(cfgfile):
                 cfgfile = "/etc/tox-easy-bootstrap.conf"
         else:
             cfgfile = cfgfile[0]
 
         if not os.path.isfile(cfgfile):
-            raise RuntimeError("config ini file not found")
+            raise RuntimeError("config file not found")
 
         config = ToxBootstrapdConfig.loadConfig(cfgfile, "config", ToxBootstrapdConfig.defaultConfig())
 
