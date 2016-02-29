@@ -18,6 +18,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
 BuildRequires:  libopus-devel
+BuildRequires:  -post-build-checks
 %else
 BuildRequires:  opus-devel
 %endif
