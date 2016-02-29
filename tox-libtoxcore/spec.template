@@ -191,7 +191,11 @@ install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.tmpfiles %{buildroot}%{
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rctox-bootstrapd
 %endif
 %else
+%if 0%{?centos} == 6
+install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.centos.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
+%else
 install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
+%endif
 %if 0%{?suse_version}
 ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-bootstrapd
 %endif
