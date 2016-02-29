@@ -1,0 +1,16 @@
+Source: tox-easy-bootstrap
+Section: utils
+Priority: optional
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Build-Depends: debhelper (>= 7.0.50~), python
+Standards-Version: 3.9.4
+Vcs-Git: https://github.com/abbat/tox.pkg.git
+Vcs-Browser: https://github.com/abbat/tox.pkg
+Homepage: https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap
+
+Package: tox-easy-bootstrap
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, cron, python, tox-bootstrapd
+Description: Simple util to create and update tox-bootstrapd.conf
+ Simple util to create and update tox-bootstrapd.conf with public
+ online and private node list and restart service if needed.

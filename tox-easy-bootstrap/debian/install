@@ -1,0 +1,2 @@
+tox-easy-bootstrap.py   /usr/share/pyshared
+tox-easy-bootstrap.conf /etc

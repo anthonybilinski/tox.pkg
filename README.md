@@ -16,6 +16,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 * [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn)
 * [tuntox](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox)
+* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap)
 
 ### Development libraries
 
