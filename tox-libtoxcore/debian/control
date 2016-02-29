@@ -26,7 +26,7 @@ Description: The future of online communications - headers
  that ensures their users full privacy and secure message delivery.
 
 Package: tox-bootstrapd
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, tox-libtoxcore (= ${binary:Version})
 Architecture: any
 Description: Tox DHT Bootstrap Daemon
  Tox aims to be an easy to use, all-in-one communication platform
