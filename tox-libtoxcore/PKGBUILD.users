@@ -1,0 +1,2 @@
+u tox-bootstrapd - "Account to run Tox's DHT bootstrap daemon"
+g tox-bootstrapd -

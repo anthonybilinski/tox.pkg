@@ -37,6 +37,9 @@ cp -f "${BASE}/tox-bootstrapd.centos.sh" "${SOURCE_DIR}/other/bootstrap_daemon/t
 cp -f "${BASE}/tox-bootstrapd.service"   "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.service"
 cp -f "${BASE}/tox-bootstrapd.tmpfiles"  "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.tmpfiles"
 
+cp -f "${BASE}/PKGBUILD.users"   "${SOURCE_DIR}/${PACKAGE_NAME}.users"
+cp -f "${BASE}/PKGBUILD.install" "${SOURCE_DIR}/${PACKAGE_NAME}.install"
+
 cd "${SOURCE_DIR}"
 
 GIT_REV=$1
