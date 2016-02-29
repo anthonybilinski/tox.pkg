@@ -34,8 +34,7 @@ package() {
     install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.conf     ${pkgdir}/etc/tox-bootstrapd.conf
     install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service  ${pkgdir}/usr/lib/systemd/system/tox-bootstrapd.service
     install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/tox-bootstrapd.conf
-
-    install -D -m 0644 ${pkgname}.users ${pkgdir}/usr/lib/sysusers.d/tox-bootstrapd.conf
+    install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.users    ${pkgdir}/usr/lib/sysusers.d/tox-bootstrapd.conf
 
     install -D -m 0644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
     install -D -m 0644 COPYING   ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
