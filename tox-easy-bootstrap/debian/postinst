@@ -21,6 +21,7 @@ set -e
 case "$1" in
 	configure)
 		update-alternatives --install /usr/bin/tox-easy-bootstrap tox-easy-bootstrap /usr/share/pyshared/tox-easy-bootstrap.py 0
+		/usr/bin/tox-easy-bootstrap --auto_restart=true || /bin/true
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

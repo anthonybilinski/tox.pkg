@@ -1,5 +1,10 @@
+%if 0%{?centos} == 7 || 0%{?fedora} >= 15 || 0%{?suse_version} >= 1210
+%define with_systemd 1
+%define preset_priority 80
+%endif
+
 Name:          tox-easy-bootstrap
-Version:       0.0.1
+Version:       0.0.2
 Release:       1
 BuildArch:     noarch
 Summary:       Simple util to create and update tox-bootstrapd.conf
@@ -41,9 +46,20 @@ ln -s %{python_sitelib}/%{name}.py %{buildroot}%{_bindir}/%{name}
 %fdupes %{buildroot}%{python_sitelib}
 %endif
 
+%if 0%{?with_systemd}
+install -D -m 0644 %{name}.preset %{buildroot}%{_presetdir}/%{preset_priority}-%{name}.preset
+%endif
+
 
 %clean
 rm -rf %{buildroot}
+
+
+%post
+%if 0%{?with_systemd}
+systemctl preset %{name}.preset
+%endif
+%{_bindir}/%{name} --auto_restart=true || :
 
 
 %files
@@ -51,16 +67,23 @@ rm -rf %{buildroot}
 %doc debian/copyright
 
 %if 0%{?suse_version}
+%if 0%{?with_systemd}
+%{_presetdir}
+%endif
 %{_sysconfdir}/cron.d
 %endif
 
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
 
+%if 0%{?with_systemd}
+%{_presetdir}/%{preset_priority}-%{name}.preset
+%endif
+
 %{_bindir}/%{name}
 %{python_sitelib}/%{name}.py*
 
 
 %changelog
-* Mon Feb 29 2016 Anton Batenev <antonbatenev@yandex.ru> 0.0.1-1
+* Tue Mar 1 2016 Anton Batenev <antonbatenev@yandex.ru> 0.0.2-1
 - Initial RPM release

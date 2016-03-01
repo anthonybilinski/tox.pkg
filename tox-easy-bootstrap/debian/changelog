@@ -1,3 +1,12 @@
+tox-easy-bootstrap (0.0.2) unstable; urgency=low
+
+  * Disable auto_restart by default;
+  * Add enable preset for systemd;
+  * On install update config and restart;
+  * Suppress cron errors.
+
+ -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 01 Mar 2016 18:03:19 +0300
+
 tox-easy-bootstrap (0.0.1) unstable; urgency=low
 
   * Initial.

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __title__    = "tox-easy-bootstrap"
-__version__  = "0.0.1"
+__version__  = "0.0.2"
 __author__   = "Anton Batenev"
 __license__  = "BSD"
 
@@ -160,7 +160,7 @@ class ToxBootstrapdConfig(object):
             "motd"                 : "tox-easy-bootstrap",
             "url"                  : "https://nodes.tox.chat/json",
             "out_file"             : "/etc/tox-bootstrapd.conf",
-            "auto_restart"         : "true",
+            "auto_restart"         : "false",
             "restart_command"      : "",
             "private_nodes"        : ""
         }
