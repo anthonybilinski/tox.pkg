@@ -18,6 +18,15 @@ BuildRoot:     %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
 BuildRequires: fdupes
+BuildRequires:  -post-build-checks
+%endif
+
+%if 0%{?with_systemd}
+BuildRequires:  systemd
+%if 0%{?suse_version}
+BuildRequires:  systemd-rpm-macros
+%endif
+%{?systemd_requires}
 %endif
 
 %description
