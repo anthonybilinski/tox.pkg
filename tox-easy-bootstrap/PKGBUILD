@@ -22,7 +22,7 @@ package() {
     install -D -m0755 "${pkgname}.py"     "${pkgdir}/usr/share/pyshared/${pkgname}.py"
     install -D -m0644 "${pkgname}.conf"   "${pkgdir}/etc/${pkgname}.conf"
     install -D -m0644 "debian/cron.d"     "${pkgdir}/etc/cron.d/${pkgname}"
-    install -D -m0644 "%{pkgname}.preset" "${pkgdir}/usr/lib/systemd/system-preset/80-${pkgname}.preset"
+    install -D -m0644 "${pkgname}.preset" "${pkgdir}/usr/lib/systemd/system-preset/80-${pkgname}.preset"
     install -D -m0644 "debian/copyright"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     ln -s "/usr/share/pyshared/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
