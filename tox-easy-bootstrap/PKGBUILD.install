@@ -1,0 +1,9 @@
+post_install() {
+    systemctl preset tox-easy-bootstrap.preset || /bin/true
+    /usr/bin/tox-easy-bootstrap --auto_restart=true || /bin/true
+}
+
+post_upgrade() {
+    systemctl preset tox-easy-bootstrap.preset || /bin/true
+    /usr/bin/tox-easy-bootstrap --auto_restart=true || /bin/true
+}

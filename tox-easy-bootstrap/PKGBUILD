@@ -1,7 +1,7 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=tox-easy-bootstrap
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Simple util to create and update tox-bootstrapd.conf'
 arch=('any')
@@ -10,6 +10,7 @@ license=('BSD')
 depends=('cron' 'python>=2.6' 'toxcore')
 makedepends=('python>=2.6')
 backup=('etc/tox-easy-bootstrap.conf')
+install=${pkgname}.install
 source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha256sums=('SKIP')
 
@@ -18,10 +19,11 @@ package() {
 
     install -d "${pkgdir}/usr/bin"
 
-    install -D -m0755 "${pkgname}.py"    "${pkgdir}/usr/share/pyshared/${pkgname}.py"
-    install -D -m0644 "${pkgname}.conf"  "${pkgdir}/etc/${pkgname}.conf"
-    install -D -m0644 "debian/cron.d"    "${pkgdir}/etc/cron.d/${pkgname}"
-    install -D -m0644 "debian/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m0755 "${pkgname}.py"     "${pkgdir}/usr/share/pyshared/${pkgname}.py"
+    install -D -m0644 "${pkgname}.conf"   "${pkgdir}/etc/${pkgname}.conf"
+    install -D -m0644 "debian/cron.d"     "${pkgdir}/etc/cron.d/${pkgname}"
+    install -D -m0644 "%{pkgname}.preset" "${pkgdir}/usr/lib/systemd/system-preset/80-${pkgname}.preset"
+    install -D -m0644 "debian/copyright"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     ln -s "/usr/share/pyshared/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
 }

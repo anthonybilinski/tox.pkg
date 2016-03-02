@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __title__    = "tox-easy-bootstrap"
-__version__  = "0.0.2"
+__version__  = "0.0.3"
 __author__   = "Anton Batenev"
 __license__  = "BSD"
 

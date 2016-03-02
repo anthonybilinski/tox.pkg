@@ -4,7 +4,7 @@
 %endif
 
 Name:          tox-easy-bootstrap
-Version:       0.0.2
+Version:       0.0.3
 Release:       1
 BuildArch:     noarch
 Summary:       Simple util to create and update tox-bootstrapd.conf
@@ -94,5 +94,5 @@ systemctl preset %{name}.preset
 
 
 %changelog
-* Tue Mar 1 2016 Anton Batenev <antonbatenev@yandex.ru> 0.0.2-1
+* Wed Mar 2 2016 Anton Batenev <antonbatenev@yandex.ru> 0.0.3-1
 - Initial RPM release
