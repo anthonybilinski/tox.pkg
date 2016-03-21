@@ -1,15 +1,21 @@
 --- Makefile
 +++ Makefile
-@@ -2,7 +2,7 @@
+@@ -1,18 +1,18 @@
+ ## OPTIONS ##
  # set to anything else to disable them
- DBUS = 1
- V4LCONVERT = 1
--FILTER_AUDIO = 0
+-DBUS 			= 1
+-V4LCONVERT 		= 1
+-FILTER_AUDIO 	= 0
+-UNITY 			= 0
+-XP 				= 0
++DBUS         = 1
++V4LCONVERT   = 1
 +FILTER_AUDIO = 1
- UNITY = 0
++UNITY        = 0
++XP           = 0
  
  DEPS = libtoxav libtoxcore openal vpx libsodium
-@@ -10,8 +10,8 @@
+ 
  UNAME_S := $(shell uname -s)
  UNAME_O := $(shell uname -o)
  
@@ -20,7 +26,7 @@
  
  ifeq ($(FILTER_AUDIO), 1)
  	DEPS += filteraudio
-@@ -69,6 +69,8 @@
+@@ -77,6 +77,8 @@
  	TRAY_GEN = x86_64-w64-mingw32-windres icons/icon.rc -O coff -o
  endif
  
@@ -29,7 +35,7 @@
  
  DESTDIR ?=
  PREFIX ?= /usr/local
-@@ -82,7 +84,7 @@
+@@ -91,7 +93,7 @@
  
  utox: $(OBJ) $(OS_OBJ) $(TRAY_OBJ)
  	@echo "  LD    $@"
@@ -38,7 +44,7 @@
  
  install: utox
  	mkdir -p $(DESTDIR)$(PREFIX)/bin
-@@ -128,11 +130,11 @@
+@@ -137,11 +139,11 @@
  
  $(OBJ): %.o: %.c $(HEADERS)
  	@echo "  CC    $@"
