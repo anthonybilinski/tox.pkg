@@ -1,7 +1,7 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=tox-easy-bootstrap
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Simple util to create and update tox-bootstrapd.conf'
 arch=('any')

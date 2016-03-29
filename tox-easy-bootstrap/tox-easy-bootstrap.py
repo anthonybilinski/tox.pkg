@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __title__    = "tox-easy-bootstrap"
-__version__  = "0.0.3"
+__version__  = "0.0.4"
 __author__   = "Anton Batenev"
 __license__  = "BSD"
 
@@ -184,12 +184,14 @@ class ToxNode(object):
         self.maintainer = str(config["maintainer"])
         self.location   = str(config["location"]).upper()
 
+        fqdn_re = re.compile("^((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}$")
+
         ipv4_re = re.compile("^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
-        if not ipv4_re.match(self.ipv4):
+        if not ipv4_re.match(self.ipv4) and not fqdn_re.match(self.ipv4):
             self.ipv4 = None
 
         ipv6_re = re.compile("^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$")
-        if not ipv6_re.match(self.ipv6):
+        if not ipv6_re.match(self.ipv6) and not fqdn_re.match(self.ipv6):
             self.ipv6 = None
 
         if not (self.ipv4 or self.ipv6):
@@ -260,7 +262,7 @@ class ToxNode(object):
 
         for node in nodes:
             # check node is online
-            if str(node["status"]).lower() != "true":
+            if str(node["status_udp"]).lower() != "true":
                 continue
 
             try:
