@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: qt5
-Source: http://www.qt.io/ru/download-open-source/
+Source: http://www.qt.io/download-open-source
 
 Files: *
 Copyright: qt5 project

@@ -52,7 +52,7 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), bison, flex, perl, py
  libedit-dev
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
-Homepage: http://www.qt.io/ru/download-open-source/
+Homepage: http://www.qt.io/download-open-source
 
 Package: tox-qt5
 Depends: ${misc:Depends}, ${shlibs:Depends}
