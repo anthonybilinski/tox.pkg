@@ -7,6 +7,9 @@
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 
+# disable excluding files from source
+export DH_ALWAYS_EXCLUDE=""
+
 PROJECT    = tox
 PREFIX     = /usr/$(PROJECT)
 LIBDIR     = $(PREFIX)/lib
@@ -24,8 +27,7 @@ CONFIGURE_OPTS =      \
     -dbus-linked      \
     -no-sql-sqlite2   \
     -qt-sql-sqlite    \
-    -system-sqlite    \
-    -optimized-qmake
+    -system-sqlite
 
 override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
@@ -40,4 +42,4 @@ override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
 
 %:
-	dh $@
+	dh $@ --parallel
