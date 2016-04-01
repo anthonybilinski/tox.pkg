@@ -42,6 +42,7 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), bison, flex, perl, py
  libxcb-randr0-dev,
  libxcb-render-util0-dev,
  libxcb-render0-dev,
+ libxcb-xinerama0-dev,
  libsm-dev,
  libice-dev,
  libgstreamer0.10-dev,
