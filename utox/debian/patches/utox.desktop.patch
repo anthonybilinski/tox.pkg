@@ -1,13 +1,15 @@
 --- src/utox.desktop
 +++ src/utox.desktop
-@@ -3,10 +3,12 @@
+@@ -3,11 +3,14 @@
  Type=Application
  Name=uTox
  Comment=A lightweight Tox client
 -Comment[ru]=легковесный клиент Tox
-+GenericName=A lightweight Tox client
 +Comment[ru]=Легковесный клиент Tox
+ Comment[de]=Ein leichtgewichtiger Tox Client
++GenericName=A lightweight Tox client
 +GenericName[ru]=Легковесный клиент Tox
++GenericName[de]=Ein leichtgewichtiger Tox Client
  TryExec=utox
  Exec=utox
  Icon=utox
