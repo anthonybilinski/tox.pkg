@@ -27,11 +27,13 @@ package() {
     install -Dm644 qTox.desktop "${pkgdir}/usr/share/applications/qtox.desktop"
 
     cd img/icons
-    for ICON in *.png
+
+    for SIZE in $(find . -mindepth 1 -type d | sed -e 's|^./||g')
     do
-        SIZE=$(sed 's|^[^-]*-||;s|\.png||' <<< "${ICON}")
-        install -Dm644 "${ICON}" "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps/${pkgname}.png"
+        install -d "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps"
+        install -m644 "${SIZE}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps/${pkgname}.png"
     done
 
-    install -Dm644 ${pkgname}.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -m644 "${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }

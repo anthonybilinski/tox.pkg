@@ -5,12 +5,11 @@ PKGDIR="$2"
 
 cd img/icons
 
-for ICON in *.png
+for SIZE in $(find . -mindepth 1 -type d | sed -e 's|^./||g')
 do
-    SIZE=$(echo "${ICON}" | sed 's|^[^-]*-||;s|\.png||')
     install -d "${PKGDIR}/usr/share/icons/hicolor/${SIZE}/apps"
-    install -m644 "${ICON}" "${PKGDIR}/usr/share/icons/hicolor/${SIZE}/apps/${PKGNAME}.png"
+    install -m644 "${SIZE}/${PKGNAME}.png" "${PKGDIR}/usr/share/icons/hicolor/${SIZE}/apps/${PKGNAME}.png"
 done
 
 install -d "${PKGDIR}/usr/share/icons/hicolor/scalable/apps"
-install -m644 ${PKGNAME}.svg "${PKGDIR}/usr/share/icons/hicolor/scalable/apps/${PKGNAME}.svg"
+install -m644 "${PKGNAME}.svg" "${PKGDIR}/usr/share/icons/hicolor/scalable/apps/${PKGNAME}.svg"
