@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-sqlcipher-3.3.x/tox-sqlcipher_3.3.x.orig.tar.bz2
+tox-sqlcipher-3.4.x/tox-sqlcipher_3.4.x.orig.tar.bz2
 
 # Usage
 
