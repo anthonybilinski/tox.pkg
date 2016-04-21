@@ -40,6 +40,8 @@ if [ -n "${GIT_REV}" ]; then
 	git checkout "${GIT_REV}"
 fi
 
+"${BASE}/update-nodelist.py" > "${SOURCE_DIR}/src/tox_bootstrap.h"
+
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)
 PACKAGE_VERSION="${PACKAGE_VERSION}~${PACKAGE_REVISION_SHORT}"
