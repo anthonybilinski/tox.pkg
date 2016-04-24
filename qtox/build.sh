@@ -46,8 +46,8 @@ PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)
 PACKAGE_VERSION="${PACKAGE_VERSION}~${PACKAGE_REVISION_SHORT}"
 
-sed -i -r -e "s|GIT_VERSION = (.*)|GIT_VERSION = ${PACKAGE_REVISION}|g" qtox.pro
-sed -i -r -e "s|GIT_DESCRIBE = (.*)|GIT_DESCRIBE = `git describe --always --tags`-obs|g" qtox.pro
+sed -i -r -e "s|GIT_VERSION = (.*)|GIT_VERSION = ${PACKAGE_REVISION}|g" "qtox.pro"
+sed -i -r -e "s|GIT_DESCRIBE = (.*)|GIT_DESCRIBE = `git describe --always --tags`-obs|g" "qtox.pro"
 
 sed -i -e "s/%PACKAGE%/${PACKAGE_NAME}/g"      "debian/changelog"
 sed -i -e "s/%DATE%/${PACKAGE_DATE}/g"         "debian/changelog"
