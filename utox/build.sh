@@ -46,6 +46,8 @@ PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)
 PACKAGE_VERSION="${PACKAGE_VERSION}~${PACKAGE_REVISION_SHORT}"
 
+sed -i -r -e "s|GIT_V = (.*)|GIT_V = `git describe --always --tags`-obs|g" Makefile
+
 sed -i -e "s/%PACKAGE%/${PACKAGE_NAME}/g"      "debian/changelog"
 sed -i -e "s/%DATE%/${PACKAGE_DATE}/g"         "debian/changelog"
 sed -i -e "s/%VERSION%/${PACKAGE_VERSION}/g"   "debian/changelog"
