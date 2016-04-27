@@ -15,20 +15,47 @@ INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
 CFLAGS  += -I$(INCLUDEDIR)
 LDFLAGS += -L$(LIBDIR)
 
-USER_CFLAGS  := $(CFLAGS)
-USER_LDFLAGS := $(LDFLAGS)
+USER_CFLAGS     := $(CFLAGS)
+USER_CFLAGS_NOX := $(USER_CFLAGS)
+
+USER_LDFLAGS     := $(LDFLAGS)
+USER_LDFLAGS_NOX := $(USER_LDFLAGS)
+
+USER_BUILD_DIR     := $(CURDIR)/build-toxic
+USER_BUILD_DIR_NOX := $(USER_BUILD_DIR)-nox
+
+USER_DEST_DIR     := $(CURDIR)/toxic
+USER_DEST_DIR_NOX := $(USER_DEST_DIR)-nox
+
+USER_MAKE_ARGS     :=
+USER_MAKE_ARGS_NOX := $(USER_MAKE_ARGS) DISABLE_X11=1 DISABLE_AV=1 DISABLE_SOUND_NOTIFY=1 DISABLE_DESKTOP_NOTIFY=1
 
 export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDIR)/pkgconfig
 
-override_dh_auto_build:
+override_dh_auto_configure:
 	debian/patch.sh
-	make PREFIX=$(PREFIX) USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)"
+
+override_dh_auto_build:
+	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR)"     USER_CFLAGS="$(USER_CFLAGS)"     USER_LDFLAGS="$(USER_LDFLAGS)"     $(USER_MAKE_ARGS)
+	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR_NOX)" USER_CFLAGS="$(USER_CFLAGS_NOX)" USER_LDFLAGS="$(USER_LDFLAGS_NOX)" $(USER_MAKE_ARGS_NOX)
 
 override_dh_auto_install:
-	make PREFIX=$(PREFIX) DESTDIR=$(CURDIR)/debian/tmp install
+	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR)"     DESTDIR="$(USER_DEST_DIR)"     $(USER_MAKE_ARGS)     install
+	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR_NOX)" DESTDIR="$(USER_DEST_DIR_NOX)" $(USER_MAKE_ARGS_NOX) install
+
+override_dh_install:
+	dh_install --package=toxic     --sourcedir="$(USER_DEST_DIR)"
+	dh_install --package=toxic-nox --sourcedir="$(USER_DEST_DIR_NOX)"
 
 override_dh_strip:
-	dh_strip --dbg-package=toxic-dbg
+	dh_strip --package=toxic     --dbg-package=toxic-dbg
+	dh_strip --package=toxic-nox --dbg-package=toxic-nox-dbg
+
+override_dh_auto_clean:
+	rm -rf "$(USER_BUILD_DIR)"
+	rm -rf "$(USER_BUILD_DIR_NOX)"
+	rm -rf "$(USER_DEST_DIR)"
+	rm -rf "$(USER_DEST_DIR_NOX)"
 
 override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps

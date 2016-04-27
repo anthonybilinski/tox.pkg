@@ -14,6 +14,7 @@ Homepage: https://github.com/Tox/toxic
 
 Package: toxic
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Conflicts: toxic-nox
 Architecture: any
 Description: Ncurses-based CLI tox-based instant messenging client
  Tox aims to be an easy to use, all-in-one communication platform
@@ -25,5 +26,22 @@ Priority: extra
 Depends: toxic (= ${binary:Version}), ${misc:Depends}
 Architecture: any
 Description: Debug symbols for toxic
+ Tox aims to be an easy to use, all-in-one communication platform
+ that ensures their users full privacy and secure message delivery.
+
+Package: toxic-nox
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Conflicts: toxic
+Architecture: any
+Description: Ncurses-based CLI tox-based instant messenging client (without X support)
+ Tox aims to be an easy to use, all-in-one communication platform
+ that ensures their users full privacy and secure message delivery.
+
+Package: toxic-nox-dbg
+Section: debug
+Priority: extra
+Depends: toxic-nox (= ${binary:Version}), ${misc:Depends}
+Architecture: any
+Description: Debug symbols for toxic-nox
  Tox aims to be an easy to use, all-in-one communication platform
  that ensures their users full privacy and secure message delivery.
