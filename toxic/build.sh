@@ -32,6 +32,8 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
 
+"${BASE}/update-nodelist.py" > "${SOURCE_DIR}/misc/DHTnodes"
+
 cd "${SOURCE_DIR}"
 
 GIT_REV=$1

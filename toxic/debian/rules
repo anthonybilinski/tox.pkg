@@ -43,6 +43,10 @@ override_dh_auto_install:
 	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR)"     DESTDIR="$(USER_DEST_DIR)"     $(USER_MAKE_ARGS)     install
 	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR_NOX)" DESTDIR="$(USER_DEST_DIR_NOX)" $(USER_MAKE_ARGS_NOX) install
 
+	# useless files without X11
+	rm -rf "$(USER_DEST_DIR_NOX)/usr/share/applications"
+	rm -rf "$(USER_DEST_DIR_NOX)/usr/share/toxic/sounds"
+
 override_dh_install:
 	dh_install --package=toxic     --sourcedir="$(USER_DEST_DIR)"
 	dh_install --package=toxic-nox --sourcedir="$(USER_DEST_DIR_NOX)"
