@@ -40,11 +40,13 @@ if [ -n "${GIT_REV}" ]; then
 	git checkout "${GIT_REV}"
 fi
 
+"${BASE}/update-nodelist.py" > "${SOURCE_DIR}/tox_bootstrap.h"
+
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)
 PACKAGE_VERSION="${PACKAGE_VERSION}~${PACKAGE_REVISION_SHORT}"
 
-echo "#define GITVERSION \"${PACKAGE_REVISION}\"" > gitversion.h
+echo "#define GITVERSION \"`git describe --always --tags`-obs\"" > gitversion.h
 
 sed -i -e "s/%PACKAGE%/${PACKAGE_NAME}/g"      "debian/changelog"
 sed -i -e "s/%DATE%/${PACKAGE_DATE}/g"         "debian/changelog"
