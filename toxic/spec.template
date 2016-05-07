@@ -10,6 +10,7 @@ Summary:        Ncurses-based CLI tox-based instant messenging client
 License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/Tox/toxic
+Conflicts:      %{name}-nox
 BuildRequires:  pkg-config, asciidoc, gettext, libconfig-devel, ncurses-devel, qrencode-devel, libX11-devel, openal-devel, freealut-devel
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0
 BuildRequires:  tox-libtoxcore-devel
@@ -36,8 +37,20 @@ BuildRequires: curl-devel
 BuildRequires: libcurl-devel
 %endif
 
+%if 0%{?suse_version}
+BuildRequires:  -post-build-checks
+%endif
+
 %description
 Ncurses-based CLI tox-based instant messenging client
+
+
+%package        nox
+Summary:        Ncurses-based CLI tox-based instant messenging client (without X support)
+Conflicts:      %{name}
+
+%description    nox
+Ncurses-based CLI tox-based instant messenging client (without X support)
 
 
 %prep
@@ -55,30 +68,58 @@ debian/patch.sh
 
 
 %build
-%global USER_CFLAGS  ${RPM_OPT_FLAGS} -I%{_includedir}
-%global USER_LDFLAGS ${RPM_LD_FLAGS} -L%{_libdir}
-
 export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
+
+%global USER_CFLAGS    ${RPM_OPT_FLAGS} -I%{_includedir}
+%global USER_LDFLAGS   ${RPM_LD_FLAGS} -L%{_libdir}
+%global USER_BUILD_DIR %{_sourcedir}/build-toxic
+%global USER_MAKE_ARGS %{nil}
 
 %if 0%{?suse_version} == 1310 || 0%{?suse_version} == 1315
 %global USER_LDFLAGS %{USER_LDFLAGS} -lncursesw
 %endif
 
-make PREFIX=%{_prefix} USER_CFLAGS="%{USER_CFLAGS}" USER_LDFLAGS="%{USER_LDFLAGS}" %{?_smp_mflags}
+%global USER_CFLAGS_NOX    %{USER_CFLAGS}
+%global USER_LDFLAGS_NOX   %{USER_LDFLAGS}
+%global USER_BUILD_DIR_NOX %{USER_BUILD_DIR}-nox
+%global USER_MAKE_ARGS_NOX %{USER_MAKE_ARGS} DISABLE_X11=1 DISABLE_AV=1 DISABLE_SOUND_NOTIFY=1 DISABLE_DESKTOP_NOTIFY=1
+
+make PREFIX="%{_prefix}" BUILD_DIR="%{USER_BUILD_DIR}"     USER_CFLAGS="%{USER_CFLAGS}"     USER_LDFLAGS="%{USER_LDFLAGS}"     %{USER_MAKE_ARGS}     %{?_smp_mflags}
+make PREFIX="%{_prefix}" BUILD_DIR="%{USER_BUILD_DIR_NOX}" USER_CFLAGS="%{USER_CFLAGS_NOX}" USER_LDFLAGS="%{USER_LDFLAGS_NOX}" %{USER_MAKE_ARGS_NOX} %{?_smp_mflags}
 
 
 %install
-make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
+make PREFIX="%{_prefix}" BUILD_DIR="%{USER_BUILD_DIR}" DESTDIR="%{buildroot}" %{USER_MAKE_ARGS} install
+cp "%{USER_BUILD_DIR_NOX}/%{name}" "%{buildroot}%{_prefix}/bin/%{name}-nox"
+
+
+%post nox
+ln -s %{_bindir}/%{name}-nox %{_bindir}/%{name}
+
+
+%postun nox
+rm -f %{_bindir}/%{name}
 
 
 %files
 %defattr(-,root,root,-)
 %doc COPYING README.md
 
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_datadir}/man/*/*
 %{_datadir}/%{name}
 %{_datadir}/applications/*
+
+
+%files nox
+%defattr(-,root,root,-)
+%doc COPYING README.md
+
+%{_bindir}/%{name}-nox
+%{_datadir}/man/*/*
+%{_datadir}/%{name}/DHTnodes
+%{_datadir}/%{name}/toxic.conf.example
+%{_datadir}/%{name}/nameservers
 
 
 %changelog
