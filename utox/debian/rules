@@ -11,6 +11,15 @@ PROJECT    = tox
 PREFIX     = /usr
 LIBDIR     = $(PREFIX)/$(PROJECT)/lib
 INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
+DISTRONAME = $(shell /usr/bin/lsb_release --id --short)
+
+ifneq (,$(filter Ubuntu, $(DISTRONAME)))
+    # Fix me to 1
+    MAKE_FLAGS  = UNITY=0
+    CFLAGS     += -I/usr/include/freetype2
+else
+    MAKE_FLAGS = UNITY=0
+endif
 
 CFLAGS  += -I$(INCLUDEDIR)
 LDFLAGS += -L$(LIBDIR)
@@ -22,10 +31,10 @@ export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDI
 
 override_dh_auto_build:
 	debian/patch.sh
-	make PREFIX=$(PREFIX) USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)"
+	make PREFIX=$(PREFIX) USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)" $(MAKE_FLAGS)
 
 override_dh_auto_install:
-	make PREFIX=$(PREFIX) DESTDIR=$(CURDIR)/debian/tmp install
+	make PREFIX=$(PREFIX) DESTDIR=$(CURDIR)/debian/tmp $(MAKE_FLAGS) install
 
 override_dh_strip:
 	dh_strip --dbg-package=utox-dbg
