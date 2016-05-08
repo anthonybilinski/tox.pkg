@@ -14,7 +14,14 @@ LIBDIR     = $(PREFIX)/$(PROJECT)/lib
 INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
 QMAKE_LIBS = -L$(LIBDIR) -lavfilter -lswresample -lpostproc
 DESTDIR    = $(shell pwd)/debian/tmp
+DISTRONAME = $(shell /usr/bin/lsb_release --id --short)
 CODENAME   = $(shell /usr/bin/lsb_release --codename --short)
+
+ifneq (,$(filter Ubuntu, $(DISTRONAME)))
+    QMAKE_FLAGS = ENABLE_SYSTRAY_UNITY_BACKEND=YES
+else
+    QMAKE_FLAGS = ENABLE_SYSTRAY_UNITY_BACKEND=NO
+endif
 
 ifneq (,$(filter wheezy precise, $(CODENAME)))
     GCC_DIR     = $(PREFIX)/$(PROJECT)
@@ -39,7 +46,7 @@ override_dh_auto_configure:
 
 	debian/patch.sh
 
-	$(QMAKE) \
+	$(QMAKE) $(QMAKE_FLAGS) \
 		"QMAKE_CPPFLAGS *= $(shell dpkg-buildflags --get CPPFLAGS)" \
 		"QMAKE_CFLAGS   *= $(shell dpkg-buildflags --get CFLAGS)"   \
 		"QMAKE_CXXFLAGS *= $(shell dpkg-buildflags --get CXXFLAGS)" \
