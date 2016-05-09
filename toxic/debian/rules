@@ -39,6 +39,9 @@ override_dh_auto_build:
 	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR)"     USER_CFLAGS="$(USER_CFLAGS)"     USER_LDFLAGS="$(USER_LDFLAGS)"     $(USER_MAKE_ARGS)
 	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR_NOX)" USER_CFLAGS="$(USER_CFLAGS_NOX)" USER_LDFLAGS="$(USER_LDFLAGS_NOX)" $(USER_MAKE_ARGS_NOX)
 
+override_dh_auto_test:
+	/bin/true
+
 override_dh_auto_install:
 	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR)"     DESTDIR="$(USER_DEST_DIR)"     $(USER_MAKE_ARGS)     install
 	make PREFIX="$(PREFIX)" BUILD_DIR="$(USER_BUILD_DIR_NOX)" DESTDIR="$(USER_DEST_DIR_NOX)" $(USER_MAKE_ARGS_NOX) install

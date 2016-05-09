@@ -23,6 +23,9 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	make VERBOSE=1 CFLAGS="$(USER_CFLAGS)"
 
+override_dh_auto_test:
+	/bin/true
+
 override_dh_auto_install:
 	make DESTDIR=$(CURDIR)/debian/tmp install
 

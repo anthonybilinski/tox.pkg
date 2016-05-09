@@ -32,11 +32,11 @@ CONFIGURE_OPTS =      \
 override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
 
-override_dh_auto_install:
-	make INSTALL_ROOT=$(CURDIR)/debian/tmp install
-
 override_dh_auto_test:
 	/bin/true
+
+override_dh_auto_install:
+	make INSTALL_ROOT=$(CURDIR)/debian/tmp install
 
 override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps

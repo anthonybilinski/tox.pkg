@@ -17,6 +17,9 @@ INCLUDEDIR  = $(PREFIX)/$(RINCLUDEDIR)
 override_dh_auto_build:
 	make PREFIX=$(PREFIX)
 
+override_dh_auto_test:
+	/bin/true
+
 override_dh_auto_install:
 	make PREFIX=$(PREFIX) LIBDIR=$(RLIBDIR) INCLUDEDIR=$(RINCLUDEDIR) DESTDIR=$(CURDIR)/debian/tmp install
 	find debian/tmp -name '*.so*' -delete

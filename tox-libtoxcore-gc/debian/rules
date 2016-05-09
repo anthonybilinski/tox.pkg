@@ -24,11 +24,11 @@ CONFIGURE_OPTS = \
 CFLAGS  += -fPIC -I$(INCLUDEDIR)
 LDFLAGS += -L$(LIBDIR)
 
-override_dh_auto_test:
-	/bin/true
-
 override_dh_auto_configure:
 	PKG_CONFIG_PATH=$(LIBDIR)/pkgconfig ./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_test:
+	/bin/true
 
 override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps

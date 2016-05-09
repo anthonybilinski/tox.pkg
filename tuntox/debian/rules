@@ -21,6 +21,9 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	make USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)"
 
+override_dh_auto_test:
+	/bin/true
+
 override_dh_auto_install:
 	install -D -m755 tuntox debian/tmp/usr/bin/tuntox
 

@@ -14,9 +14,8 @@ INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
 DISTRONAME = $(shell /usr/bin/lsb_release --id --short)
 
 ifneq (,$(filter Ubuntu, $(DISTRONAME)))
-    # Fix me to 1
-    MAKE_FLAGS  = UNITY=0
-    CFLAGS     += -I/usr/include/freetype2
+    # fix me, now not compiled
+    MAKE_FLAGS = UNITY=0
 else
     MAKE_FLAGS = UNITY=0
 endif
@@ -32,6 +31,9 @@ export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDI
 override_dh_auto_build:
 	debian/patch.sh
 	make PREFIX=$(PREFIX) USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)" $(MAKE_FLAGS)
+
+override_dh_auto_test:
+	/bin/true
 
 override_dh_auto_install:
 	make PREFIX=$(PREFIX) DESTDIR=$(CURDIR)/debian/tmp $(MAKE_FLAGS) install

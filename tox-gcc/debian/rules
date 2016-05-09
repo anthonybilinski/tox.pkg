@@ -27,14 +27,14 @@ CONFIGURE_OPTS = \
 CFLAGS   = -g -O2 -fstack-protector --param=ssp-buffer-size=4
 CXXFLAGS = -g -O2 -fstack-protector --param=ssp-buffer-size=4
 
-override_dh_auto_test:
-	/bin/true
-
 override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_build:
 	make
+
+override_dh_auto_test:
+	/bin/true
 
 override_dh_auto_install:
 	make DESTDIR=$(shell pwd)/debian/tmp install
