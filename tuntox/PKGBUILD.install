@@ -1,0 +1,13 @@
+post_install() {
+    systemd-sysusers tuntoxd.conf
+    test -d var/lib/tuntoxd || install -d -m 0700 -o tuntoxd -g tuntoxd var/lib/tuntoxd
+    systemd-tmpfiles --create tuntoxd.conf
+}
+
+post_upgrade() {
+    systemctl status tuntoxd && systemctl restart tuntoxd
+}
+
+pre_remove() {
+    systemctl status tuntoxd && systemctl stop tuntoxd
+}

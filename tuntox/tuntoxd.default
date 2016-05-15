@@ -1,0 +1,10 @@
+# defaults file for tuntox daemon mode
+
+# shared secret passed as -s option
+PASSWORD=P@ssw0rd
+
+# min log level
+# use -q for ERROR
+# use -d for DEBUG
+# leave empty for INFO (default)
+LOGLEVEL=''
