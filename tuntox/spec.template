@@ -64,7 +64,11 @@ install -D -m755 %{name} %{buildroot}%{_bindir}/%{name}
 
 ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/tuntoxd
 
+%if 0%{?suse_version}
+install -D -m 0644 debian/tuntoxd.default %{buildroot}%{_var}/adm/fillup-templates/sysconfig.tuntoxd
+%else
 install -D -m 0644 debian/tuntoxd.default %{buildroot}%{_sysconfdir}/sysconfig/tuntoxd
+%endif
 
 %if 0%{?suse_version}
 install -d -m 0755 %{buildroot}%{_sbindir}
@@ -182,7 +186,11 @@ fi
 
 %{_bindir}/tuntoxd
 
+%if 0%{?suse_version}
+%{_var}/adm/fillup-templates/sysconfig.tuntoxd
+%else
 %config(noreplace) %{_sysconfdir}/sysconfig/tuntoxd
+%endif
 
 %if 0%{?with_systemd}
 %{_unitdir}/tuntoxd.service
