@@ -1,0 +1,2 @@
+tuntoxd: copyright-should-refer-to-common-license-file-for-gpl
+tuntoxd: init.d-script-does-not-implement-required-option etc/init.d/tuntoxd force-reload

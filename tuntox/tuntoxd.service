@@ -3,12 +3,14 @@ Description=tuntox daemon
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 PIDFile=/var/run/tuntoxd/tuntoxd.pid
 WorkingDirectory=/var/lib/tuntoxd
-Environment=LOGLEVEL='' PASSWORD=P@ssw0rd
+Environment=LOGLEVEL=''
+Environment=PASSWORD=P@ssw0rd
 EnvironmentFile=-/etc/default/tuntoxd
-ExecStart=/usr/bin/tuntoxd -D -S $LOGLEVEL -C /var/lib/tuntoxd -F /var/run/tuntoxd/tuntoxd.pid -U tuntoxd -s $PASSWORD
+EnvironmentFile=-/etc/sysconfig/tuntoxd
+ExecStart=/usr/bin/tuntoxd -S $LOGLEVEL -C /var/lib/tuntoxd -F /var/run/tuntoxd/tuntoxd.pid -U tuntoxd -s $PASSWORD
 User=tuntoxd
 Group=tuntoxd
 

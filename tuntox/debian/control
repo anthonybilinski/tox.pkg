@@ -25,3 +25,11 @@ Description: Debug symbols for tuntox
  A program which forwards TCP connections over the Tox protocol. This allows
  low-latency access to distant machines behind a NAT you can't control or with
  a dynamic IP address.
+
+Package: tuntoxd
+Depends: ${misc:Depends}, ${shlibs:Depends}, tuntox (= ${binary:Version})
+Architecture: any
+Description: Tuntox daemon
+ A program which forwards TCP connections over the Tox protocol. This allows
+ low-latency access to distant machines behind a NAT you can't control or with
+ a dynamic IP address.

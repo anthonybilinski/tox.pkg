@@ -28,6 +28,7 @@ LOGLEVEL=""
 
 # source dynamic variables
 [ -f /etc/default/$NAME ] && . /etc/default/$NAME
+[ -f /etc/sysconfig/$NAME ] && . /etc/sysconfig/$NAME
 
 DAEMON_ARGS="-D -S $LOGLEVEL -C $SAVEDIR -F $PIDFILE -U $USER -s $PASSWORD"
 

@@ -11,6 +11,7 @@ depends=('toxcore')
 makedepends=('git')
 provides=($pkgname)
 conflicts=($pkgname)
+install=${pkgname}.install
 source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha512sums=('%SHA_512%')
 
@@ -21,5 +22,12 @@ build() {
 
 package() {
     cd "${pkgname}"
+
     install -D -m755 tuntox "${pkgdir}/usr/bin/tuntox"
+
+    ln -s /usr/bin/tuntox "${pkgdir}/usr/bin/tuntoxd"
+
+    install -D -m 0644 tuntoxd.service  ${pkgdir}/usr/lib/systemd/system/tuntoxd.service
+    install -D -m 0644 tuntoxd.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/tuntoxd.conf
+    install -D -m 0644 tuntoxd.users    ${pkgdir}/usr/lib/sysusers.d/tuntoxd.conf
 }

@@ -32,13 +32,20 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
 cp -f Makefile "${SOURCE_DIR}/Makefile"
 
+cp -f "${BASE}/tuntoxd.centos.sh" "${SOURCE_DIR}/tuntoxd.centos.sh"
+cp -f "${BASE}/tuntoxd.service"   "${SOURCE_DIR}/tuntoxd.service"
+cp -f "${BASE}/tuntoxd.tmpfiles"  "${SOURCE_DIR}/tuntoxd.tmpfiles"
+cp -f "${BASE}/tuntoxd.users"     "${SOURCE_DIR}/tuntoxd.users"
+
 cd "${SOURCE_DIR}"
 
-GIT_REV=$1
+#GIT_REV=$1
+#
+#if [ -n "${GIT_REV}" ]; then
+#	git checkout "${GIT_REV}"
+#fi
 
-if [ -n "${GIT_REV}" ]; then
-	git checkout "${GIT_REV}"
-fi
+rm -rf "scripts"
 
 "${BASE}/update-nodelist.py" > "${SOURCE_DIR}/tox_bootstrap.h"
 
@@ -66,3 +73,5 @@ sed -e "s/%PACKAGE%/${PACKAGE_NAME}/g" "${BASE}/PKGBUILD.template" | \
 sed -e "s/%VERSION%/${PACKAGE_VERSION}/g"                          | \
 sed -e "s/%SHA_512%/${SHA_512}/g"                                    \
 > "${BUILD_DIR}/PKGBUILD"
+
+cp -f "${BASE}/PKGBUILD.install" "${BUILD_DIR}/${PACKAGE_NAME}.install"
