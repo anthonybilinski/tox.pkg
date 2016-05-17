@@ -16,34 +16,33 @@ SOURCE_DIR="${BUILD_DIR}/${PACKAGE_NAME}"
 
 mkdir -p "${BUILD_DIR}"
 
-if [ ! -d "${SOURCE_DIR}/.git" ]; then
-	rm -rf "${SOURCE_DIR}"
-	git clone --recursive https://github.com/gjedeer/tuntox.git "${SOURCE_DIR}"
-else
-	rm -rf "${SOURCE_DIR}/debian"
+rm -rf "${SOURCE_DIR}"
+
+git clone --recursive https://github.com/gjedeer/tuntox.git "${SOURCE_DIR}"
+
+cd "${SOURCE_DIR}"
+
+GIT_REV=$1
+
+if [ -n "${GIT_REV}" ]; then
+	git checkout "${GIT_REV}"
 fi
 
+rm -f "${BUILD_DIR}/PKGBUILD"
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}.spec"
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.dsc
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.tar.bz2
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.changes
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
+rm -f "${BUILD_DIR}/${PACKAGE_NAME}.install"
 
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
-cp -f Makefile "${SOURCE_DIR}/Makefile"
 
+cp -f "${BASE}/Makefile"          "${SOURCE_DIR}/Makefile"
 cp -f "${BASE}/tuntoxd.centos.sh" "${SOURCE_DIR}/tuntoxd.centos.sh"
 cp -f "${BASE}/tuntoxd.service"   "${SOURCE_DIR}/tuntoxd.service"
 cp -f "${BASE}/tuntoxd.tmpfiles"  "${SOURCE_DIR}/tuntoxd.tmpfiles"
 cp -f "${BASE}/tuntoxd.users"     "${SOURCE_DIR}/tuntoxd.users"
-
-cd "${SOURCE_DIR}"
-
-#GIT_REV=$1
-#
-#if [ -n "${GIT_REV}" ]; then
-#	git checkout "${GIT_REV}"
-#fi
 
 rm -rf "scripts"
 
