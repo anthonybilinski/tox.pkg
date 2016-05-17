@@ -28,6 +28,10 @@ case "$1" in
 			update-rc.d tuntoxd defaults
 			invoke-rc.d tuntoxd start
 		fi
+
+		if [ -f /etc/default/tuntoxd ]; then
+			chmod 0600 /etc/default/tuntoxd
+		fi
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

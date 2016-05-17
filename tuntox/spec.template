@@ -126,6 +126,9 @@ systemd-tmpfiles --create tuntoxd.conf
 /sbin/chkconfig --add tuntoxd
 %endif
 %endif
+if [ -f /etc/sysconfig/tuntoxd ]; then
+    chmod 0600 /etc/sysconfig/tuntoxd
+fi
 
 
 %preun -n tuntoxd
