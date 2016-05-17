@@ -4,15 +4,15 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Clients
 
-* [qtox](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox)
-* [utox](https://build.opensuse.org/package/show/home:antonbatenev:tox/utox)
-* [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic)
+* [qtox](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox) - powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/tux3/qTox)).
+* [utox](https://build.opensuse.org/package/show/home:antonbatenev:tox/utox) - the lightest and fluffiest Tox client ([sources](https://github.com/GrayHatter/uTox)).
+* [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
 
 ### Utils
 
 * [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn) - a tool that allows one to make tunneled point to point connections over Tox ([sources](https://github.com/cleverca22/toxvpn)).
 * [tuntox](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox) - a program which forwards TCP connections over the Tox protocol ([sources](https://github.com/gjedeer/tuntox)).
-* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple create and update tox-bootstrapd.conf with public online and private node list ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
+* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple create and update `tox-bootstrapd.conf` with public online and private node list ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
 
 ### Daemons
 
