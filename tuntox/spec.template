@@ -31,6 +31,7 @@ Group:          Productivity/Networking/Talk/Servers
 Requires:       %{name} = %{version}-%{release}
 %if 0%{?suse_version}
 Requires(pre):  pwdutils
+Requires(pre):  %fillup_prereq
 %else
 Requires(pre):  shadow-utils
 %endif
@@ -41,6 +42,10 @@ BuildRequires:  systemd
 BuildRequires:  systemd-rpm-macros
 %endif
 %{?systemd_requires}
+%else
+%if 0%{?suse_version}
+Requires(pre):  %insserv_prereq
+%endif
 %endif
 
 %description -n tuntoxd
@@ -108,6 +113,7 @@ fi
 %post -n tuntoxd
 %if 0%{?with_systemd}
 %if 0%{?suse_version}
+%{fillup_only}
 %service_add_post tuntoxd.service
 %else
 %systemd_post tuntoxd.service
@@ -115,7 +121,7 @@ fi
 systemd-tmpfiles --create tuntoxd.conf
 %else
 %if 0%{?suse_version}
-%fillup_and_insserv tuntoxd
+%{fillup_and_insserv -n tuntoxd tuntoxd}
 %else
 /sbin/chkconfig --add tuntoxd
 %endif
