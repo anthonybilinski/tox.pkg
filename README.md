@@ -12,16 +12,16 @@ Upstream tox client packages and development libraries for popular linux distros
 
 * [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn) - a tool that allows one to make tunneled point to point connections over Tox ([sources](https://github.com/cleverca22/toxvpn)).
 * [tuntox](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox) - a program which forwards TCP connections over the Tox protocol ([sources](https://github.com/gjedeer/tuntox)).
-* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple create and update `tox-bootstrapd.conf` with public online and private node list ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
+* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple configure and maintain up to date Tox node ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
 
 ### Daemons
 
-* [tox-bootstrapd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore)
-* [tuntoxd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox)
+* [tox-bootstrapd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
+* [tuntoxd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox) - tuntox server to forward TCP connections over the Tox protocol ([sources](https://github.com/gjedeer/tuntox)).
 
 ### Bindings
 
-* [python-toxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-toxcore)
+* [python-toxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-toxcore) - python binding for Tox core ([sources](https://github.com/abbat/pytoxcore)).
 
 ### Development libraries
 
