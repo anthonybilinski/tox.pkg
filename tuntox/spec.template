@@ -113,7 +113,7 @@ fi
 %post -n tuntoxd
 %if 0%{?with_systemd}
 %if 0%{?suse_version}
-%{fillup_only}
+%{fillup_only -n tuntoxd}
 %service_add_post tuntoxd.service
 %else
 %systemd_post tuntoxd.service
