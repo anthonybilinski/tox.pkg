@@ -55,9 +55,10 @@ This package contains tuntox daemon
 %prep
 %setup -q -n %{name}
 
+debian/patch.sh
+
 
 %build
-
 %global USER_CFLAGS  ${RPM_OPT_FLAGS} -I%{_includedir}
 %global USER_LDFLAGS ${RPM_LD_FLAGS} -L%{_libdir}
 

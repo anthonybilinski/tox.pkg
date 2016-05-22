@@ -16,7 +16,7 @@ USER_CFLAGS  := -I$(INCLUDEDIR)
 USER_LDFLAGS := -L$(LIBDIR)
 
 override_dh_auto_configure:
-	/bin/true
+	debian/patch.sh
 
 override_dh_auto_build:
 	make USER_CFLAGS="$(USER_CFLAGS)" USER_LDFLAGS="$(USER_LDFLAGS)"
