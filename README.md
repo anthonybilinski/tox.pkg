@@ -35,7 +35,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### New Group Chats
 
-* [toxic-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic-ngc) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
+* [toxic-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic-ngc) - an ncurses-based Tox client with new group chat support ([sources](https://github.com/JFreegman/toxic)).
 * [tox-bootstrapd-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore-ngc) - Tox bootstrap node daemon with new group chat support ([sources](https://github.com/JFreegman/toxcore/tree/master/other/bootstrap_daemon)).
 * [tox-libtoxcore-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore-ngc) - libtoxcore library with new group chat support ([sources](https://github.com/JFreegman/toxcore)).
 
