@@ -10,10 +10,10 @@ Summary:        Ncurses-based CLI tox-based instant messenging client
 License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/Tox/toxic
-Conflicts:      %{name}-nox, %{name}-ngc, %{name}-ngc-nox
+Conflicts:      %{name}-nox, toxic, toxic-nox
 BuildRequires:  pkg-config, asciidoc, gettext, libconfig-devel, ncurses-devel, qrencode-devel, libX11-devel, openal-devel, freealut-devel
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0
-BuildRequires:  tox-libtoxcore-devel
+BuildRequires:  tox-libtoxcore-ngc-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 Patch0:         https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/centos.notify.c.patch
 Patch1:         https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/opensuse.Makefile.patch
@@ -47,7 +47,7 @@ Ncurses-based CLI tox-based instant messenging client
 
 %package        nox
 Summary:        Ncurses-based CLI tox-based instant messenging client (without X support)
-Conflicts:      %{name}, %{name}-ngc, %{name}-ngc-nox
+Conflicts:      %{name}, toxic, toxic-nox
 
 %description    nox
 Ncurses-based CLI tox-based instant messenging client (without X support)

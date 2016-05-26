@@ -1,0 +1,14 @@
+--- misc/toxic.desktop
++++ misc/toxic.desktop
+@@ -3,9 +3,10 @@
+ Type=Application
+ Name=Toxic
+ Comment=A CLI based Tox client
++GenericName=A CLI based Tox client
+ TryExec=toxic
+ Exec=toxic
+ Icon=utilities-terminal
+-Categories=InstantMessaging;AudioVideo;Network;
++Categories=Network;InstantMessaging;P2P;
+ Terminal=true
+ MimeType=x-scheme-handler/tox;

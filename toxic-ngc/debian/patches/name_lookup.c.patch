@@ -1,0 +1,21 @@
+--- src/name_lookup.c
++++ src/name_lookup.c
+@@ -343,10 +343,18 @@
+         goto on_exit;
+     }
+ 
++#if LIBCURL_VERSION_NUM >= 0x072200
+     ret = curl_easy_setopt(c_handle, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
++#else
++    ret = curl_easy_setopt(c_handle, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
++#endif
+ 
+     if (ret != CURLE_OK) {
++#if LIBCURL_VERSION_NUM >= 0x072200
+         lookup_error(self, "TLSv1.2 could not be set (libcurl error %d)", ret);
++#else
++        lookup_error(self, "TLSv1 could not be set (libcurl error %d)", ret);
++#endif
+         goto on_exit;
+     }
+ 
