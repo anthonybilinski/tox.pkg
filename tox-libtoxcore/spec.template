@@ -14,6 +14,7 @@ Summary:        The future of online communications
 License:        GPL-3
 Group:          System/Libraries
 URL:            https://github.com/irungentoo/toxcore
+Conflicts:      %{name}-ngc
 BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel >= 1.4.8
 BuildRequires:  libsodium-devel >= 0.5.0, libvpx-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
@@ -40,6 +41,7 @@ that ensures their users full privacy and secure message delivery.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
+Conflicts:      %{name}-ngc-devel
 
 %description    devel
 This package contains libraries and header files for
@@ -48,6 +50,7 @@ developing applications that use %{name} libraries.
 
 %package -n     tox-bootstrapd
 Summary:        Tox DHT Bootstrap Daemon
+Conflicts:      tox-bootstrapd-ngc
 Group:          Productivity/Networking/Talk/Servers
 Requires:       %{name} = %{version}-%{release}
 %if 0%{?suse_version}

@@ -14,13 +14,16 @@ BASE=$(pwd)
 BUILD_DIR="${BASE}/../build/${PACKAGE_NAME}"
 SOURCE_DIR="${BUILD_DIR}/${PACKAGE_NAME}"
 
-mkdir -p "${BUILD_DIR}"
+rm -rf "${SOURCE_DIR}"
 
-if [ ! -d "${SOURCE_DIR}/.git" ]; then
-	rm -rf "${SOURCE_DIR}"
-	git clone --recursive https://github.com/Tox/toxic.git "${SOURCE_DIR}"
-else
-	rm -rf "${SOURCE_DIR}/debian"
+git clone --recursive https://github.com/Tox/toxic.git "${SOURCE_DIR}"
+
+cd "${SOURCE_DIR}"
+
+GIT_REV=$1
+
+if [ -n "${GIT_REV}" ]; then
+	git checkout "${GIT_REV}"
 fi
 
 rm -f "${BUILD_DIR}/PKGBUILD"
@@ -33,14 +36,6 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
 
 "${BASE}/update-nodelist.py" > "${SOURCE_DIR}/misc/DHTnodes"
-
-cd "${SOURCE_DIR}"
-
-GIT_REV=$1
-
-if [ -n "${GIT_REV}" ]; then
-	git checkout "${GIT_REV}"
-fi
 
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)

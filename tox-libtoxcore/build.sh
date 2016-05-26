@@ -16,11 +16,16 @@ SOURCE_DIR="${BUILD_DIR}/${PACKAGE_NAME}"
 
 mkdir -p "${BUILD_DIR}"
 
-if [ ! -d "${SOURCE_DIR}/.git" ]; then
-	rm -rf "${SOURCE_DIR}"
-	git clone --recursive https://github.com/irungentoo/toxcore.git "${SOURCE_DIR}"
-else
-	rm -rf "${SOURCE_DIR}/debian"
+rm -rf "${SOURCE_DIR}"
+
+git clone --recursive https://github.com/irungentoo/toxcore.git "${SOURCE_DIR}"
+
+cd "${SOURCE_DIR}"
+
+GIT_REV=$1
+
+if [ -n "${GIT_REV}" ]; then
+	git checkout "${GIT_REV}"
 fi
 
 rm -f "${BUILD_DIR}/PKGBUILD"
@@ -37,14 +42,6 @@ cp -f "${BASE}/tox-bootstrapd.centos.sh" "${SOURCE_DIR}/other/bootstrap_daemon/t
 cp -f "${BASE}/tox-bootstrapd.service"   "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.service"
 cp -f "${BASE}/tox-bootstrapd.tmpfiles"  "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.tmpfiles"
 cp -f "${BASE}/tox-bootstrapd.users"     "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.users"
-
-cd "${SOURCE_DIR}"
-
-GIT_REV=$1
-
-if [ -n "${GIT_REV}" ]; then
-	git checkout "${GIT_REV}"
-fi
 
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)

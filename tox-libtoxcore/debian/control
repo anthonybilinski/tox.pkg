@@ -11,6 +11,7 @@ Standards-Version: 3.9.4
 Homepage: https://github.com/irungentoo/toxcore
 
 Package: tox-libtoxcore
+Conflicts: tox-libtoxcore-ngc
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: The future of online communications
@@ -18,6 +19,7 @@ Description: The future of online communications
  that ensures their users full privacy and secure message delivery.
 
 Package: tox-libtoxcore-dev
+Conflicts: tox-libtoxcore-ngc-dev
 Section: libdevel
 Depends: ${misc:Depends}, tox-libtoxcore (= ${binary:Version})
 Architecture: any
@@ -26,6 +28,7 @@ Description: The future of online communications - headers
  that ensures their users full privacy and secure message delivery.
 
 Package: tox-bootstrapd
+Conflicts: tox-bootstrapd-ngc
 Depends: ${misc:Depends}, ${shlibs:Depends}, tox-libtoxcore (= ${binary:Version})
 Architecture: any
 Description: Tox DHT Bootstrap Daemon
