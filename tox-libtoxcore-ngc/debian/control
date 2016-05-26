@@ -1,4 +1,4 @@
-Source: tox-libtoxcore-gc
+Source: tox-libtoxcore-ngc
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), dh-autoreconf,
@@ -8,21 +8,29 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), dh-autoreconf,
  libvpx-dev | tox-libvpx-dev
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
-Homepage: https://github.com/JFreegman/toxcore.git
+Homepage: https://github.com/JFreegman/toxcore
 
-Package: tox-libtoxcore-gc
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Package: tox-libtoxcore-ngc
 Conflicts: tox-libtoxcore
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
-Description: The future of online communications (new groupchats)
+Description: The future of online communications
  Tox aims to be an easy to use, all-in-one communication platform
  that ensures their users full privacy and secure message delivery.
 
-Package: tox-libtoxcore-gc-dev
-Section: libdevel
-Depends: ${misc:Depends}, tox-libtoxcore (= ${binary:Version})
+Package: tox-libtoxcore-ngc-dev
 Conflicts: tox-libtoxcore-dev
+Section: libdevel
+Depends: ${misc:Depends}, tox-libtoxcore-ngc (= ${binary:Version})
 Architecture: any
-Description: The future of online communications (new groupchats) - headers
+Description: The future of online communications - headers
+ Tox aims to be an easy to use, all-in-one communication platform
+ that ensures their users full privacy and secure message delivery.
+
+Package: tox-bootstrapd-ngc
+Conflicts: tox-bootstrapd
+Depends: ${misc:Depends}, ${shlibs:Depends}, tox-libtoxcore-ngc (= ${binary:Version})
+Architecture: any
+Description: Tox DHT Bootstrap Daemon
  Tox aims to be an easy to use, all-in-one communication platform
  that ensures their users full privacy and secure message delivery.

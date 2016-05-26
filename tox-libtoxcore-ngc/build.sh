@@ -1,13 +1,8 @@
 #!/bin/sh
 
-#
-# Integration build (don't use)!
-# https://github.com/JFreegman/toxcore.git:new_groupchats
-#
-
 set -e
 
-PACKAGE_NAME="tox-libtoxcore-gc"
+PACKAGE_NAME="tox-libtoxcore-ngc"
 PACKAGE_DATE=$(LC_ALL=C date "+%a, %d %b %Y %H:%M:%S %z")
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M")
 SPEC_DATE=$(LC_ALL=C date '+%a %b %d %Y')
@@ -37,9 +32,19 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
 
+cp -f "${BASE}/tox-bootstrapd.sh"        "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.sh"
+cp -f "${BASE}/tox-bootstrapd.centos.sh" "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.centos.sh"
+cp -f "${BASE}/tox-bootstrapd.service"   "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.service"
+cp -f "${BASE}/tox-bootstrapd.tmpfiles"  "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.tmpfiles"
+cp -f "${BASE}/tox-bootstrapd.users"     "${SOURCE_DIR}/other/bootstrap_daemon/tox-bootstrapd.users"
+
 cd "${SOURCE_DIR}"
 
-git checkout new_groupchats
+GIT_REV=$1
+
+if [ -n "${GIT_REV}" ]; then
+	git checkout "${GIT_REV}"
+fi
 
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)
@@ -49,6 +54,8 @@ sed -i -e "s/%PACKAGE%/${PACKAGE_NAME}/g"      "debian/changelog"
 sed -i -e "s/%DATE%/${PACKAGE_DATE}/g"         "debian/changelog"
 sed -i -e "s/%VERSION%/${PACKAGE_VERSION}/g"   "debian/changelog"
 sed -i -e "s/%REVISION%/${PACKAGE_REVISION}/g" "debian/changelog"
+
+sed -i -e "s/%VERSION%/${PACKAGE_VERSION}/g" "other/bootstrap_daemon/tox-bootstrapd.conf"
 
 debuild -S
 
@@ -63,3 +70,5 @@ sed -e "s/%PACKAGE%/${PACKAGE_NAME}/g" "${BASE}/PKGBUILD.template" | \
 sed -e "s/%VERSION%/${PACKAGE_VERSION}/g"                          | \
 sed -e "s/%SHA_512%/${SHA_512}/g"                                    \
 > "${BUILD_DIR}/PKGBUILD"
+
+cp -f "${BASE}/PKGBUILD.install" "${BUILD_DIR}/${PACKAGE_NAME}.install"

@@ -17,7 +17,7 @@ CONFIGURE_OPTS = \
     --libdir=$(LIBDIR)         \
     --includedir=$(INCLUDEDIR) \
     --disable-silent-rules     \
-    --disable-daemon           \
+    --enable-daemon            \
     --disable-tests            \
     --disable-shared
 
@@ -26,6 +26,15 @@ LDFLAGS += -L$(LIBDIR)
 
 override_dh_auto_configure:
 	PKG_CONFIG_PATH=$(LIBDIR)/pkgconfig ./configure $(CONFIGURE_OPTS)
+
+override_dh_auto_build:
+	dh_auto_build
+
+	# strip .sh extension
+	cp other/bootstrap_daemon/tox-bootstrapd.sh other/bootstrap_daemon/tox-bootstrapd
+
+	# script-not-executable
+	chmod 0755 other/bootstrap_daemon/tox-bootstrapd
 
 override_dh_auto_test:
 	/bin/true

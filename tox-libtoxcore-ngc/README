@@ -1,0 +1,14 @@
+tox-libtoxcore-ngc
+
+Sources: https://github.com/JFreegman/toxcore
+
+# Prepare
+
+Use master.
+
+# Compile
+
+Arch         - use libsodium package from community repo
+CentOS 6     - use yasm, autoconf268 and libconfig package from EPEL-6
+CentOS 7     - use yasm package from EPEL-7
+Ubuntu 12.04 - use libconfig package from separate tox backports repo

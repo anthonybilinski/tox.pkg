@@ -1,0 +1,258 @@
+%global _project        tox
+%global _tox_prefix     /usr/%{_project}
+%global _tox_libdir     %{_tox_prefix}/lib
+%global _tox_includedir %{_tox_prefix}/include
+
+%if 0%{?centos} == 7 || 0%{?fedora} >= 15 || 0%{?suse_version} >= 1210
+%define with_systemd 1
+%endif
+
+Name:           %PACKAGE%
+Version:        %VERSION%
+Release:        1
+Summary:        The future of online communications
+License:        GPL-3
+Group:          System/Libraries
+URL:            https://github.com/JFreegman/toxcore
+Conflicts:      tox-libtoxcore
+BuildRequires:  pkgconfig, libtool, automake, yasm, libconfig-devel >= 1.4.8
+BuildRequires:  libsodium-devel >= 0.5.0, libvpx-devel
+Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?suse_version}
+BuildRequires:  libopus-devel
+%else
+BuildRequires:  opus-devel
+%endif
+
+%if 0%{?centos} == 6
+BuildRequires:  autoconf268
+%else
+BuildRequires:  autoconf
+%endif
+
+%description
+Tox aims to be an easy to use, all-in-one communication platform
+that ensures their users full privacy and secure message delivery.
+
+
+%package        devel
+Conflicts:      tox-libtoxcore-devel
+Summary:        Development files for %{name}
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}-%{release}
+
+%description    devel
+This package contains libraries and header files for
+developing applications that use %{name} libraries.
+
+
+%package -n     tox-bootstrapd-ngc
+Conflicts:      tox-bootstrapd
+Summary:        Tox DHT Bootstrap Daemon
+Group:          Productivity/Networking/Talk/Servers
+Requires:       %{name} = %{version}-%{release}
+%if 0%{?suse_version}
+Requires(pre):  pwdutils
+%else
+Requires(pre):  shadow-utils
+%endif
+
+%if 0%{?with_systemd}
+BuildRequires:  systemd
+%if 0%{?suse_version}
+BuildRequires:  systemd-rpm-macros
+%endif
+%{?systemd_requires}
+%else
+%if 0%{?suse_version}
+Requires(pre):  %fillup_prereq
+Requires(pre):  %insserv_prereq
+%endif
+%endif
+
+%description -n tox-bootstrapd-ngc
+This package contains tox DHT Bootstrap Daemon
+
+
+%define debug_package %{nil}
+
+
+%prep
+%setup -q -n %{name}
+
+
+%build
+export CFLAGS="${RPM_OPT_FLAGS} -Wno-return-type -fPIC -I%{_tox_includedir}"
+export LDFLAGS="${RPM_LD_FLAGS} -L%{_tox_libdir}"
+export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_tox_libdir}/pkgconfig"
+
+%if 0%{?centos} == 6
+/usr/bin/autoreconf268 -if
+%else
+./autogen.sh
+%endif
+
+./configure \
+    --prefix=%{_prefix}             \
+    --libdir=%{_tox_libdir}         \
+    --includedir=%{_tox_includedir} \
+    --disable-silent-rules          \
+    --enable-daemon                 \
+    --disable-tests                 \
+    --disable-shared
+
+make %{?_smp_mflags}
+
+
+%pre -n tox-bootstrapd-ngc
+if ! getent passwd tox-bootstrapd > /dev/null 2>&1 ; then
+    useradd -c "Account to run Tox's DHT bootstrap daemon" -r -d /var/lib/tox-bootstrapd -m -s /sbin/nologin -U tox-bootstrapd
+    chmod 700 /var/lib/tox-bootstrapd
+    chown -R tox-bootstrapd:tox-bootstrapd /var/lib/tox-bootstrapd
+fi
+%if 0%{?with_systemd}
+%if 0%{?suse_version}
+%service_add_pre tox-bootstrapd.service
+%endif
+%endif
+
+
+%post devel
+/sbin/ldconfig
+
+%post -n tox-bootstrapd-ngc
+%if 0%{?with_systemd}
+%if 0%{?suse_version}
+%service_add_post tox-bootstrapd.service
+%else
+%systemd_post tox-bootstrapd.service
+%endif
+systemd-tmpfiles --create tox-bootstrapd.conf
+%else
+%if 0%{?suse_version}
+%{fillup_and_insserv tox-bootstrapd}
+%else
+/sbin/chkconfig --add tox-bootstrapd
+%endif
+%endif
+
+
+%preun -n tox-bootstrapd-ngc
+%if 0%{?with_systemd}
+%if 0%{?suse_version}
+%service_del_preun tox-bootstrapd.service
+%else
+%systemd_preun tox-bootstrapd.service
+%endif
+%else
+%if 0%{?suse_version}
+%stop_on_removal tox-bootstrapd
+%else
+if [ $1 -eq 0 ]; then
+    /sbin/service tox-bootstrapd stop > /dev/null 2>&1 || :
+    /sbin/chkconfig --del tox-bootstrapd
+fi
+%endif
+%endif
+
+
+%postun devel
+/sbin/ldconfig
+
+%postun -n tox-bootstrapd-ngc
+%if 0%{?with_systemd}
+%if 0%{?suse_version}
+%service_del_postun tox-bootstrapd.service
+%else
+%systemd_postun_with_restart tox-bootstrapd.service
+%endif
+%else
+%if 0%{?suse_version}
+%restart_on_update tox-bootstrapd
+%insserv_cleanup
+%else
+if [ $1 -ge 1 ]; then
+    /sbin/service tox-bootstrapd status  > /dev/null 2>&1 || exit 0
+    /sbin/service tox-bootstrapd restart > /dev/null 2>&1 || echo "Restart failed, please check system log"
+fi
+%endif
+%endif
+
+
+%install
+make DESTDIR=%{buildroot} install
+
+rm -f %{buildroot}%{_bindir}/DHT_bootstrap
+
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.conf %{buildroot}%{_sysconfdir}/tox-bootstrapd.conf
+
+%if 0%{?suse_version}
+install -d -m 0755 %{buildroot}%{_sbindir}
+%endif
+
+%if 0%{?with_systemd}
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.service  %{buildroot}%{_unitdir}/tox-bootstrapd.service
+install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.tmpfiles %{buildroot}%{_tmpfilesdir}/tox-bootstrapd.conf
+%if 0%{?suse_version}
+ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rctox-bootstrapd
+%endif
+%else
+%if 0%{?centos} == 6
+install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.centos.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
+%else
+install -D -m 0755 other/bootstrap_daemon/tox-bootstrapd.sh %{buildroot}%{_sysconfdir}/init.d/tox-bootstrapd
+%endif
+%if 0%{?suse_version}
+ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-bootstrapd
+%endif
+%endif
+
+
+%files
+%defattr(-,root,root,-)
+%doc COPYING README.md
+
+
+%files devel
+%defattr(-,root,root,-)
+
+%if 0%{?suse_version}
+%dir %{_tox_prefix}
+%endif
+
+%{_tox_prefix}
+
+
+%files -n tox-bootstrapd-ngc
+%defattr(-,root,root,-)
+
+%if 0%{?suse_version}
+%if 0%{?with_systemd}
+%dir %{_unitdir}
+%dir %{_tmpfilesdir}
+%else
+%dir %{_sysconfdir}/init.d
+%endif
+%endif
+
+%{_bindir}/tox-bootstrapd
+
+%config(noreplace) %{_sysconfdir}/tox-bootstrapd.conf
+
+%if 0%{?with_systemd}
+%{_unitdir}/tox-bootstrapd.service
+%{_tmpfilesdir}/tox-bootstrapd.conf
+%else
+%{_sysconfdir}/init.d/tox-bootstrapd
+%endif
+
+%if 0%{?suse_version}
+%{_sbindir}/rctox-bootstrapd
+%endif
+
+
+%changelog
+* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+- Initial

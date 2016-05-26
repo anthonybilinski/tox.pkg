@@ -1,7 +1,0 @@
-tox-libtoxcore-gc
-
-Sources: https://github.com/JFreegman/toxcore
-
-# Prepare
-
-Use master.
