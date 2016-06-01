@@ -11,3 +11,10 @@ tox-sqlcipher-3.4.x/tox-sqlcipher_3.4.x.orig.tar.bz2
 # Usage
 
 Arch - use sqlcipher package from community repo
+
+# ARM
+
+Replace config.sub / config.guess with:
+
+http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
+http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
