@@ -1,0 +1,3 @@
+tox-libconfig-dev: file-in-unusual-dir
+tox-libconfig-dev: non-standard-dir-in-usr
+tox-libconfig-dev: new-package-should-close-itp-bug

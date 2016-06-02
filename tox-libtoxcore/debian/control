@@ -2,7 +2,8 @@ Source: tox-libtoxcore
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), dh-autoreconf,
- libtool, autotools-dev, automake, libconfig-dev (>= 1.4.8), yasm,
+ pkg-config, libtool, autotools-dev, automake, yasm,
+ libconfig-dev (>= 1.4.8) | tox-libconfig-dev (>= 1.4.8),
  libsodium-dev (>= 0.5.0) | tox-libsodium-dev,
  libopus-dev | tox-libopus-dev,
  libvpx-dev | tox-libvpx-dev

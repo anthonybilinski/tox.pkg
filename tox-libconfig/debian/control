@@ -1,0 +1,26 @@
+Source: tox-libconfig
+Section: libs
+Priority: optional
+Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), bison, flex
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Standards-Version: 3.9.4
+Homepage: http://www.hyperrealm.com/libconfig/
+
+Package: tox-libconfig
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: any
+Description: C/C++ configuration file library
+ Libconfig is a simple library for manipulating structured configuration
+ files. This file format is more compact and more readable than XML. And
+ unlike XML, it is type-aware, so it is not necessary to do string parsing
+ in application code.
+
+Package: tox-libconfig-dev
+Section: libdevel
+Depends: ${misc:Depends}, tox-libconfig (= ${binary:Version})
+Architecture: any
+Description: C/C++ configuration file library
+ Libconfig is a simple library for manipulating structured configuration
+ files. This file format is more compact and more readable than XML. And
+ unlike XML, it is type-aware, so it is not necessary to do string parsing
+ in application code.

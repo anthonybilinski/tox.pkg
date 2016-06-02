@@ -24,8 +24,10 @@ CONFIGURE_OPTS = \
 CFLAGS  += -fPIC -I$(INCLUDEDIR)
 LDFLAGS += -L$(LIBDIR)
 
+export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDIR)/pkgconfig
+
 override_dh_auto_configure:
-	PKG_CONFIG_PATH=$(LIBDIR)/pkgconfig ./configure $(CONFIGURE_OPTS)
+	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_build:
 	dh_auto_build
