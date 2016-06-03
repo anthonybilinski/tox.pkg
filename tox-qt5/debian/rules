@@ -4,6 +4,9 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+# disable excluding files from source
+export DH_ALWAYS_EXCLUDE=""
+
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 
@@ -27,14 +30,14 @@ CONFIGURE_OPTS =      \
     -qt-sql-sqlite    \
     -system-sqlite
 
+override_dh_auto_test:
+	/bin/true
+
 override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
 
 override_dh_auto_install:
 	make INSTALL_ROOT=$(CURDIR)/debian/tmp install
-
-override_dh_auto_test:
-	/bin/true
 
 override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps

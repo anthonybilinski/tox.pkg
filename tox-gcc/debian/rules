@@ -55,4 +55,4 @@ override_dh_auto_install:
 	find debian/tmp -name 'libstdc++.so*' -delete
 
 %:
-	dh $@
+	dh $@ --parallel
