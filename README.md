@@ -41,7 +41,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Additional separate repositories
 
-* [ppa:abbat/tox](https://launchpad.net/~abbat/+archive/ubuntu/tox) - Ubuntu Trusty+ packages for arm64, armhf and ppc64el architectures.
+* [ppa:abbat/tox](https://launchpad.net/~abbat/+archive/ubuntu/tox) - Ubuntu Precise+ packages for arm64, armhf and ppc64el architectures.
 * [tox:gcc](https://build.opensuse.org/package/show/home:antonbatenev:tox:gcc/tox-gcc) - GCC 4.9 package to compile qtox on CentOS 6, Debian 7.0 (wheezy) and Ubuntu 12.04 (precise).
 * [tox:qt5](https://build.opensuse.org/package/show/home:antonbatenev:tox:qt5/tox-qt5) - Qt 5 static package to compile qtox on Debian and Ubuntu.
 * [tox:libconfig](https://build.opensuse.org/project/show/home:antonbatenev:tox:libconfig) - libconfig static package to compile libtoxcore on CentOS 6 and Ubuntu 12.04 (precise).
