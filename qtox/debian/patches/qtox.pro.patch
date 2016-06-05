@@ -17,7 +17,7 @@
  DEFINES += QT_MESSAGELOGCONTEXT
  
  contains(DISABLE_PLATFORM_EXT, YES) {
-@@ -159,8 +158,8 @@
+@@ -142,8 +141,8 @@
              LIBS += -Wl,-Bdynamic -lv4l1 -lv4l2 -lavformat -lavcodec -lavutil -lswscale -lusb-1.0
              LIBS += -lqrencode -lsqlcipher
          } else {
@@ -28,7 +28,7 @@
          }
  
          contains(DEFINES, QTOX_PLATFORM_EXT) {
-@@ -192,8 +191,6 @@
+@@ -167,8 +166,6 @@
  
          PKGCONFIG += glib-2.0 gtk+-2.0 atk
          PKGCONFIG += cairo gdk-pixbuf-2.0 pango
@@ -37,7 +37,7 @@
          PKGCONFIG += appindicator-0.1 dbusmenu-glib-0.4
      }
  
-@@ -203,8 +200,6 @@
+@@ -178,8 +175,6 @@
  
          PKGCONFIG += glib-2.0 gtk+-2.0 atk
          PKGCONFIG += cairo gdk-pixbuf-2.0 pango
