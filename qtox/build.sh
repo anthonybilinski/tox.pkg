@@ -18,7 +18,7 @@ mkdir -p "${BUILD_DIR}"
 
 if [ ! -d "${SOURCE_DIR}/.git" ]; then
 	rm -rf "${SOURCE_DIR}"
-	git clone --recursive https://github.com/tux3/qTox.git "${SOURCE_DIR}"
+	git clone --recursive --depth=1 https://github.com/tux3/qTox.git "${SOURCE_DIR}"
 fi
 
 rm -rf "${SOURCE_DIR}/debian"
