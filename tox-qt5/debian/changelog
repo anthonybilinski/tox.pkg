@@ -1,5 +1,5 @@
-tox-qt5 (5.6.0-1) unstable; urgency=low
+tox-qt5 (5.6.1-1) unstable; urgency=low
 
   * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 18 Mar 2016 17:23:29 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 17 Jun 2016 16:44:17 +0300
