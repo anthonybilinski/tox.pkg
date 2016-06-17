@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: gcc
-Source: https://gcc.gnu.org/gcc-4.9/
+Source: https://gcc.gnu.org/gcc-6
 
 Files: *
 Copyright: GNU GCC project

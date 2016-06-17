@@ -8,7 +8,7 @@ Standards-Version: 3.9.4
 Package: tox-gcc
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
-Description: GCC version 4.9
+Description: GCC version 6.1.0
  This package adds C++ support to the GNU Compiler Collection
- version 4.9.  It includes support for most of the current C++ specification
+ version 6.1.0.  It includes support for most of the current C++ specification
  and a lot of support for the upcoming C++ specification.

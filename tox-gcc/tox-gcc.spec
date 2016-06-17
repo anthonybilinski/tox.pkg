@@ -2,7 +2,7 @@
 %global _prefix  /usr/%{_project}
 
 Name:           %{_project}-gcc
-Version:        4.9.3
+Version:        6.1.0
 Release:        1
 Summary:        The GNU Compiler
 License:        GPL-3.0+
@@ -82,5 +82,5 @@ export NO_BRP_CHECK_RPATH="true"
 
 
 %changelog
-* Mon Jun 24 2015 Anton Batenev <antonbatenev@yandex.ru> - 4.9.3-1
+* Fri Jun 17 2016 Anton Batenev <antonbatenev@yandex.ru> - 6.1.0-1
 - Initial

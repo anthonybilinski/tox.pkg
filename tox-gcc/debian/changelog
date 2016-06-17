@@ -1,5 +1,5 @@
-tox-gcc (4.9.3-1) unstable; urgency=low
+tox-gcc (6.1.0-1) stable; urgency=low
 
   * Build from sources.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Wed, 24 Jun 2015 17:03:00 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 17 Jun 2016 19:36:13 +0300
