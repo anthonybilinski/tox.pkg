@@ -39,6 +39,7 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc (>=4
  libxcb-shape0-dev,
  libxcb-xfixes0-dev,
  libxcb-keysyms1-dev,
+ libxcb-xinerama0-dev,
  libxcb-render-util0-dev
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
