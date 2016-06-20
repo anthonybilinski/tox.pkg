@@ -45,11 +45,17 @@ Upstream tox client packages and development libraries for popular linux distros
 * [tox:qt5](https://build.opensuse.org/package/show/home:antonbatenev:tox:qt5/tox-qt5) - Qt 5 static package to compile qtox on Debian and Ubuntu.
 * [tox:libconfig](https://build.opensuse.org/project/show/home:antonbatenev:tox:libconfig) - libconfig static package to compile libtoxcore on CentOS 6 and Ubuntu 12.04 (precise).
 
-### Additional repositories for ARM
+### Additional repositories for Ubuntu ARM
 
 * [ppa:abbat/tox](https://launchpad.net/~abbat/+archive/ubuntu/tox) - Ubuntu Tox packages for arm64, armhf and ppc64el architectures.
 * [ppa:abbat/tox-gcc](https://launchpad.net/~abbat/+archive/ubuntu/tox-gcc) - GCC package to compile qtox for ARM.
 * [ppa:abbat/tox-qt5](https://launchpad.net/~abbat/+archive/ubuntu/tox-qt5) - Qt 5 static package to compile qtox for ARM.
+
+### Additional repository for Ubuntu Yakkety
+
+This is temporary repository still Ubuntu Yakkety not released yet. After release date (Oct 2016) it will be moved to openSUSE build service (OBS).
+
+* [ppa:abbat/tox-yakkety](https://launchpad.net/~abbat/+archive/ubuntu/tox-yakkety).
 
 ### How to use
 
