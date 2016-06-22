@@ -25,6 +25,10 @@ BuildRequires:  libopus-devel
 BuildRequires:  opus-devel
 %endif
 
+%if 0%{?fedora} >= 24
+BuildRequires:  ghostscript-core
+%endif
+
 %if 0%{?centos} == 7
 BuildRequires:  libnotify-devel gnome-shell
 %else
