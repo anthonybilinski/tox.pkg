@@ -11,7 +11,7 @@ License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/Tox/toxic
 Conflicts:      %{name}-nox, %{name}-ngc, %{name}-ngc-nox
-BuildRequires:  pkg-config, asciidoc, gettext, libconfig-devel, ncurses-devel, qrencode-devel, libX11-devel, openal-devel, freealut-devel
+BuildRequires:  pkgconfig, asciidoc, gettext, libconfig-devel, ncurses-devel, qrencode-devel, libX11-devel, openal-devel, freealut-devel
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0
 BuildRequires:  tox-libtoxcore-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
@@ -26,15 +26,15 @@ BuildRequires:  opus-devel
 %endif
 
 %if 0%{?centos} == 7
-BuildRequires: libnotify-devel gnome-shell
+BuildRequires:  libnotify-devel gnome-shell
 %else
-BuildRequires: libnotify-devel
+BuildRequires:  libnotify-devel
 %endif
 
 %if 0%{?centos}
-BuildRequires: curl-devel
+BuildRequires:  curl-devel
 %else
-BuildRequires: libcurl-devel
+BuildRequires:  libcurl-devel
 %endif
 
 %if 0%{?suse_version}

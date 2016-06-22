@@ -12,7 +12,7 @@ Summary:        Lightweight audio filtering library made from webrtc code
 License:        BSD 3-clause
 Group:          System/Libraries
 URL:            https://github.com/irungentoo/filter_audio
-BuildRequires:  make, pkg-config
+BuildRequires:  make, pkgconfig
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
