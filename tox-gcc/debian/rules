@@ -51,9 +51,6 @@ override_dh_auto_test:
 override_dh_auto_configure:
 	./configure $(CONFIGURE_OPTS)
 
-override_dh_auto_build:
-	make
-
 override_dh_auto_install:
 	make DESTDIR=$(shell pwd)/debian/tmp install
 	find debian/tmp/usr/tox/lib -name '*.so*' -delete
