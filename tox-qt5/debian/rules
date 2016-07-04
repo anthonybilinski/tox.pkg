@@ -10,10 +10,16 @@ export DH_ALWAYS_EXCLUDE=""
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 
-PROJECT    = tox
-PREFIX     = /usr/$(PROJECT)
-LIBDIR     = $(PREFIX)/lib
-INCLUDEDIR = $(PREFIX)/include
+PROJECT = tox
+PREFIX  = /usr/$(PROJECT)
+
+CODENAME = $(shell /usr/bin/lsb_release --codename --short)
+
+ifneq (,$(filter precise, $(CODENAME)))
+    CC  = $(PREFIX)/bin/gcc
+    CXX = $(PREFIX)/bin/g++
+    CONFIGURE_GCC_OPTS = -L $(PREFIX)/lib -L $(PREFIX)/lib64 -I $(PREFIX)/include
+endif
 
 CONFIGURE_OPTS =      \
     -prefix $(PREFIX) \
@@ -28,13 +34,18 @@ CONFIGURE_OPTS =      \
     -dbus-linked      \
     -no-sql-sqlite2   \
     -qt-sql-sqlite    \
-    -system-sqlite
+    -system-sqlite    \
+    -skip wayland     \
+    -verbose
 
 override_dh_auto_test:
 	/bin/true
 
 override_dh_auto_configure:
-	./configure $(CONFIGURE_OPTS)
+	sed -i -r -e "s|^QMAKE_CC(\\s+)=(\\s+)gcc$$|QMAKE_CC = $(CC)|g"        qtbase/mkspecs/common/g++-base.conf
+	sed -i -r -e "s|^QMAKE_CXX(\\s+)=(\\s+)g\\+\\+$$|QMAKE_CXX = $(CXX)|g" qtbase/mkspecs/common/g++-base.conf
+
+	./configure $(CONFIGURE_OPTS) $(CONFIGURE_GCC_OPTS)
 
 override_dh_auto_install:
 	make INSTALL_ROOT=$(CURDIR)/debian/tmp install

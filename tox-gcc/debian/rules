@@ -56,7 +56,7 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	make DESTDIR=$(shell pwd)/debian/tmp install
-	find debian/tmp -name 'libstdc++.so*' -delete
+	find debian/tmp/usr/tox/lib -name '*.so*' -delete
 
 %:
 	dh $@ --parallel
