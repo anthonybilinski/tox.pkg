@@ -11,7 +11,7 @@ License:        GPL-3
 Group:          System/Libraries
 URL:            http://ffmpeg.org/
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.orig.tar.bz2
-BuildRequires:  yasm
+BuildRequires:  yasm, libX11-devel, libXext-devel, libXfixes-devel
 
 %description
 FFmpeg is a complete and free Internet live audio and video
@@ -53,6 +53,7 @@ This package contains development files for %{name}
     --disable-doc                       \
     --enable-gpl                        \
     --enable-nonfree                    \
+    --enable-x11grab                    \
     --enable-pic
 
 V=1 make %{?_smp_mflags}

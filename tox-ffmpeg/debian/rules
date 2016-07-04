@@ -22,6 +22,7 @@ CONFIGURE_OPTS = \
     --disable-doc                      \
     --enable-gpl                       \
     --enable-nonfree                   \
+    --enable-x11grab                   \
     --enable-pic
 
 override_dh_auto_clean:
