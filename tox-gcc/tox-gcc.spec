@@ -64,7 +64,7 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install
-find "%{buildroot}" -name 'libstdc++.so*' -delete
+find "%{buildroot}/usr/tox/lib" -name '*.so*' -delete
 
 %if 0%{?suse_version}
 export NO_BRP_CHECK_RPATH="true"
