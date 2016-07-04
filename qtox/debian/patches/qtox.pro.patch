@@ -9,7 +9,7 @@
  greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
  
  TARGET    = qtox
-@@ -59,7 +59,6 @@
+@@ -60,7 +60,6 @@
  # This hack returns 0 on batch (windows), but executes "date +%s" or return 0 if it fails on bash (linux/mac)
  TIMESTAMP = $$system($1 2>null||echo 0||a;rm null;date +%s||echo 0) # I'm so sorry
  DEFINES += TIMESTAMP=$$TIMESTAMP
@@ -17,18 +17,23 @@
  DEFINES += QT_MESSAGELOGCONTEXT
  
  contains(DISABLE_PLATFORM_EXT, YES) {
-@@ -142,8 +141,8 @@
+@@ -148,12 +147,12 @@
              LIBS += -Wl,-Bdynamic -lv4l1 -lv4l2 -lavformat -lavcodec -lavutil -lswscale -lusb-1.0
              LIBS += -lqrencode -lsqlcipher
          } else {
 -            LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavformat -lavdevice -lavcodec -lavutil -lswscale
 -            LIBS += -lqrencode -lsqlcipher
 +            LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavdevice -lavfilter -lswscale -lpostproc -lavformat -lavcodec -lswresample -lavutil -lopus -lz -lbz2
-+            LIBS += -lqrencode -lsqlcipher -lcrypto -ldl
++            LIBS += -lqrencode -lsqlcipher -lcrypto -lX11 -lXext -lXfixes -lxcb -lxcb-shm -ldl
          }
  
          contains(DEFINES, QTOX_PLATFORM_EXT) {
-@@ -167,8 +166,6 @@
+-            LIBS += -lX11 -lXss
++            LIBS += -lXss
+         }
+ 
+         contains(JENKINS, YES) {
+@@ -173,8 +172,6 @@
  
          PKGCONFIG += glib-2.0 gtk+-2.0 atk
          PKGCONFIG += cairo gdk-pixbuf-2.0 pango
@@ -37,7 +42,7 @@
          PKGCONFIG += appindicator-0.1 dbusmenu-glib-0.4
      }
  
-@@ -178,8 +175,6 @@
+@@ -184,8 +181,6 @@
  
          PKGCONFIG += glib-2.0 gtk+-2.0 atk
          PKGCONFIG += cairo gdk-pixbuf-2.0 pango
