@@ -24,7 +24,7 @@
 -            LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavformat -lavdevice -lavcodec -lavutil -lswscale
 -            LIBS += -lqrencode -lsqlcipher
 +            LIBS += -L$$PWD/libs/lib/ -ltoxcore -ltoxav -ltoxencryptsave -ltoxdns -lvpx -lsodium -lopenal -lavdevice -lavfilter -lswscale -lpostproc -lavformat -lavcodec -lswresample -lavutil -lopus -lz -lbz2
-+            LIBS += -lqrencode -lsqlcipher -lcrypto -lX11 -lXext -lXfixes -lxcb -lxcb-shm -ldl
++            LIBS += -lqrencode -lsqlcipher -lcrypto -lX11 -lXext -lXfixes -lxcb -lxcb-shm -lxcb-xfixes -lxcb-shape -ldl
          }
  
          contains(DEFINES, QTOX_PLATFORM_EXT) {
