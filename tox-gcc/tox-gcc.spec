@@ -64,8 +64,7 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install
-test -d "%{buildroot}/usr/tox/lib"   && find "%{buildroot}/usr/tox/lib"   -name '*.so*' -delete
-test -d "%{buildroot}/usr/tox/lib64" && find "%{buildroot}/usr/tox/lib64" -name '*.so*' -delete
+find %{buildroot}/usr/tox/lib* -name '*.so*' -delete
 
 %if 0%{?suse_version}
 export NO_BRP_CHECK_RPATH="true"
