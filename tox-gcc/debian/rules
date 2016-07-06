@@ -53,7 +53,8 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	make DESTDIR=$(shell pwd)/debian/tmp install
-	find debian/tmp/usr/tox/lib* -name '*.so*' -delete
+	find debian/tmp/usr/tox/lib -name '*.so*' -delete
+	test -d debian/tmp/usr/tox/lib64 && find debian/tmp/usr/tox/lib64 -name '*.so*' -delete || /bin/true
 
 %:
 	dh $@ --parallel
