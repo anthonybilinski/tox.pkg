@@ -18,7 +18,7 @@ CODENAME = $(shell /usr/bin/lsb_release --codename --short)
 ifneq (,$(filter precise, $(CODENAME)))
     CC  = $(PREFIX)/bin/gcc
     CXX = $(PREFIX)/bin/g++
-    CONFIGURE_GCC_OPTS = -L $(PREFIX)/lib -L $(PREFIX)/lib64 -I $(PREFIX)/include
+    CONFIGURE_GCC_OPTS = -L $(PREFIX)/lib -L $(PREFIX)/lib64 -L /usr/lib -L /usr/lib/$(DEB_HOST_MULTIARCH) -I $(PREFIX)/include -I /usr/include
 endif
 
 CONFIGURE_OPTS =      \
