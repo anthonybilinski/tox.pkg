@@ -1,6 +1,6 @@
 --- src/video/camerasource.cpp
 +++ src/video/camerasource.cpp
-@@ -139,7 +139,7 @@
+@@ -148,7 +148,7 @@
  
      // Synchronize with our stream thread
      while (streamFuture.isRunning())
@@ -9,7 +9,7 @@
  }
  
  bool CameraSource::subscribe()
-@@ -195,7 +195,7 @@
+@@ -204,7 +204,7 @@
  
          // Synchronize with our stream thread
          while (streamFuture.isRunning())
@@ -18,7 +18,7 @@
      }
      else
      {
-@@ -270,7 +270,7 @@
+@@ -288,7 +288,7 @@
  
      // Synchronize with our stream thread
      while (!streamFuture.isRunning())
@@ -27,13 +27,15 @@
  
      emit deviceOpened();
  
-@@ -356,8 +356,8 @@
+@@ -377,9 +377,9 @@
          // Give a chance to other functions to pick up the lock if needed
          biglock.unlock();
          while (streamBlocker)
 -            QThread::yieldCurrentThread();
--        QThread::yieldCurrentThread();
 +            QThread::msleep(5);
+ 
+-        QThread::yieldCurrentThread();
 +        QThread::msleep(5);
      }
  }
+ 
