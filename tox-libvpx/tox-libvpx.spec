@@ -5,8 +5,8 @@
 
 Summary:        VP8 and VP9 video codec
 Name:           %{_project}-libvpx
-Version:        1.5.0
-Release:        2
+Version:        1.6.0
+Release:        1
 License:        BSD
 Group:          System/Libraries
 URL:            http://www.webmproject.org
@@ -85,5 +85,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Sun Nov 29 2015 Anton Batenev <antonbatenev@yandex.ru> - 1.5.0-2
+* Sun Jul 31 2016 Anton Batenev <antonbatenev@yandex.ru> - 1.6.0-1
 - Initial
