@@ -1,0 +1,21 @@
+--- src/main.cpp
++++ src/main.cpp
+@@ -36,6 +36,7 @@
+ #include <QFile>
+ #include <QFontDatabase>
+ #include <QMutexLocker>
++#include <QThreadPool>
+ 
+ #include <sodium.h>
+ 
+@@ -100,6 +101,10 @@
+ 
+     qInstallMessageHandler(logMessageHandler); // Enable log as early as possible (but not earlier!)
+ 
++    QThreadPool* pool = QThreadPool::globalInstance();
++    if (pool->maxThreadCount() < 8)
++        pool->setMaxThreadCount(8);
++
+ #if defined(Q_OS_OSX)
+     //osx::moveToAppFolder(); TODO: Add setting to enable this feature.
+     osx::migrateProfiles();

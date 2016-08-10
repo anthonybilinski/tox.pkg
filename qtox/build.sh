@@ -2,7 +2,8 @@
 
 set -e
 
-PACKAGE_NAME="qtox-alpha"
+GIT_REV="v1.5.1"
+PACKAGE_NAME="qtox"
 PACKAGE_DATE=$(LC_ALL=C date "+%a, %d %b %Y %H:%M:%S %z")
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M")
 SPEC_DATE=$(LC_ALL=C date '+%a %b %d %Y')
@@ -34,11 +35,7 @@ cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
 
 cd "${SOURCE_DIR}"
 
-GIT_REV=$1
-
-if [ -n "${GIT_REV}" ]; then
-	git checkout "${GIT_REV}"
-fi
+git checkout "${GIT_REV}"
 
 "${BASE}/update-nodelist.py" > "${SOURCE_DIR}/res/settings.ini"
 

@@ -1,0 +1,39 @@
+# Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+
+pkgname=%PACKAGE%
+pkgver=%VERSION%
+pkgrel=1
+pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines'
+arch=('i686' 'x86_64')
+url='https://github.com/qTox/qTox'
+license=('GPL3')
+depends=('desktop-file-utils' 'libxkbcommon-x11' 'libxss' 'opencv' 'libx264' 'ffmpeg' 'openal' 'qt5-svg' 'qrencode' 'sqlcipher' 'toxcore')
+makedepends=('git' 'qt5-tools')
+provides=('qtox' 'qtox-git')
+conflicts=('qtox' 'qtox-git')
+source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+sha512sums=('%SHA_512%')
+
+build() {
+    cd "${pkgname}"
+    qmake-qt5 qtox.pro
+    make
+}
+
+package() {
+    cd "${pkgname}"
+
+    install -Dm755 qtox         "${pkgdir}/usr/bin/qtox"
+    install -Dm644 qTox.desktop "${pkgdir}/usr/share/applications/qtox.desktop"
+
+    cd img/icons
+
+    for SIZE in $(find . -mindepth 1 -type d | sed -e 's|^./||g')
+    do
+        install -d "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps"
+        install -m644 "${SIZE}/qtox.png" "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps/qtox.png"
+    done
+
+    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -m644 "qtox.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/qtox.svg"
+}

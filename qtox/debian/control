@@ -1,0 +1,69 @@
+Source: qtox
+Section: net
+Priority: optional
+Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc (>=4:4.8) | tox-gcc, libgcc1, zlib1g-dev, libbz2-dev,
+ libxss-dev, libglib2.0-dev, libqrencode-dev, libgtk2.0-dev, libgdk-pixbuf2.0-dev, libopenal-dev, libssl-dev, libx11-dev, libxext-dev, libxfixes-dev,
+ tox-libtoxcore-dev,
+ libvpx-dev | tox-libvpx-dev,
+ libopus-dev | tox-libopus-dev,
+ libsqlcipher-dev (>= 3.2.0) | tox-sqlcipher-dev,
+ libsodium-dev (>= 0.5.0) | tox-libsodium-dev,
+ libavdevice-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libavfilter-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libswscale-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libpostproc-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libavformat-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libavcodec-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libswresample-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ libavutil-dev (>= 7:2.6.0) | tox-ffmpeg-dev,
+ qtbase5-dev (>= 5.4.0) | tox-qt5-dev,
+ qttools5-dev-tools (>= 5.4.0) | tox-qt5-dev,
+ libqt5svg5-dev (>= 5.4.0) | tox-qt5-dev,
+ libqt5opengl5-dev (>= 5.4.0) | tox-qt5-dev,
+ libudev-dev,
+ libdbus-1-dev,
+ libdbusmenu-glib-dev,
+ libappindicator-dev,
+ libicu-dev,
+ libsqlite3-dev,
+ libjpeg-dev,
+ libmng-dev,
+ libwebp-dev,
+ libtiff-dev,
+ libmtdev-dev,
+ libgl1-mesa-dev,
+ libegl1-mesa-dev,
+ libx11-xcb-dev,
+ libxcb-glx0-dev,
+ libxcb-sync0-dev,
+ libxcb-image0-dev,
+ libxcb-icccm4-dev,
+ libxcb-randr0-dev,
+ libxcb-shape0-dev,
+ libxcb-xfixes0-dev,
+ libxcb-keysyms1-dev,
+ libxcb-xinerama0-dev,
+ libxcb-render-util0-dev
+Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Standards-Version: 3.9.4
+Homepage: https://github.com/qTox/qTox
+
+Package: qtox
+Conflicts: qtox-alpha
+Provides: qtox
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: any
+Description: Powerful Tox client
+ Powerful Tox client that follows the Tox design guidelines.
+ Tox is a decentralized and encrypted replacement for Skype, supporting
+ chats, audio, and video calls.
+
+Package: qtox-dbg
+Section: debug
+Priority: extra
+Depends: qtox (= ${binary:Version}), ${misc:Depends}
+Architecture: any
+Description: Debug symbols for qTox
+ Powerful Tox client that follows the Tox design guidelines.
+ Tox is a decentralized and encrypted replacement for Skype, supporting
+ chats, audio, and video calls.

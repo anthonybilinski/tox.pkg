@@ -1,0 +1,111 @@
+%global _project    tox
+%global _prefix     /usr
+%global _libdir     %{_prefix}/%{_project}/lib
+%global _includedir %{_prefix}/%{_project}/include
+
+Name:           %PACKAGE%
+Version:        %VERSION%
+Release:        1
+Summary:        qTox is a powerful Tox client
+License:        GPL-3
+Group:          Applications/Internet
+URL:            https://github.com/qTox/qTox
+Conflicts:      qtox-alpha
+BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libv4l-devel, openssl-devel,
+BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel, ffmpeg-devel >= 2.6.0, libX11-devel, libXext-devel, libXfixes-devel
+BuildRequires:  tox-libtoxcore-devel
+Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if 0%{?suse_version}
+BuildRequires:  libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.4.0, libqt5-qttools-devel >= 5.4.0, libqt5-qtsvg-devel >= 5.4.0
+BuildRequires:  libopus-devel
+%else
+BuildRequires:  bzip2-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.4.0, qt5-qttools-devel >= 5.4.0, qt5-qtsvg-devel >= 5.4.0
+BuildRequires:  opus-devel
+%endif
+
+%if 0%{?centos} == 6
+BuildRequires:  tox-gcc
+%else
+BuildRequires:  gcc >= 4.8
+%endif
+
+%description
+qTox is a powerful Tox client that follows the Tox design guidelines.
+Tox is a decentralized and encrypted replacement for Skype, supporting
+chats, audio, and video calls.
+
+
+%prep
+%setup -q -n %{name}
+
+mv qTox.desktop qtox.desktop
+
+debian/patch.sh
+
+
+%build
+export QT_SELECT=5
+
+export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
+
+%global QMAKE_LIBS -L%{_libdir} -lavfilter -lswresample -lpostproc
+
+%global QMAKE_FLAGS ENABLE_SYSTRAY_UNITY_BACKEND=NO
+
+%if 0%{?centos} == 6
+%global GCC_DIR     %{_prefix}/%{_project}
+%global QMAKE_CC    %{GCC_DIR}/bin/gcc
+%global QMAKE_CXX   %{GCC_DIR}/bin/g++
+%global QMAKE_LIBS  %{QMAKE_LIBS} -L%{GCC_DIR}/lib -L%{GCC_DIR}/lib64
+%global QMAKE_FLAGS %{QMAKE_FLAGS} ENABLE_SYSTRAY_GTK_BACKEND=NO
+%else
+%global QMAKE_CC  %{__cc}
+%global QMAKE_CXX %{__cxx}
+%endif
+
+qmake-qt5 %{QMAKE_FLAGS} \
+    "QMAKE_CPPFLAGS *= ${RPM_OPT_FLAGS}"    \
+    "QMAKE_CFLAGS   *= ${RPM_OPT_FLAGS}"    \
+    "QMAKE_CXXFLAGS *= ${RPM_OPT_FLAGS}"    \
+    "QMAKE_LFLAGS   *= ${RPM_LD_FLAGS}"     \
+    "LIBS           *= %{QMAKE_LIBS}"       \
+    "INCLUDEPATH    *= %{_includedir}"      \
+    "INCLUDEPATH    *= /usr/include/ffmpeg" \
+    "QMAKE_CC        = %{QMAKE_CC}"         \
+    "QMAKE_CXX       = %{QMAKE_CXX}"        \
+    qtox.pro
+
+make %{?_smp_mflags}
+
+
+%install
+install -d %{buildroot}%{_bindir}
+install -d %{buildroot}%{_datadir}/applications
+
+install -m755 qtox         %{buildroot}%{_bindir}/qtox
+install -m644 qtox.desktop %{buildroot}%{_datadir}/applications/qtox.desktop
+
+debian/icons.sh qtox %{buildroot}
+
+
+%files
+%defattr(-,root,root,-)
+%doc README.md
+
+%if 0%{?suse_version}
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/*
+%dir %{_datadir}/icons/hicolor/*/apps
+%endif
+
+%{_bindir}/qtox
+%{_datadir}/applications/qtox.desktop
+%{_datadir}/icons/hicolor/*/apps/qtox.png
+%{_datadir}/icons/hicolor/*/apps/qtox.svg
+
+
+%changelog
+* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+- Initial
