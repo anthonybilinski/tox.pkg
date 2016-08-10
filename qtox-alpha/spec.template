@@ -85,10 +85,10 @@ make %{?_smp_mflags}
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_datadir}/applications
 
-install -m755 %{name}         %{buildroot}%{_bindir}/%{name}
-install -m644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -m755 qtox         %{buildroot}%{_bindir}/qtox
+install -m644 qtox.desktop %{buildroot}%{_datadir}/applications/qtox.desktop
 
-debian/icons.sh %{name} %{buildroot}
+debian/icons.sh qtox %{buildroot}
 
 
 %files
@@ -101,10 +101,10 @@ debian/icons.sh %{name} %{buildroot}
 %dir %{_datadir}/icons/hicolor/*/apps
 %endif
 
-%{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/*/apps/%{name}.svg
+%{_bindir}/qtox
+%{_datadir}/applications/qtox.desktop
+%{_datadir}/icons/hicolor/*/apps/qtox.png
+%{_datadir}/icons/hicolor/*/apps/qtox.svg
 
 
 %changelog
