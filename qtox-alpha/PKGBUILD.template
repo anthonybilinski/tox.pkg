@@ -23,7 +23,7 @@ build() {
 package() {
     cd "${pkgname}"
 
-    install -Dm755 ${pkgname}   "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 qtox         "${pkgdir}/usr/bin/qtox"
     install -Dm644 qTox.desktop "${pkgdir}/usr/share/applications/qtox.desktop"
 
     cd img/icons
@@ -31,9 +31,9 @@ package() {
     for SIZE in $(find . -mindepth 1 -type d | sed -e 's|^./||g')
     do
         install -d "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps"
-        install -m644 "${SIZE}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps/${pkgname}.png"
+        install -m644 "${SIZE}/qtox.png" "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps/qtox.png"
     done
 
     install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    install -m644 "${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -m644 "qtox.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/qtox.svg"
 }
