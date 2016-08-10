@@ -1,0 +1,6 @@
+qtox-alpha: embedded-library
+qtox-alpha: binary-without-manpage
+qtox-alpha: copyright-should-refer-to-common-license-file-for-gpl
+qtox-alpha-dbg: embedded-library
+qtox-alpha-dbg: binary-without-manpage
+qtox-alpha-dbg: copyright-should-refer-to-common-license-file-for-gpl

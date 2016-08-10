@@ -70,7 +70,7 @@ override_dh_auto_install:
 	debian/icons.sh $(NAME) $(DESTDIR)
 
 override_dh_strip:
-	dh_strip --dbg-package=qtox-dbg
+	dh_strip --dbg-package=qtox-alpha-dbg
 
 override_dh_shlibdeps:
 	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps

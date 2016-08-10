@@ -1,15 +1,6 @@
 --- qtox.pro
 +++ qtox.pro
-@@ -17,7 +17,7 @@
- #    See the COPYING file for more details.
- 
- 
--QT       += core gui network xml opengl sql svg
-+QT       += core gui network xml sql svg
- greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
- 
- TARGET    = qtox
-@@ -60,7 +60,6 @@
+@@ -59,7 +59,6 @@
  # This hack returns 0 on batch (windows), but executes "date +%s" or return 0 if it fails on bash (linux/mac)
  TIMESTAMP = $$system($1 2>null||echo 0||a;rm null;date +%s||echo 0) # I'm so sorry
  DEFINES += TIMESTAMP=$$TIMESTAMP
@@ -17,7 +8,7 @@
  DEFINES += QT_MESSAGELOGCONTEXT
  
  contains(DISABLE_PLATFORM_EXT, YES) {
-@@ -148,12 +147,12 @@
+@@ -147,12 +146,12 @@
              LIBS += -Wl,-Bdynamic -lv4l1 -lv4l2 -lavformat -lavcodec -lavutil -lswscale -lusb-1.0
              LIBS += -lqrencode -lsqlcipher
          } else {
@@ -33,7 +24,7 @@
          }
  
          contains(JENKINS, YES) {
-@@ -200,10 +199,6 @@
+@@ -199,10 +198,6 @@
          PKGCONFIG += glib-2.0 gtk+-2.0 atk
          PKGCONFIG += gdk-pixbuf-2.0 cairo pango
      }

@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: qTox
-Source: https://github.com/tux3/qTox.git
+Source: https://github.com/qTox/qTox.git
 
 Files: *
 Copyright: 2013 Tox project

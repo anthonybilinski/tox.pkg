@@ -1,4 +1,4 @@
-Source: qtox
+Source: qtox-alpha
 Section: net
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc (>=4:4.8) | tox-gcc, libgcc1, zlib1g-dev, libbz2-dev,
@@ -43,9 +43,11 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc (>=4
  libxcb-render-util0-dev
 Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
-Homepage: https://github.com/tux3/qTox
+Homepage: https://github.com/qTox/qTox
 
-Package: qtox
+Package: qtox-alpha
+Conflicts: qtox
+Provides: qtox
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: Powerful Tox client
@@ -53,10 +55,10 @@ Description: Powerful Tox client
  Tox is a decentralized and encrypted replacement for Skype, supporting
  chats, audio, and video calls.
 
-Package: qtox-dbg
+Package: qtox-alpha-dbg
 Section: debug
 Priority: extra
-Depends: qtox (= ${binary:Version}), ${misc:Depends}
+Depends: qtox-alpha (= ${binary:Version}), ${misc:Depends}
 Architecture: any
 Description: Debug symbols for qTox
  Powerful Tox client that follows the Tox design guidelines.

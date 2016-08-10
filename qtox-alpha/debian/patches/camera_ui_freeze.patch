@@ -1,0 +1,20 @@
+--- src/video/camerasource.cpp
++++ src/video/camerasource.cpp
+@@ -201,7 +201,7 @@
+ 
+     // Synchronize with our stream thread
+     while (streamFuture.isRunning())
+-        QThread::yieldCurrentThread();
++        QThread::msleep(5);
+ }
+ 
+ bool CameraSource::subscribe()
+@@ -336,7 +336,7 @@
+ 
+     // Synchronize with our stream thread
+     while (!streamFuture.isRunning())
+-        QThread::yieldCurrentThread();
++        QThread::msleep(5);
+ 
+     emit deviceOpened();
+ 

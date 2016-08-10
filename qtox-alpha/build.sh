@@ -2,7 +2,7 @@
 
 set -e
 
-PACKAGE_NAME="qtox"
+PACKAGE_NAME="qtox-alpha"
 PACKAGE_DATE=$(LC_ALL=C date "+%a, %d %b %Y %H:%M:%S %z")
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M")
 SPEC_DATE=$(LC_ALL=C date '+%a %b %d %Y')
