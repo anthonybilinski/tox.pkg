@@ -27,7 +27,7 @@ ifneq (,$(filter wheezy precise, $(CODENAME)))
     GCC_DIR     = $(PREFIX)/$(PROJECT)
     QMAKE_CC    = $(GCC_DIR)/bin/gcc
     QMAKE_CXX   = $(GCC_DIR)/bin/g++
-    QMAKE_LIBS += -L$(GCC_DIR)/lib -L$(GCC_DIR)/lib64
+    QMAKE_LIBS += -L$(GCC_DIR)/lib -L$(GCC_DIR)/lib64 -latomic
 else
     QMAKE_CC  = $(CC)
     QMAKE_CXX = $(CXX)
