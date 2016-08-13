@@ -5,7 +5,7 @@
 
 Summary:        Digital VCR and streaming server
 Name:           %{_project}-ffmpeg
-Version:        3.1.1
+Version:        3.1.2
 Release:        1
 License:        GPL-3
 Group:          System/Libraries
@@ -87,5 +87,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Mon Jul 4 2016 Anton Batenev <antonbatenev@yandex.ru> - 3.1.1-1
+* Sat Aug 13 2016 Anton Batenev <antonbatenev@yandex.ru> - 3.1.2-1
 - Initial
