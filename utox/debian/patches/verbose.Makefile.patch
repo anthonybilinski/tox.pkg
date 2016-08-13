@@ -1,45 +1,47 @@
 --- Makefile
 +++ Makefile
-@@ -11,8 +11,8 @@
- UNAME_S := $(shell uname -s)
- UNAME_O := $(shell uname -o)
+@@ -9,8 +9,11 @@
+ UNAME_S		:= $(shell uname -s)
+ UNAME_O		:= $(shell uname -o)
  
--CFLAGS += -g -Wall -Wshadow -pthread -std=gnu99 -fno-strict-aliasing
--LDFLAGS += -pthread -lm
-+CFLAGS  = -g -Wall -Wshadow -pthread -std=gnu99 -fno-strict-aliasing
-+LDFLAGS = -pthread -lm
+-CFLAGS		+= -g -Wall -Wshadow -pthread -std=gnu99 -fno-strict-aliasing
+-LDFLAGS		+= -pthread -lm
++CFLAGS		= -g -Wall -Wshadow -pthread -std=gnu99 -fno-strict-aliasing
++LDFLAGS		= -pthread -lm
++
++CFLAGS		+= $(USER_CFLAGS)
++LDFLAGS		+= $(USER_LDFLAGS)
  
- ifeq ($(FILTER_AUDIO), 1)
- 	DEPS += filteraudio
-@@ -78,6 +78,8 @@
- 	TRAY_GEN = x86_64-w64-mingw32-windres icons/icon.rc -O coff -o
- endif
+ DESTDIR		?=
+ PREFIX		?= /usr/local
+@@ -57,6 +60,7 @@
+ 	endif
  
-+CFLAGS  += $(USER_CFLAGS)
-+LDFLAGS += $(USER_LDFLAGS)
+ 	UNX_CFLAGS += $(shell $(PKG_CONFIG) --cflags $(DEPS))
++	CFLAGS  += $(UNX_CFLAGS)
+ 	LDFLAGS += -lresolv -ldl $(shell $(PKG_CONFIG) --libs $(DEPS))
+ 	TRAY_GEN = $(LD) -r -b binary icons/utox-128x128.png -o
  
- DESTDIR ?=
- PREFIX ?= /usr/local
-@@ -92,7 +94,7 @@
- 
- utox: $(OBJ) $(OS_OBJ) $(TRAY_OBJ)
- 	@echo "  LD    $@"
--	@$(CC) $(CFLAGS) -o $(OUT_FILE) $(OBJ) $(OS_OBJ) $(TRAY_OBJ) $(LDFLAGS)
-+	$(CC) $(CFLAGS) -o $(OUT_FILE) $(OBJ) $(OS_OBJ) $(TRAY_OBJ) $(LDFLAGS)
- 
- install: utox
- 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-@@ -138,11 +140,11 @@
+@@ -176,7 +180,7 @@
  
  $(OBJ): %.o: %.c $(HEADERS)
- 	@echo "  CC    $@"
--	@$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
-+	$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
+ 	@echo "      CC    $@"
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
  
- $(OS_OBJ): %.o: %.c $(HEADERS)
- 	@echo "  CC    $@"
--	@$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
-+	$(CC) $(CFLAGS) -o $@ -c -DGIT_VERSION=\"$(GIT_V)\" $<
+ # This will only work on Cygwin
+ $(WIN_OBJ): %.o: %.c $(HEADERS)
+@@ -185,11 +189,11 @@
+ 
+ $(UNX_OBJ): %.o: %.c $(HEADERS)
+ 	@echo "  UNX_CC    $@"
+-	@$(CC) $(CFLAGS) -o $@ -c $<
++	$(CC) $(CFLAGS) -o $@ -c $<
  
  $(TRAY_OBJ):
- 	$(TRAY_GEN) $(TRAY_OBJ)
+ 	@echo "Creating tray icon"
+-	@$(TRAY_GEN) $@
++	$(TRAY_GEN) $@
+ 
+ clean: win-clean
+ 	rm -f ./$(OUT_FILE) ./$(TRAY_OBJ) ./src/*.o ./src/xlib/*.o
