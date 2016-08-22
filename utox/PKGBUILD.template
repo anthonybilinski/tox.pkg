@@ -16,7 +16,6 @@ sha512sums=('%SHA_512%')
 
 build() {
     cd "${pkgname}"
-    patch -p0 < debian/patches/verbose.Makefile.patch
     make PREFIX=/usr USER_CFLAGS="${CFLAGS}" USER_LDFLAGS="${LDFLAGS}"
 }
 

@@ -14,15 +14,7 @@
  
  DESTDIR		?=
  PREFIX		?= /usr/local
-@@ -57,6 +60,7 @@
- 	endif
- 
- 	UNX_CFLAGS += $(shell $(PKG_CONFIG) --cflags $(DEPS))
-+	CFLAGS  += $(UNX_CFLAGS)
- 	LDFLAGS += -lresolv -ldl $(shell $(PKG_CONFIG) --libs $(DEPS))
- 	TRAY_GEN = $(LD) -r -b binary icons/utox-128x128.png -o
- 
-@@ -176,7 +180,7 @@
+@@ -195,7 +198,7 @@
  
  $(OBJ): %.o: %.c $(HEADERS)
  	@echo "      CC    $@"
@@ -31,7 +23,7 @@
  
  # This will only work on Cygwin
  $(WIN_OBJ): %.o: %.c $(HEADERS)
-@@ -185,11 +189,11 @@
+@@ -204,11 +207,11 @@
  
  $(UNX_OBJ): %.o: %.c $(HEADERS)
  	@echo "  UNX_CC    $@"
