@@ -15,6 +15,7 @@ Provides:       qtox
 BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libv4l-devel, openssl-devel,
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel, ffmpeg-devel >= 2.6.0, libX11-devel, libXext-devel, libXfixes-devel
 BuildRequires:  tox-libtoxcore-devel
+#!BuildIgnore:  tox-ffmpeg-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
