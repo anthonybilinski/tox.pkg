@@ -33,7 +33,7 @@ else
     QMAKE_CXX = $(CXX)
 endif
 
-ifneq (,$(filter wheezy jessie precise trusty, $(CODENAME)))
+ifneq (,$(filter wheezy precise trusty, $(CODENAME)))
     QMAKE = $(PREFIX)/$(PROJECT)/bin/qmake
 else
     QMAKE = qmake
