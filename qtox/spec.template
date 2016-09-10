@@ -25,6 +25,11 @@ BuildRequires:  bzip2-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-q
 BuildRequires:  opus-devel
 %endif
 
+# workaround for openSUSE Leap 42.2 which breaks ffmpeg-devel package
+%if 0%{?suse_version} == 1315 && 0%{?sle_version} == 120200 && 0%{?is_opensuse} == 1
+BuildRequires:  pkgconfig(libavdevice), pkgconfig(libavfilter), pkgconfig(libswscale), pkgconfig(libpostproc), pkgconfig(libavformat), pkgconfig(libavcodec), pkgconfig(libswresample), pkgconfig(libavutil)
+%endif
+
 %if 0%{?centos} == 6
 BuildRequires:  tox-gcc
 %else
