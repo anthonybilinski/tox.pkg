@@ -18,10 +18,10 @@ Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
-BuildRequires:  libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.4.0, libqt5-qttools-devel >= 5.4.0, libqt5-qtsvg-devel >= 5.4.0
+BuildRequires:  libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.3.0, libqt5-qttools-devel >= 5.3.0, libqt5-qtsvg-devel >= 5.3.0
 BuildRequires:  libopus-devel
 %else
-BuildRequires:  bzip2-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.4.0, qt5-qttools-devel >= 5.4.0, qt5-qtsvg-devel >= 5.4.0
+BuildRequires:  bzip2-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-qttools-devel >= 5.3.0, qt5-qtsvg-devel >= 5.3.0
 BuildRequires:  opus-devel
 %endif
 
