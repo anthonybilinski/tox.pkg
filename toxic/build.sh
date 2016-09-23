@@ -35,8 +35,6 @@ rm -f "${BUILD_DIR}/${PACKAGE_NAME}_"*.build
 
 cp -rf "${BASE}/debian" "${SOURCE_DIR}/debian"
 
-"${BASE}/update-nodelist.py" > "${SOURCE_DIR}/misc/DHTnodes"
-
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_REVISION_SHORT=$(expr substr "${PACKAGE_REVISION}" 1 7)
 PACKAGE_VERSION="${PACKAGE_VERSION}~${PACKAGE_REVISION_SHORT}"
