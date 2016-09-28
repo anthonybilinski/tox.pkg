@@ -34,12 +34,6 @@ Upstream tox client packages and development libraries for popular linux distros
 * [tox-libopus](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libopus)
 * [tox-sqlcipher](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-sqlcipher)
 
-### New Group Chats
-
-* [toxic-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic-ngc) - an ncurses-based Tox client with new group chat support ([sources](https://github.com/JFreegman/toxic)).
-* [tox-bootstrapd-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore-ngc) - Tox bootstrap node daemon with new group chat support ([sources](https://github.com/JFreegman/toxcore/tree/master/other/bootstrap_daemon)).
-* [tox-libtoxcore-ngc](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore-ngc) - libtoxcore library with new group chat support ([sources](https://github.com/JFreegman/toxcore)).
-
 ### Additional separate repositories
 
 * [tox:gcc](https://build.opensuse.org/package/show/home:antonbatenev:tox:gcc) - GCC package to compile qtox on CentOS 6, Debian 7.0 (wheezy) and Ubuntu 12.04 (precise).
