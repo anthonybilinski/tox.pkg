@@ -46,12 +46,6 @@ Upstream tox client packages and development libraries for popular linux distros
 * [ppa:abbat/tox-gcc](https://launchpad.net/~abbat/+archive/ubuntu/tox-gcc) - GCC package to compile qtox for ARM.
 * [ppa:abbat/tox-qt5](https://launchpad.net/~abbat/+archive/ubuntu/tox-qt5) - Qt 5 static package to compile qtox for ARM.
 
-### Additional repository for Ubuntu Yakkety
-
-This is temporary repository still Ubuntu Yakkety not released yet. After release date (Oct 2016) it will be moved to openSUSE build service (OBS).
-
-* [ppa:abbat/tox-yakkety](https://launchpad.net/~abbat/+archive/ubuntu/tox-yakkety).
-
 ### How to use
 
 Click on interesting package name, follow "Download package" link, choose your distro, follow instructions, enjoy!
