@@ -1,6 +1,6 @@
 ## tox.pkg
 
-Upstream tox client packages and development libraries for popular linux distros (Debian, Ubuntu, CentOS, Fedora, openSUSE, Arch).
+Upstream tox client packages and development libraries for popular linux distros (Debian, Ubuntu, CentOS, Fedora, openSUSE, Arch, Mageia).
 
 ### Clients
 
