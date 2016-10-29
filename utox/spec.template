@@ -10,7 +10,7 @@ Summary:        Lightweight Tox client
 License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/GrayHatter/uTox
-BuildRequires:  git, pkgconfig, fontconfig-devel, freetype-devel, openal-devel, freealut-devel, libX11-devel, libXext-devel, libXrender-devel, libv4l-devel,
+BuildRequires:  git, pkgconfig, fontconfig-devel, freetype-devel, openal-devel, freealut-devel, libv4l-devel
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0
 BuildRequires:  tox-libtoxcore-devel, tox-libfilteraudio-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
@@ -21,6 +21,12 @@ BuildRequires:  libopus-devel, dbus-1-devel
 BuildRequires:  -post-build-checks
 %else
 BuildRequires:  opus-devel, dbus-devel
+%endif
+
+%if 0%{?mageia}
+BuildRequires:  libx11-devel, libxext-devel, libxrender-devel, libunimrcp-deps
+%else
+BuildRequires:  libX11-devel, libXext-devel, libXrender-devel
 %endif
 
 %description
