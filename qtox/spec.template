@@ -11,18 +11,27 @@ License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/qTox/qTox
 Conflicts:      qtox-alpha
-BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, libXScrnSaver-devel, openal-devel, libv4l-devel, openssl-devel,
-BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel, ffmpeg-devel >= 2.6.0, libX11-devel, libXext-devel, libXfixes-devel
+BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, openal-devel, libv4l-devel, openssl-devel,
+BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel, ffmpeg-devel >= 2.6.0
 BuildRequires:  tox-libtoxcore-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
-BuildRequires:  libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.3.0, libqt5-qttools-devel >= 5.3.0, libqt5-qtsvg-devel >= 5.3.0
-BuildRequires:  libopus-devel
+BuildRequires:  libopus-devel, libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.3.0, libqt5-qttools-devel >= 5.3.0, libqt5-qtsvg-devel >= 5.3.0
 %else
-BuildRequires:  bzip2-devel, gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-qttools-devel >= 5.3.0, qt5-qtsvg-devel >= 5.3.0
-BuildRequires:  opus-devel
+BuildRequires:  opus-devel, bzip2-devel
+%if 0%{?mageia}
+BuildRequires:  libgdk_pixbuf2.0-devel, qtbase5-common-devel >= 5.3.0, qttools5 >= 5.3.0, libqt5svg-devel >= 5.3.0
+%else
+BuildRequires:  gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-qttools-devel >= 5.3.0, qt5-qtsvg-devel >= 5.3.0
+%endif
+%endif
+
+%if 0%{?mageia}
+BuildRequires:  libxscrnsaver-devel, libx11-devel, libxext-devel, libxfixes-devel, sane-backends-iscan, libunimrcp-deps
+%else
+BuildRequires:  libXScrnSaver-devel, libX11-devel, libXext-devel, libXfixes-devel
 %endif
 
 # workaround for openSUSE Leap 42.2 which breaks ffmpeg-devel package
