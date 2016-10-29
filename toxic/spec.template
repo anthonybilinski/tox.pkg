@@ -42,7 +42,7 @@ BuildRequires:  libcurl-devel
 %endif
 
 %if 0%{?mageia}
-BuildRequires:  libx11-devel, sane-backends-iscan, curl
+BuildRequires:  libx11-devel, libncursesw-devel, sane-backends-iscan, curl
 %else
 BuildRequires:  libX11-devel
 %endif
