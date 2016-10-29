@@ -23,7 +23,9 @@ BuildRequires:  libopus-devel, libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-dev
 %else
 BuildRequires:  opus-devel, bzip2-devel
 %if 0%{?mageia}
-BuildRequires:  libgdk_pixbuf2.0-devel, qtbase5-common-devel >= 5.3.0, qttools5 >= 5.3.0, libqt5svg-devel >= 5.3.0
+BuildRequires:  libgdk_pixbuf2.0-devel
+BuildRequires:  qtbase5-common-devel >= 5.3.0, qttools5 >= 5.3.0, libqt5network-devel >= 5.3.0, libqt5concurrent-devel >= 5.3.0
+BuildRequires:  libqt5sql-devel >= 5.3.0, libqt5xml-devel >= 5.3.0, libqt5svg-devel >= 5.3.0, libqt5opengl-devel >= 5.3.0
 %else
 BuildRequires:  gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-qttools-devel >= 5.3.0, qt5-qtsvg-devel >= 5.3.0
 %endif
