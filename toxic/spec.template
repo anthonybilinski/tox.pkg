@@ -47,6 +47,10 @@ BuildRequires:  libx11-devel, libncursesw-devel, sane-backends-iscan, curl
 BuildRequires:  libX11-devel
 %endif
 
+%if 0%{?fedora} >= 25
+BuildRequires:  liberation-serif-fonts
+%endif
+
 %if 0%{?suse_version}
 BuildRequires:  -post-build-checks
 %endif

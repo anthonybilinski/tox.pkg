@@ -29,6 +29,10 @@ BuildRequires:  libx11-devel, libxext-devel, libxrender-devel, libunimrcp-deps
 BuildRequires:  libX11-devel, libXext-devel, libXrender-devel
 %endif
 
+%if 0%{?fedora} >= 25
+BuildRequires:  liberation-serif-fonts
+%endif
+
 %description
 Lightweight Tox client
 

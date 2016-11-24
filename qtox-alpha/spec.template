@@ -42,6 +42,10 @@ BuildRequires:  libXScrnSaver-devel, libX11-devel, libXext-devel, libXfixes-deve
 BuildRequires:  pkgconfig(libavdevice), pkgconfig(libavfilter), pkgconfig(libswscale), pkgconfig(libpostproc), pkgconfig(libavformat), pkgconfig(libavcodec), pkgconfig(libswresample), pkgconfig(libavutil)
 %endif
 
+%if 0%{?fedora} >= 25
+BuildRequires:  liberation-serif-fonts
+%endif
+
 %if 0%{?centos} == 6
 BuildRequires:  tox-gcc
 %else
