@@ -6,7 +6,6 @@ Upstream tox client packages and development libraries for popular linux distros
 
 * [qtox](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox) - stable release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
 * [qtox-alpha](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox-alpha) - master release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
-* [utox](https://build.opensuse.org/package/show/home:antonbatenev:tox/utox) - the lightest and fluffiest Tox client ([sources](https://github.com/GrayHatter/uTox)).
 * [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
 
 ### Utils
