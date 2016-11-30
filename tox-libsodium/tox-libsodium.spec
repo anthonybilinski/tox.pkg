@@ -50,10 +50,6 @@ developing applications that use %{name} libraries.
 make %{?_smp_mflags}
 
 
-%check
-make %{?_smp_mflags} check
-
-
 %post -p /sbin/ldconfig
 
 
