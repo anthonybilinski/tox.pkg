@@ -10,13 +10,11 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Utils
 
-* [tuntox](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox) - a program which forwards TCP connections over the Tox protocol ([sources](https://github.com/gjedeer/tuntox)).
 * [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple configure and maintain up to date Tox node ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
 
 ### Daemons
 
 * [tox-bootstrapd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
-* [tuntoxd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox) - tuntox server to forward TCP connections over the Tox protocol ([sources](https://github.com/gjedeer/tuntox)).
 
 ### Bindings
 
