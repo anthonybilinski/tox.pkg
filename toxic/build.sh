@@ -20,11 +20,7 @@ git clone --recursive https://github.com/Tox/toxic.git "${SOURCE_DIR}"
 
 cd "${SOURCE_DIR}"
 
-GIT_REV=$1
-
-if [ -n "${GIT_REV}" ]; then
-	git checkout "${GIT_REV}"
-fi
+git checkout f858714edde8186d27a1f4e9a93ee3abcf1d8166
 
 rm -f "${BUILD_DIR}/PKGBUILD"
 rm -f "${BUILD_DIR}/${PACKAGE_NAME}.spec"

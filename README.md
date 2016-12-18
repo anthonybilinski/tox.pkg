@@ -6,7 +6,6 @@ Upstream tox client packages and development libraries for popular linux distros
 
 * [qtox](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox) - stable release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
 * [qtox-alpha](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox-alpha) - master release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
-* [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
 
 ### Utils
 
@@ -40,6 +39,10 @@ Upstream tox client packages and development libraries for popular linux distros
 * [ppa:abbat/tox](https://launchpad.net/~abbat/+archive/ubuntu/tox) - Ubuntu Tox packages for arm64, armhf and ppc64el architectures.
 * [ppa:abbat/tox-gcc](https://launchpad.net/~abbat/+archive/ubuntu/tox-gcc) - GCC package to compile qtox for ARM.
 * [ppa:abbat/tox-qt5](https://launchpad.net/~abbat/+archive/ubuntu/tox-qt5) - Qt 5 static package to compile qtox for ARM.
+
+### Not supported anymore
+
+* [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
 
 ### How to use
 
