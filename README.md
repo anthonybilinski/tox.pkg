@@ -10,7 +10,6 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Utils
 
-* [toxvpn](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxvpn) - a tool that allows one to make tunneled point to point connections over Tox ([sources](https://github.com/cleverca22/toxvpn)).
 * [tuntox](https://build.opensuse.org/package/show/home:antonbatenev:tox/tuntox) - a program which forwards TCP connections over the Tox protocol ([sources](https://github.com/gjedeer/tuntox)).
 * [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple configure and maintain up to date Tox node ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
 
