@@ -49,6 +49,7 @@ on which the Theora codec was based.
     --enable-runtime-cpu-detect     \
     --enable-multi-res-encoding     \
     --enable-vp9-temporal-denoising \
+    --disable-unit-tests            \
     --disable-docs                  \
     --disable-examples              \
     --disable-install-docs          \
