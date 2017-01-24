@@ -5,7 +5,7 @@
 
 Summary:        VP8 and VP9 video codec
 Name:           %{_project}-libvpx
-Version:        1.6.0
+Version:        1.6.1
 Release:        1
 License:        BSD
 Group:          System/Libraries
@@ -85,5 +85,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Sun Jul 31 2016 Anton Batenev <antonbatenev@yandex.ru> - 1.6.0-1
+* Tue Jan 24 2017 Anton Batenev <antonbatenev@yandex.ru> - 1.6.1-1
 - Initial
