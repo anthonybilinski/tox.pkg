@@ -51,3 +51,11 @@ Click on interesting package name, follow "Download package" link, choose your d
 ### Feedback
 
 If you find some package useful, please email me which distro and package name(s) you are using.
+
+### License
+
+License of files in each `debian` directory is located in the `copyright` file under the respective `debian` directory.
+
+Files not covered by other licenses are licensed under the **CC0** license.
+
+[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
