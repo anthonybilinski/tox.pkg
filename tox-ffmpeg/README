@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-ffmpeg-3.2.x/tox-ffmpeg_3.2.x.orig.tar.bz2
+tox-ffmpeg-3.3.x/tox-ffmpeg_3.3.x.orig.tar.bz2
 
 # Compile
 
