@@ -59,7 +59,6 @@ This package contains development files for %{name}
     --disable-doc                       \
     --enable-gpl                        \
     --enable-nonfree                    \
-    --enable-x11grab                    \
     --enable-pic
 
 V=1 make %{?_smp_mflags}
