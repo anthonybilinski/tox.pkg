@@ -1,5 +1,5 @@
-tox-sqlcipher (3.4.0-1) unstable; urgency=low
+tox-sqlcipher (3.4.1-1) unstable; urgency=low
 
   * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 15 Apr 2016 15:56:13 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 05 May 2017 16:39:03 +0300

@@ -6,7 +6,7 @@
 
 Summary:        SQLCipher library
 Name:           %{_project}-sqlcipher
-Version:        3.4.0
+Version:        3.4.1
 Release:        1
 License:        BSD
 Group:          System/Libraries
@@ -102,5 +102,5 @@ export NO_BRP_CHECK_RPATH="true"
 
 
 %changelog
-* Fri Apr 15 2015 Anton Batenev <antonbatenev@yandex.ru> - 3.4.0-1
+* Fri May 5 2017 Anton Batenev <antonbatenev@yandex.ru> - 3.4.1-1
 - Initial
