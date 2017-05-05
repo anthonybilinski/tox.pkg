@@ -23,7 +23,7 @@ else
     QMAKE_FLAGS = ENABLE_SYSTRAY_UNITY_BACKEND=NO
 endif
 
-ifneq (,$(filter wheezy precise, $(CODENAME)))
+ifneq (,$(filter wheezy, $(CODENAME)))
     GCC_DIR     = $(PREFIX)/$(PROJECT)
     QMAKE_CC    = $(GCC_DIR)/bin/gcc
     QMAKE_CXX   = $(GCC_DIR)/bin/g++
@@ -33,7 +33,7 @@ else
     QMAKE_CXX = $(CXX)
 endif
 
-ifneq (,$(filter wheezy precise trusty, $(CODENAME)))
+ifneq (,$(filter wheezy trusty, $(CODENAME)))
     QMAKE = $(PREFIX)/$(PROJECT)/bin/qmake
 else
     QMAKE = qmake
