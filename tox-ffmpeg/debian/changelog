@@ -1,5 +1,5 @@
-tox-ffmpeg (3.3.0-1) stable; urgency=low
+tox-ffmpeg (3.3.2-1) stable; urgency=low
 
   * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 05 May 2017 16:07:41 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 23 Jun 2017 17:25:22 +0300
