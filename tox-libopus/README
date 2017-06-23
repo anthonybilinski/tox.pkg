@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-libopus-1.1.x/tox-libopus_1.1.x.orig.tar.bz2
+tox-libopus-1.2.x/tox-libopus_1.2.x.orig.tar.bz2
 
 # Usage
 

@@ -6,7 +6,7 @@
 
 Summary:        Opus codec runtime library
 Name:           %{_project}-libopus
-Version:        1.1.4
+Version:        1.2
 Release:        1
 License:        BSD
 Group:          System/Libraries
@@ -87,5 +87,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Tue Jan 24 2017 Anton Batenev <antonbatenev@yandex.ru> - 1.1.4-1
+* Fri Jun 23 2017 Anton Batenev <antonbatenev@yandex.ru> - 1.2-1
 - Initial
