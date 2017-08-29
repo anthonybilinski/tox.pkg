@@ -1,5 +1,5 @@
-tox-libsodium (1.0.12-1) unstable; urgency=low
+tox-libsodium (1.0.13-1) unstable; urgency=low
 
   * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Fri, 05 May 2017 15:50:22 +0300
+ -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 29 Aug 2017 19:37:25 +0300
