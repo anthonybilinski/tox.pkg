@@ -3,14 +3,14 @@ tox-easy-bootstrap (0.0.4) unstable; urgency=low
   * Fix status check;
   * Allow FQDN address.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 29 Mar 2016 19:50:27 +0300
+ -- Anthony Bilinski <me@abilinski.com>  Tue, 29 Mar 2016 19:50:27 +0300
 
 tox-easy-bootstrap (0.0.3) unstable; urgency=low
 
   * Fix openSUSE build;
   * Add preset to PKGBUILD.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Wed, 02 Mar 2016 12:59:05 +0300
+ -- Anthony Bilinski <me@abilinski.com>  Wed, 02 Mar 2016 12:59:05 +0300
 
 tox-easy-bootstrap (0.0.2) unstable; urgency=low
 
@@ -19,10 +19,10 @@ tox-easy-bootstrap (0.0.2) unstable; urgency=low
   * On install update config and restart;
   * Suppress cron errors.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 01 Mar 2016 18:03:19 +0300
+ -- Anthony Bilinski <me@abilinski.com>  Tue, 01 Mar 2016 18:03:19 +0300
 
 tox-easy-bootstrap (0.0.1) unstable; urgency=low
 
   * Initial.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Mon, 29 Feb 2016 17:20:03 +0300
+ -- Anthony Bilinski <me@abilinski.com>  Mon, 29 Feb 2016 17:20:03 +0300

@@ -92,5 +92,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Tue Aug 29 2017 Anton Batenev <antonbatenev@yandex.ru> - 3.3.3-1
+* Tue Aug 29 2017 Anthony Bilinski <me@abilinski.com> - 3.3.3-1
 - Initial

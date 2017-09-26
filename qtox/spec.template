@@ -129,5 +129,5 @@ debian/icons.sh qtox %{buildroot}
 
 
 %changelog
-* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+* %DATE% Anthony Bilinski <me@abilinski.com> - %VERSION%
 - Initial

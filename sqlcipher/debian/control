@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1),
  libssl-dev, libreadline-dev, tcl-dev
-Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: http://sqlcipher.net
 

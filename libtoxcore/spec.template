@@ -254,5 +254,5 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 
 
 %changelog
-* %DATE% Anton Batenev <antonbatenev@yandex.ru> - %VERSION%
+* %DATE% Anthony Bilinski <me@abilinski.com> - %VERSION%
 - Initial

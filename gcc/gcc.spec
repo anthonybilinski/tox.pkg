@@ -83,5 +83,5 @@ export NO_BRP_CHECK_RPATH="true"
 
 
 %changelog
-* Fri Jun 17 2016 Anton Batenev <antonbatenev@yandex.ru> - 6.1.0-1
+* Fri Jun 17 2016 Anthony Bilinski <me@abilinski.com> - 6.1.0-1
 - Initial

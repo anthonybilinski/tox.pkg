@@ -2,4 +2,4 @@ libsodium (1.0.13-1) unstable; urgency=low
 
   * Upstream release.
 
- -- Anton Batenev <antonbatenev@yandex.ru>  Tue, 29 Aug 2017 19:37:25 +0300
+ -- Anthony Bilinski <me@abilinski.com>  Tue, 29 Aug 2017 19:37:25 +0300

@@ -1,4 +1,4 @@
-# Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+# Maintainer: Anthony Bilinski <me@abilinski.com>
 
 pkgname=%PACKAGE%
 pkgver=%VERSION%

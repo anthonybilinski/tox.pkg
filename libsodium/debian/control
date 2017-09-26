@@ -2,7 +2,7 @@ Source: libsodium
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), pkg-config, dh-autoreconf
-Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: http://www.libsodium.org
 

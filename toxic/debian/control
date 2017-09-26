@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1),
  libopus-dev,
  libsodium-dev (>= 0.5.0),
  libtoxcore-dev
-Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: https://github.com/Tox/toxic
 

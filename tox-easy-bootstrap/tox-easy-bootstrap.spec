@@ -94,5 +94,5 @@ systemctl preset %{name}.preset
 
 
 %changelog
-* Tue Mar 29 2016 Anton Batenev <antonbatenev@yandex.ru> 0.0.4-1
+* Tue Mar 29 2016 Anthony Bilinski <me@abilinski.com> 0.0.4-1
 - Initial RPM release

@@ -51,7 +51,7 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), debconf, bison, flex,
  libasound2-dev,
  libcups2-dev,
  libedit-dev
-Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: http://www.qt.io/download-open-source
 

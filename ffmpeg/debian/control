@@ -2,7 +2,7 @@ Source: ffmpeg
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), yasm, libx11-dev, libxext-dev, libxfixes-dev
-Maintainer: Anton Batenev <antonbatenev@yandex.ru>
+Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: https://www.ffmpeg.org
 
