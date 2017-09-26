@@ -13,7 +13,7 @@ backup=('etc/tox-bootstrapd.conf')
 conflicts=('toxcore' 'libtoxcore-ngc')
 provides=('toxcore')
 install=${pkgname}.install
-source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+source=("https://build.opensuse.org/source/home:qTox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha512sums=('%SHA_512%')
 
 build() {

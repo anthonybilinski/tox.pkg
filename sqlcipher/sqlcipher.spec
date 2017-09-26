@@ -11,7 +11,7 @@ Release:        1
 License:        BSD
 Group:          System/Libraries
 URL:            http://sqlcipher.net
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.orig.tar.bz2
+Source0:        https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.orig.tar.bz2
 BuildRequires:  openssl-devel, readline-devel, tcl-devel
 
 %description

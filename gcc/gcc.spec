@@ -9,7 +9,7 @@ License:        GPL-3.0+
 Group:          Development/Languages/C and C++
 URL:            http://gcc.gnu.org
 BuildRequires:  gcc-c++, glibc-devel, binutils, perl, bison, flex, gettext-devel, texinfo, zlib-devel, zip, unzip, dejagnu, gmp-devel, mpfr-devel
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox:tox-gcc/%{name}/%{name}_%{version}.orig.tar.bz2
+Source0:        https://build.opensuse.org/source/home:qTox:tox-gcc/%{name}/%{name}_%{version}.orig.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?centos}
@@ -19,7 +19,7 @@ BuildRequires:  mpc-devel
 %endif
 
 %if 0%{?suse_version}
-Source1:        https://build.opensuse.org/source/home:antonbatenev:tox:tox-gcc/%{name}/%{name}.rpmlintrc
+Source1:        https://build.opensuse.org/source/home:qTox:tox-gcc/%{name}/%{name}.rpmlintrc
 %endif
 
 %description

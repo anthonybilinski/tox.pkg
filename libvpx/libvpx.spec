@@ -10,7 +10,7 @@ Release:        1
 License:        BSD
 Group:          System/Libraries
 URL:            http://www.webmproject.org
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.orig.tar.bz2
+Source0:        https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.orig.tar.bz2
 BuildRequires:  yasm
 
 %description

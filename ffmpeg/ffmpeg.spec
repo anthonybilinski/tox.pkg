@@ -10,7 +10,7 @@ Release:        1
 License:        GPL-3
 Group:          System/Libraries
 URL:            http://ffmpeg.org/
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.orig.tar.bz2
+Source0:        https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.orig.tar.bz2
 BuildRequires:  yasm
 
 %if 0%{?mageia}

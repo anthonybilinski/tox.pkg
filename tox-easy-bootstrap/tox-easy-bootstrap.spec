@@ -13,7 +13,7 @@ License:       BSD-2-Clause
 URL:           https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap
 Requires:      cron, python >= 2.6, tox-bootstrapd
 BuildRequires: python-devel >= 2.6
-Source0:       https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
+Source0:       https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:     %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}

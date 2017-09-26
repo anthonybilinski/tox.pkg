@@ -11,7 +11,7 @@ depends=('libconfig' 'curl' 'ncurses' 'qrencode' 'openal' 'freealut' 'libnotify'
 makedepends=('git')
 conflicts=('toxic' 'toxic-git')
 provides=('toxic' 'toxic-git')
-source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+source=("https://build.opensuse.org/source/home:qTox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha512sums=('%SHA_512%')
 
 build() {

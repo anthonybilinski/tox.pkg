@@ -14,9 +14,9 @@ Conflicts:      %{name}-nox, %{name}-ngc, %{name}-ngc-nox
 BuildRequires:  pkgconfig, asciidoc, gettext, libconfig-devel, ncurses-devel, qrencode-devel, openal-devel, freealut-devel
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0
 BuildRequires:  libtoxcore-devel
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
-Patch0:         https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/centos.notify.c.patch
-Patch1:         https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/opensuse.Makefile.patch
+Source0:        https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.tar.bz2
+Patch0:         https://build.opensuse.org/source/home:qTox/%{name}/centos.notify.c.patch
+Patch1:         https://build.opensuse.org/source/home:qTox/%{name}/opensuse.Makefile.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}

@@ -11,7 +11,7 @@ depends=('cron' 'python>=2.6' 'toxcore')
 makedepends=('python>=2.6')
 backup=('etc/tox-easy-bootstrap.conf')
 install=${pkgname}.install
-source=("https://build.opensuse.org/source/home:antonbatenev:tox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
+source=("https://build.opensuse.org/source/home:qTox/${pkgname}/${pkgname}_${pkgver}.tar.bz2")
 sha256sums=('SKIP')
 
 package() {

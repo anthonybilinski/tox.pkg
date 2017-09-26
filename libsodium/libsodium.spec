@@ -11,7 +11,7 @@ License:        ISC
 Group:          System/Libraries
 URL:            https://github.com/jedisct1/libsodium
 BuildRequires:  pkgconfig
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.orig.tar.bz2
+Source0:        https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.orig.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

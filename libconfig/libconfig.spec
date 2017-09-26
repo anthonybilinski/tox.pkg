@@ -11,7 +11,7 @@ Release:        1
 License:        LGPLv2+
 Group:          System/Libraries
 URL:            http://www.hyperrealm.com/libconfig/
-Source0:        https://build.opensuse.org/source/home:antonbatenev:tox:libconfig/%{name}/%{name}_%{version}.orig.tar.bz2
+Source0:        https://build.opensuse.org/source/home:qTox:libconfig/%{name}/%{name}_%{version}.orig.tar.bz2
 BuildRequires:  bison, flex
 
 %description

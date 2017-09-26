@@ -4,35 +4,35 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Clients
 
-* [qtox](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox) - stable release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
-* [qtox-alpha](https://build.opensuse.org/package/show/home:antonbatenev:tox/qtox-alpha) - master release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
+* [qtox](https://build.opensuse.org/package/show/home:qTox/qtox) - stable release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
+* [qtox-alpha](https://build.opensuse.org/package/show/home:qTox/qtox-alpha) - master release for powerful Tox chat client that follows the Tox design guidelines ([sources](https://github.com/qTox/qTox)).
 
 ### Utils
 
-* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-easy-bootstrap) - a tool to simple configure and maintain up to date Tox node ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
+* [tox-easy-bootstrap](https://build.opensuse.org/package/show/home:qTox/tox-easy-bootstrap) - a tool to simple configure and maintain up to date Tox node ([sources](https://github.com/abbat/tox.pkg/tree/master/tox-easy-bootstrap)).
 
 ### Daemons
 
-* [bootstrapd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
+* [bootstrapd](https://build.opensuse.org/package/show/home:qTox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
 
 ### Bindings
 
-* [python-toxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/python-toxcore) - python binding for Tox core ([sources](https://github.com/abbat/pytoxcore)).
+* [python-toxcore](https://build.opensuse.org/package/show/home:qTox/python-toxcore) - python binding for Tox core ([sources](https://github.com/abbat/pytoxcore)).
 
 ### Development libraries
 
-* [libtoxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore)
-* [libsodium](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libsodium)
-* [ffmpeg](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-ffmpeg)
-* [libvpx](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libvpx)
-* [libopus](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libopus)
-* [sqlcipher](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-sqlcipher)
+* [libtoxcore](https://build.opensuse.org/package/show/home:qTox/tox-libtoxcore)
+* [libsodium](https://build.opensuse.org/package/show/home:qTox/tox-libsodium)
+* [ffmpeg](https://build.opensuse.org/package/show/home:qTox/tox-ffmpeg)
+* [libvpx](https://build.opensuse.org/package/show/home:qTox/tox-libvpx)
+* [libopus](https://build.opensuse.org/package/show/home:qTox/tox-libopus)
+* [sqlcipher](https://build.opensuse.org/package/show/home:qTox/tox-sqlcipher)
 
 ### Additional separate repositories
 
-* [tox:gcc](https://build.opensuse.org/package/show/home:antonbatenev:tox:gcc) - GCC package to compile qtox on CentOS 6, Debian 7.0 (wheezy).
-* [tox:qt5](https://build.opensuse.org/package/show/home:antonbatenev:tox:qt5) - Qt 5 static package to compile qtox on Debian and Ubuntu.
-* [tox:libconfig](https://build.opensuse.org/project/show/home:antonbatenev:tox:libconfig) - libconfig static package to compile libtoxcore on CentOS 6.
+* [tox:gcc](https://build.opensuse.org/package/show/home:qTox:gcc) - GCC package to compile qtox on CentOS 6, Debian 7.0 (wheezy).
+* [tox:qt5](https://build.opensuse.org/package/show/home:qTox:qt5) - Qt 5 static package to compile qtox on Debian and Ubuntu.
+* [tox:libconfig](https://build.opensuse.org/project/show/home:qTox:libconfig) - libconfig static package to compile libtoxcore on CentOS 6.
 
 ### Additional repositories for Ubuntu ARM
 
@@ -42,7 +42,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Not supported anymore
 
-* [toxic](https://build.opensuse.org/package/show/home:antonbatenev:tox/toxic) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
+* [toxic](https://build.opensuse.org/package/show/home:qTox/toxic) - an ncurses-based Tox client ([sources](https://github.com/JFreegman/toxic)).
 
 ### How to use
 
