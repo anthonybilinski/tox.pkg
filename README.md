@@ -13,7 +13,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Daemons
 
-* [bootstrapd](https://build.opensuse.org/package/show/home:qTox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
+* [bootstrapd](https://build.opensuse.org/package/show/home:qTox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/TokTok/c-toxcore/tree/master/other/bootstrap_daemon)).
 
 ### Bindings
 

@@ -18,7 +18,7 @@ mkdir -p "${BUILD_DIR}"
 
 rm -rf "${SOURCE_DIR}"
 
-git clone --recursive https://github.com/irungentoo/toxcore.git "${SOURCE_DIR}"
+git clone --recursive https://github.com/TokTok/c-toxcore.git "${SOURCE_DIR}"
 
 cd "${SOURCE_DIR}"
 
