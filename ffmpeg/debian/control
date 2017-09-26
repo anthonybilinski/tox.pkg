@@ -1,4 +1,4 @@
-Source: tox-ffmpeg
+Source: ffmpeg
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), yasm, libx11-dev, libxext-dev, libxfixes-dev
@@ -6,7 +6,7 @@ Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: https://www.ffmpeg.org
 
-Package: tox-ffmpeg
+Package: ffmpeg
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: Digital VCR and streaming server
@@ -17,9 +17,9 @@ Description: Digital VCR and streaming server
  This version enable more support about codecs, require PostInstaller
  repo enable.
 
-Package: tox-ffmpeg-dev
+Package: ffmpeg-dev
 Section: libdevel
-Depends: ${misc:Depends}, tox-ffmpeg (= ${binary:Version})
+Depends: ${misc:Depends}, ffmpeg (= ${binary:Version})
 Architecture: any
 Description: Digital VCR and streaming server
  FFmpeg is a complete and free Internet live audio and video

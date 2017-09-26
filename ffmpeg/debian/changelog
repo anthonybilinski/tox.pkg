@@ -1,4 +1,4 @@
-tox-ffmpeg (3.3.3-1) stable; urgency=low
+ffmpeg (3.3.3-1) stable; urgency=low
 
   * Upstream release.
 

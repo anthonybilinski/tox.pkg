@@ -1,4 +1,4 @@
-Source: tox-libvpx
+Source: libvpx
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), yasm
@@ -6,7 +6,7 @@ Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: http://www.webmproject.org
 
-Package: tox-libvpx
+Package: libvpx
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: VP8 and VP9 video codec encoding/decoding tools
@@ -14,9 +14,9 @@ Description: VP8 and VP9 video codec encoding/decoding tools
  as open source by Google Inc. They are the successor of the VP3 codec,
  on which the Theora codec was based.
 
-Package: tox-libvpx-dev
+Package: libvpx-dev
 Section: libdevel
-Depends: ${misc:Depends}, tox-libvpx (= ${binary:Version})
+Depends: ${misc:Depends}, libvpx (= ${binary:Version})
 Architecture: any
 Description: VP8 and VP9 video codec encoding/decoding tools
  VP8 and VP9 are open video codecs, originally developed by On2 and released

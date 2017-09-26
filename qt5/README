@@ -1,4 +1,4 @@
-tox-qt5
+qt5
 
 Sources: http://www.qt.io/download-open-source/
 Use 5.6.x.
@@ -6,4 +6,4 @@ Use 5.6.x.
 # Prepare
 
 Repack original tarball as
-tox-qt5-5.6.x/tox-qt5_5.6.x.orig.tar.bz2
+qt5-5.6.x/qt5_5.6.x.orig.tar.bz2

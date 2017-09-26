@@ -1,1 +1,1 @@
-tox-sqlcipher: new-package-should-close-itp-bug
+sqlcipher: new-package-should-close-itp-bug

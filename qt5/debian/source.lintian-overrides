@@ -1,2 +1,2 @@
-tox-qt5: ancient-standards-version
-tox-qt5: missing-license-paragraph-in-dep5-copyright
+qt5: ancient-standards-version
+qt5: missing-license-paragraph-in-dep5-copyright

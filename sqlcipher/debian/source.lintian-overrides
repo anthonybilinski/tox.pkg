@@ -1,2 +1,2 @@
-tox-sqlcipher: ancient-standards-version
-tox-sqlcipher: missing-license-paragraph-in-dep5-copyright
+sqlcipher: ancient-standards-version
+sqlcipher: missing-license-paragraph-in-dep5-copyright

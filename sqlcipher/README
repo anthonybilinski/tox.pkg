@@ -1,4 +1,4 @@
-tox-sqlcipher
+sqlcipher
 
 Sources: https://github.com/sqlcipher/sqlcipher
 Use last release.
@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-sqlcipher-3.4.x/tox-sqlcipher_3.4.x.orig.tar.bz2
+sqlcipher-3.4.x/sqlcipher_3.4.x.orig.tar.bz2
 
 # Usage
 

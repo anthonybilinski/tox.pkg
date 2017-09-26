@@ -1,4 +1,4 @@
-Source: tox-libsodium
+Source: libsodium
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), pkg-config, dh-autoreconf
@@ -6,7 +6,7 @@ Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: http://www.libsodium.org
 
-Package: tox-libsodium
+Package: libsodium
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
 Architecture: any
@@ -21,9 +21,9 @@ Description: Network communication, cryptography and signaturing library
  Sodium is a portable, cross-compilable, installable, packageable fork of NaCl,
  with a compatible API.
 
-Package: tox-libsodium-dev
+Package: libsodium-dev
 Section: libdevel
-Depends: ${misc:Depends}, tox-libsodium (= ${binary:Version})
+Depends: ${misc:Depends}, libsodium (= ${binary:Version})
 Architecture: any
 Multi-Arch: same
 Description: Network communication, cryptography and signaturing library - headers

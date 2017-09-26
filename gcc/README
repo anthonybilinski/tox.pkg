@@ -1,4 +1,4 @@
-tox-gcc
+gcc
 
 GCC 6.1.0 for for tox packages (qTox)
 Sources: https://gcc.gnu.org/gcc-6
@@ -8,4 +8,4 @@ Sources: https://gcc.gnu.org/gcc-6
 Use release tarball named gcc-6.1.0.tar.(gz|bz2)
 
 Repack original tarball as
-tox-gcc-6.1.0/tox-gcc_6.1.0.orig.tar.bz2
+gcc-6.1.0/gcc_6.1.0.orig.tar.bz2

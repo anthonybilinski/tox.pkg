@@ -1,4 +1,4 @@
-Source: tox-qt5
+Source: qt5
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), debconf, bison, flex, perl, python, xkb-data,
@@ -55,7 +55,7 @@ Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 Standards-Version: 3.9.4
 Homepage: http://www.qt.io/download-open-source
 
-Package: tox-qt5
+Package: qt5
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: Qt 5 development package
@@ -71,8 +71,8 @@ Description: Qt 5 development package
  look at http://pkg-kde.alioth.debian.org/packagingqtstuff.html for
  more information.
 
-Package: tox-qt5-dev
-Depends: ${misc:Depends}, tox-qt5 (= ${binary:Version})
+Package: qt5-dev
+Depends: ${misc:Depends}, qt5 (= ${binary:Version})
 Architecture: any
 Description: Qt 5 development package
  Qt is a cross-platform C++ application framework. Qt's primary feature

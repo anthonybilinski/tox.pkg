@@ -1,4 +1,4 @@
-tox-ffmpeg
+ffmpeg
 
 Sources: https://www.ffmpeg.org/download.html
 Use last release.
@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-ffmpeg-3.3.x/tox-ffmpeg_3.3.x.orig.tar.bz2
+ffmpeg-3.3.x/ffmpeg_3.3.x.orig.tar.bz2
 
 # Compile
 

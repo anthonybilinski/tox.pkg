@@ -1,2 +1,2 @@
-tox-libopus: ancient-standards-version
-tox-libopus: missing-license-paragraph-in-dep5-copyright
+libopus: ancient-standards-version
+libopus: missing-license-paragraph-in-dep5-copyright

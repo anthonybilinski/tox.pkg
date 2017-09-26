@@ -1,2 +1,2 @@
-tox-libvpx: ancient-standards-version
-tox-libvpx: missing-license-paragraph-in-dep5-copyright
+libvpx: ancient-standards-version
+libvpx: missing-license-paragraph-in-dep5-copyright

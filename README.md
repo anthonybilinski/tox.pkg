@@ -13,7 +13,7 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Daemons
 
-* [tox-bootstrapd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
+* [bootstrapd](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore) - Tox bootstrap node daemon ([sources](https://github.com/irungentoo/toxcore/tree/master/other/bootstrap_daemon)).
 
 ### Bindings
 
@@ -21,12 +21,12 @@ Upstream tox client packages and development libraries for popular linux distros
 
 ### Development libraries
 
-* [tox-libtoxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore)
-* [tox-libsodium](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libsodium)
-* [tox-ffmpeg](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-ffmpeg)
-* [tox-libvpx](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libvpx)
-* [tox-libopus](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libopus)
-* [tox-sqlcipher](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-sqlcipher)
+* [libtoxcore](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libtoxcore)
+* [libsodium](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libsodium)
+* [ffmpeg](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-ffmpeg)
+* [libvpx](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libvpx)
+* [libopus](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-libopus)
+* [sqlcipher](https://build.opensuse.org/package/show/home:antonbatenev:tox/tox-sqlcipher)
 
 ### Additional separate repositories
 
@@ -37,8 +37,8 @@ Upstream tox client packages and development libraries for popular linux distros
 ### Additional repositories for Ubuntu ARM
 
 * [ppa:abbat/tox](https://launchpad.net/~abbat/+archive/ubuntu/tox) - Ubuntu Tox packages for arm64, armhf and ppc64el architectures.
-* [ppa:abbat/tox-gcc](https://launchpad.net/~abbat/+archive/ubuntu/tox-gcc) - GCC package to compile qtox for ARM.
-* [ppa:abbat/tox-qt5](https://launchpad.net/~abbat/+archive/ubuntu/tox-qt5) - Qt 5 static package to compile qtox for ARM.
+* [ppa:abbat/gcc](https://launchpad.net/~abbat/+archive/ubuntu/tox-gcc) - GCC package to compile qtox for ARM.
+* [ppa:abbat/qt5](https://launchpad.net/~abbat/+archive/ubuntu/tox-qt5) - Qt 5 static package to compile qtox for ARM.
 
 ### Not supported anymore
 

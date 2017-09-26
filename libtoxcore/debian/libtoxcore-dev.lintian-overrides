@@ -1,5 +1,5 @@
-tox-libtoxcore-dev: file-in-unusual-dir
-tox-libtoxcore-dev: non-standard-dir-in-usr
-tox-libtoxcore-dev: non-empty-dependency_libs-in-la-file
-tox-libtoxcore-dev: description-synopsis-starts-with-article
-tox-libtoxcore-dev: copyright-should-refer-to-common-license-file-for-gpl
+libtoxcore-dev: file-in-unusual-dir
+libtoxcore-dev: non-standard-dir-in-usr
+libtoxcore-dev: non-empty-dependency_libs-in-la-file
+libtoxcore-dev: description-synopsis-starts-with-article
+libtoxcore-dev: copyright-should-refer-to-common-license-file-for-gpl

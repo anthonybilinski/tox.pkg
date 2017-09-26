@@ -14,7 +14,7 @@ Conflicts:      qtox
 Provides:       qtox
 BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, openal-devel, libv4l-devel, openssl-devel,
 BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel, ffmpeg-devel >= 2.6.0
-BuildRequires:  tox-libtoxcore-devel
+BuildRequires:  libtoxcore-devel
 Source0:        https://build.opensuse.org/source/home:antonbatenev:tox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -46,11 +46,7 @@ BuildRequires:  pkgconfig(libavdevice), pkgconfig(libavfilter), pkgconfig(libsws
 BuildRequires:  liberation-serif-fonts
 %endif
 
-%if 0%{?centos} == 6
-BuildRequires:  tox-gcc
-%else
 BuildRequires:  gcc >= 4.8
-%endif
 
 %description
 qTox is a powerful Tox client that follows the Tox design guidelines.

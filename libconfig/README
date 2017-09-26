@@ -1,4 +1,4 @@
-tox-libconfig
+libconfig
 
 Sources: http://www.hyperrealm.com/libconfig/
 Use last release.
@@ -6,4 +6,4 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-libconfig-1.5/tox-libconfig_1.5.orig.tar.bz2
+libconfig-1.5/libconfig_1.5.orig.tar.bz2

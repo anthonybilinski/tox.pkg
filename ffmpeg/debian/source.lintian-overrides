@@ -1,2 +1,2 @@
-tox-ffmpeg: ancient-standards-version
-tox-ffmpeg: missing-license-paragraph-in-dep5-copyright
+ffmpeg: ancient-standards-version
+ffmpeg: missing-license-paragraph-in-dep5-copyright

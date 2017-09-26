@@ -1,2 +1,2 @@
-tox-ffmpeg: new-package-should-close-itp-bug
-tox-ffmpeg: copyright-should-refer-to-common-license-file-for-gpl
+ffmpeg: new-package-should-close-itp-bug
+ffmpeg: copyright-should-refer-to-common-license-file-for-gpl

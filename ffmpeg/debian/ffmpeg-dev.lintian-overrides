@@ -1,4 +1,4 @@
-tox-ffmpeg-dev: file-in-unusual-dir
-tox-ffmpeg-dev: non-standard-dir-in-usr
-tox-ffmpeg-dev: new-package-should-close-itp-bug
-tox-ffmpeg-dev: copyright-should-refer-to-common-license-file-for-gpl
+ffmpeg-dev: file-in-unusual-dir
+ffmpeg-dev: non-standard-dir-in-usr
+ffmpeg-dev: new-package-should-close-itp-bug
+ffmpeg-dev: copyright-should-refer-to-common-license-file-for-gpl

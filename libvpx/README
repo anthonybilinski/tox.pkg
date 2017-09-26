@@ -1,4 +1,4 @@
-tox-libvpx
+libvpx
 
 Sources: http://www.webmproject.org/code/releases/
 Use last release.
@@ -6,7 +6,7 @@ Use last release.
 # Prepare
 
 Repack original tarball as
-tox-libvpx-1.6.x/tox-libvpx_1.6.x.orig.tar.bz2
+libvpx-1.6.x/libvpx_1.6.x.orig.tar.bz2
 
 # Usage
 

@@ -1,2 +1,2 @@
-tox-libconfig: ancient-standards-version
-tox-libconfig: missing-license-paragraph-in-dep5-copyright
+libconfig: ancient-standards-version
+libconfig: missing-license-paragraph-in-dep5-copyright
