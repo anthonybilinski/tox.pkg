@@ -5,7 +5,7 @@
 
 Summary:        Digital VCR and streaming server
 Name:           %{_project}-ffmpeg
-Version:        3.3.3
+Version:        3.3.4
 Release:        1
 License:        GPL-3
 Group:          System/Libraries
@@ -92,5 +92,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Tue Aug 29 2017 Anthony Bilinski <me@abilinski.com> - 3.3.3-1
+* Tue Aug 29 2017 Anthony Bilinski <me@abilinski.com> - 3.3.4-1
 - Initial
