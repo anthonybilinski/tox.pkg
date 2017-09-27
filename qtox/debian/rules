@@ -44,16 +44,7 @@ export QT_SELECT=5
 override_dh_auto_configure:
 	debian/patch.sh
 
-	$(QMAKE) $(QMAKE_FLAGS) \
-		"QMAKE_CPPFLAGS *= $(shell dpkg-buildflags --get CPPFLAGS)" \
-		"QMAKE_CFLAGS   *= $(shell dpkg-buildflags --get CFLAGS)"   \
-		"QMAKE_CXXFLAGS *= $(shell dpkg-buildflags --get CXXFLAGS)" \
-		"QMAKE_LFLAGS   *= $(shell dpkg-buildflags --get LDFLAGS)"  \
-		"LIBS           *= $(QMAKE_LIBS)"                           \
-		"INCLUDEPATH    *= $(INCLUDEDIR)"                           \
-		"QMAKE_CC        = $(QMAKE_CC)"                             \
-		"QMAKE_CXX       = $(QMAKE_CXX)"                            \
-		qtox.pro
+	cmake .
 
 override_dh_auto_test:
 	/bin/true

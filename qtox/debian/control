@@ -43,7 +43,8 @@ Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1), lsb-release, gcc (>=4
  libxcb-xfixes0-dev,
  libxcb-keysyms1-dev,
  libxcb-xinerama0-dev,
- libxcb-render-util0-dev
+ libxcb-render-util0-dev,
+ cmake
 Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: https://github.com/qTox/qTox
