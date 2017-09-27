@@ -24,7 +24,7 @@ package() {
     cd "${pkgname}"
 
     install -Dm755 qtox         "${pkgdir}/usr/bin/qtox"
-    install -Dm644 qTox.desktop "${pkgdir}/usr/share/applications/qtox.desktop"
+    install -Dm644 qtox.desktop "${pkgdir}/usr/share/applications/qtox.desktop"
 
     cd img/icons
 

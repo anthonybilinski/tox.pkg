@@ -57,8 +57,6 @@ chats, audio, and video calls.
 %prep
 %setup -q -n %{name}
 
-mv qTox.desktop qtox.desktop
-
 debian/patch.sh
 
 

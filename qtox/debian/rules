@@ -42,8 +42,6 @@ endif
 export QT_SELECT=5
 
 override_dh_auto_configure:
-	mv qTox.desktop qtox.desktop
-
 	debian/patch.sh
 
 	$(QMAKE) $(QMAKE_FLAGS) \
