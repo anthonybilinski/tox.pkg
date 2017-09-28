@@ -1,0 +1,34 @@
+From 8f49a77c69aaaa08736d987be533c3e46fc073da Mon Sep 17 00:00:00 2001
+From: "anthony.bilinski" <me@abilinski.com>
+Date: Wed, 27 Sep 2017 12:31:37 -0700
+Subject: [PATCH] build workaround
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git CMakeLists.txt CMakeLists.txt
+index 855ab5f..8c911f5 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -562,7 +562,7 @@ add_library(${PROJECT_NAME}_static
+   ${${PROJECT_NAME}_SOURCES}
+   ${${PROJECT_NAME}_QM_FILES})
+ target_link_libraries(${PROJECT_NAME}_static
+-  ${ALL_LIBRARIES})
++  ${ALL_LIBRARIES} ${ALL_LIBRARIES})
+ 
+ add_executable(${PROJECT_NAME}
+   WIN32
+@@ -571,7 +571,7 @@ add_executable(${PROJECT_NAME}
+   src/main.cpp)
+ target_link_libraries(${PROJECT_NAME}
+   ${PROJECT_NAME}_static
+-  ${ALL_LIBRARIES})
++  ${ALL_LIBRARIES} ${ALL_LIBRARIES})
+ 
+ include(Testing)
+ include(Installation)
+-- 
+2.7.4
+
