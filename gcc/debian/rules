@@ -27,7 +27,7 @@ else
 endif
 
 PROJECT = tox
-PREFIX  = /usr/$(PROJECT)
+PREFIX  = /usr
 
 CONFIGURE_OPTS = $(CROSS)      \
     --prefix=$(PREFIX)         \
@@ -53,8 +53,8 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	make DESTDIR=$(shell pwd)/debian/tmp install
-	find debian/tmp/usr/tox/lib -name '*.so*' -delete
-	test -d debian/tmp/usr/tox/lib64 && find debian/tmp/usr/tox/lib64 -name '*.so*' -delete || /bin/true
+	find debian/tmp/usr/lib -name '*.so*' -delete
+	test -d debian/tmp/usr/lib64 && find debian/tmp/usr/lib64 -name '*.so*' -delete || /bin/true
 
 %:
 	dh $@ --parallel

@@ -8,7 +8,7 @@ DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 
 PROJECT    = tox
-PREFIX     = /usr/$(PROJECT)
+PREFIX     = /usr
 BINDIR     = $(PREFIX)/bin
 LIBDIR     = $(PREFIX)/lib
 INCLUDEDIR = $(PREFIX)/include

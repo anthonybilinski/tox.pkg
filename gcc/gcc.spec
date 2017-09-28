@@ -1,5 +1,5 @@
 %global _project tox
-%global _prefix  /usr/%{_project}
+%global _prefix  /usr
 
 Name:           %{_project}-gcc
 Version:        6.1.0
@@ -64,8 +64,8 @@ make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install
-find "%{buildroot}/usr/tox/lib" -name '*.so*' -delete
-test -d "%{buildroot}/usr/tox/lib64" && find "%{buildroot}/usr/tox/lib64" -name '*.so*' -delete || /bin/true
+find "%{buildroot}/usr/lib" -name '*.so*' -delete
+test -d "%{buildroot}/usr/lib64" && find "%{buildroot}/usr/lib64" -name '*.so*' -delete || /bin/true
 
 %if 0%{?suse_version}
 export NO_BRP_CHECK_RPATH="true"

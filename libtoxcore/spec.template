@@ -1,5 +1,5 @@
 %global _project        tox
-%global _tox_prefix     /usr/%{_project}
+%global _tox_prefix     /usr
 %global _tox_libdir     %{_tox_prefix}/lib
 %global _tox_includedir %{_tox_prefix}/include
 
