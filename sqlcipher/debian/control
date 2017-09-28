@@ -1,4 +1,4 @@
-Source: sqlcipher
+Source: libsqlcipher
 Section: libs
 Priority: optional
 Build-Depends: debhelper (>= 8.0.0), dpkg-dev (>= 1.16.1),
@@ -7,7 +7,7 @@ Maintainer: Anthony Bilinski <me@abilinski.com>
 Standards-Version: 3.9.4
 Homepage: http://sqlcipher.net
 
-Package: sqlcipher
+Package: libsqlcipher
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Architecture: any
 Description: Command line interface for SQLCipher
@@ -16,9 +16,9 @@ Description: Command line interface for SQLCipher
  database access without running a separate RDBMS process.  It allows one to
  have per-database or page-by-page encryption using AES-256 from OpenSSL.
 
-Package: sqlcipher-dev
+Package: libsqlcipher-dev
 Section: libdevel
-Depends: ${misc:Depends}, sqlcipher (= ${binary:Version})
+Depends: ${misc:Depends}, libsqlcipher (= ${binary:Version})
 Architecture: any
 Description: SQLCipher development library
  SQLCipher is a C library that implements an encryption in the SQLite 3

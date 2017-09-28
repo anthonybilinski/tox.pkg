@@ -1,1 +1,1 @@
-sqlcipher: new-package-should-close-itp-bug
+libsqlcipher: new-package-should-close-itp-bug

@@ -1,4 +1,4 @@
-sqlcipher (3.4.1-1) unstable; urgency=low
+libsqlcipher (3.4.1-1) unstable; urgency=low
 
   * Upstream release.
 

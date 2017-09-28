@@ -1,2 +1,2 @@
-sqlcipher: ancient-standards-version
-sqlcipher: missing-license-paragraph-in-dep5-copyright
+libsqlcipher: ancient-standards-version
+libsqlcipher: missing-license-paragraph-in-dep5-copyright
