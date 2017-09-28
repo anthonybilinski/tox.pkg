@@ -27,7 +27,7 @@ LDFLAGS += -L$(LIBDIR)
 export PKG_CONFIG_PATH=$(shell pkg-config --variable pc_path pkg-config):$(LIBDIR)/pkgconfig
 
 override_dh_auto_configure:
-	./configure $(CONFIGURE_OPTS)
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
 
 override_dh_auto_build:
 	dh_auto_build
