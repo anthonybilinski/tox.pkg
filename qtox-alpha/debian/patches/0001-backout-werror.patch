@@ -1,0 +1,25 @@
+From 57902e4a5b7bfa5d2c5a23760bda55f8f83c89ec Mon Sep 17 00:00:00 2001
+From: "anthony.bilinski" <me@abilinski.com>
+Date: Thu, 28 Sep 2017 15:36:34 -0700
+Subject: [PATCH] backout werror
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6013cf..ea5c2e8 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -53,7 +53,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE -fPIC")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wstrict-overflow")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wstrict-aliasing")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
++#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+ 
+ if (NOT WIN32)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-all")
+-- 
+2.7.4
+
