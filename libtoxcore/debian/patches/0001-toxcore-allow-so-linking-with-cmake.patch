@@ -1,0 +1,24 @@
+From d34437a55e7bebf34a673b3dbf6db19d7685ab2c Mon Sep 17 00:00:00 2001
+From: "anthony.bilinski" <me@abilinski.com>
+Date: Thu, 28 Sep 2017 17:33:05 -0700
+Subject: [PATCH] toxcore allow so linking with cmake
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f94555f..204bb81 100644
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -176,6 +176,7 @@ endif()
+ # (*) It allows client code to use symbols from our dependencies without
+ #    explicitly linking against them.
+ set(toxcore_PKGCONFIG_LIBS)
++set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+ # LAYER 1: Crypto core
+ # --------------------
+-- 
+2.7.4
+
