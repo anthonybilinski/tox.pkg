@@ -5,9 +5,9 @@
 %global _datadir    %{_prefix}/share
 
 Summary:        Opus codec runtime library
-Name:           %{_project}-libopus
+Name:           libopus
 Version:        1.2
-Release:        1
+Release:        10.1
 License:        BSD
 Group:          System/Libraries
 URL:            https://www.opus-codec.org

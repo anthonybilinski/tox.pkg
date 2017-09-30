@@ -5,7 +5,7 @@
 %global _includedir %{_prefix}/include
 
 Summary:        SQLCipher library
-Name:           %{_project}-sqlcipher
+Name:           sqlcipher
 Version:        3.4.1
 Release:        1
 License:        BSD

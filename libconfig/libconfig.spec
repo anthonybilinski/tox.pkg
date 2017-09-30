@@ -5,7 +5,7 @@
 %global _datadir    %{_prefix}/share
 
 Summary:        C/C++ configuration file library
-Name:           %{_project}-libconfig
+Name:           libconfig
 Version:        1.5
 Release:        1
 License:        LGPLv2+

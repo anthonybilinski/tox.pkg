@@ -4,7 +4,7 @@
 %global _includedir %{_prefix}/include
 
 Summary:        VP8 and VP9 video codec
-Name:           %{_project}-libvpx
+Name:           libvpx
 Version:        1.6.1
 Release:        1
 License:        BSD

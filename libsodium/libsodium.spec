@@ -3,7 +3,7 @@
 %global _libdir     %{_prefix}/lib
 %global _includedir %{_prefix}/include
 
-Name:           %{_project}-libsodium
+Name:           libsodium
 Version:        1.0.13
 Release:        1
 Summary:        A fork of networking and cryptography library with compatible APIs

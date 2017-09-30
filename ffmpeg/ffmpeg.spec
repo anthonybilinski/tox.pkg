@@ -4,7 +4,7 @@
 %global _includedir %{_prefix}/include
 
 Summary:        Digital VCR and streaming server
-Name:           %{_project}-ffmpeg
+Name:           ffmpeg
 Version:        3.3.4
 Release:        1
 License:        GPL-3
