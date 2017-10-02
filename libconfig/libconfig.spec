@@ -65,14 +65,8 @@ make install DESTDIR=%{buildroot}
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING.LIB README
 
-
 %files devel
 %defattr(-,root,root,-)
-
-%if 0%{?suse_version}
-%dir %{_prefix}
-%endif
-
 %{_libdir}
 %{_includedir}
 %{_datadir}
