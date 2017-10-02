@@ -10,8 +10,8 @@ include /usr/share/dpkg/buildflags.mk
 PROJECT    = tox
 NAME       = qtox
 PREFIX     = /usr
-LIBDIR     = $(PREFIX)/$(PROJECT)/lib
-INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
+LIBDIR     = $(PREFIX)/lib
+INCLUDEDIR = $(PREFIX)/include
 QMAKE_LIBS = -L$(LIBDIR) -lavfilter -lswresample -lpostproc
 DESTDIR    = $(shell pwd)/debian/tmp
 DISTRONAME = $(shell /usr/bin/lsb_release --id --short)

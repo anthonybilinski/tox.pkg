@@ -59,6 +59,7 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=%{buildroot}
+#rm -f $RPM_BUILD_ROOT/%{_infodir}/dir
 
 
 %files
@@ -67,9 +68,10 @@ make install DESTDIR=%{buildroot}
 
 %files devel
 %defattr(-,root,root,-)
+%doc AUTHORS COPYING.LIB README
 %{_libdir}
 %{_includedir}
-%{_datadir}
+%{_infodir}
 
 
 %changelog
