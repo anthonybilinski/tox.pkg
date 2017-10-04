@@ -19,16 +19,23 @@
 %define         soname 3
 
 Name:           libvpx
-Version:        1.6.1
+Version:        1.5.0
 Release:        0
 Summary:        VP8 codec library
 License:        BSD-3-Clause and GPL-2.0+
 Group:          Productivity/Multimedia/Other
 Url:            http://www.webmproject.org/
 Source0:        http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-%{version}.tar.bz2
+Source1000:     baselibs.conf
+# PATCH-FIX-UPSTREAM libvpx-define-config_pic.patch dimstar@opensuse.org -- For older compilers, CONFIG_PIC need to be defined.
+Patch1:         libvpx-define-config_pic.patch
+Patch2:         libvpx-configure-add-s390.patch
+Patch3:         libvpx-disable-cross-for-arm.patch
+Patch4:         libvpx-armv7-use-hard-float.patch
 # Needed to be able to create pkgconfig() provides.
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  yasm
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 WebM is an open, royalty-free, media file format designed for the web.
@@ -85,6 +92,10 @@ The WebM file structure is based on the Matroska container.
 
 %prep
 %setup -q
+%patch1 -p0
+%patch2 -p0
+%patch3 -p0
+%patch4 -p0
 
 %build
 cd build
@@ -140,5 +151,4 @@ rm -rf %{buildroot}
 %{_libdir}/libvpx.so
 
 %changelog
-* Tue Jan 24 2017 Anthony Bilinski <me@abilinski.com> - 1.6.1-1
-- Initial
+

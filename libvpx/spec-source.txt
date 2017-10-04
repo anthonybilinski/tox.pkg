@@ -1,0 +1,1 @@
+spec from https://build.opensuse.org/package/view_file/openSUSE:Factory/libvpx/libvpx.spec?rev=76f638d68c1d35468b3d4dc6b107ee64

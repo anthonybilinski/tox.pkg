@@ -184,6 +184,10 @@ fi
 %install
 make DESTDIR=%{buildroot} install
 
+# remove la files
+find %{buildroot} -name '*.la' -delete -print
+
+# not handling DHT_bootstrap yet
 rm -f %{buildroot}%{_bindir}/DHT_bootstrap
 
 install -D -m 0644 other/bootstrap_daemon/tox-bootstrapd.conf %{buildroot}%{_sysconfdir}/tox-bootstrapd.conf
@@ -211,12 +215,15 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 
 
 %files
-%defattr(-,root,root,-)
+%defattr(-,root,root)
 %doc COPYING README.md
-
+%{_libdir}/libtox*.so.*
 
 %files devel
-%defattr(-,root,root,-)
+%defattr(-, root, root)
+%{_includedir}/tox/
+%{_libdir}/libtox*.so
+%{_libdir}/pkgconfig/libtox*.pc
 
 %if 0%{?suse_version}
 %dir %{_tox_prefix}
