@@ -85,17 +85,7 @@ export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pk
 %global QMAKE qmake-qt5
 %endif
 
-%{QMAKE} %{QMAKE_FLAGS} \
-    "QMAKE_CPPFLAGS *= ${RPM_OPT_FLAGS}"    \
-    "QMAKE_CFLAGS   *= ${RPM_OPT_FLAGS}"    \
-    "QMAKE_CXXFLAGS *= ${RPM_OPT_FLAGS}"    \
-    "QMAKE_LFLAGS   *= ${RPM_LD_FLAGS}"     \
-    "LIBS           *= %{QMAKE_LIBS}"       \
-    "INCLUDEPATH    *= %{_includedir}"      \
-    "INCLUDEPATH    *= /usr/include/ffmpeg" \
-    "QMAKE_CC        = %{QMAKE_CC}"         \
-    "QMAKE_CXX       = %{QMAKE_CXX}"        \
-    qtox.pro
+cmake .
 
 make %{?_smp_mflags}
 
