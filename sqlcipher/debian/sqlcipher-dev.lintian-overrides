@@ -1,3 +1,0 @@
-sqlcipher-dev: file-in-unusual-dir
-sqlcipher-dev: non-standard-dir-in-usr
-sqlcipher-dev: new-package-should-close-itp-bug

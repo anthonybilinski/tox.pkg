@@ -72,6 +72,7 @@ make install DESTDIR=%{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc AUTHORS LICENSE PATENTS README
+%{_libdir}/*
 
 
 %files devel
@@ -81,8 +82,7 @@ make install DESTDIR=%{buildroot}
 %dir %{_prefix}
 %endif
 
-%{_libdir}
-%{_includedir}
+%{_includedir}/*
 
 
 %changelog

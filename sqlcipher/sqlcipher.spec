@@ -84,10 +84,10 @@ export NO_BRP_CHECK_RPATH="true"
 %doc LICENSE README.md CHANGELOG.md
 
 %if 0%{?suse_version}
-%dir %{_prefix}
+%dir %{_prefix}/*
 %endif
 
-%{_bindir}
+%{_bindir}/*
 
 
 %files devel
@@ -97,8 +97,8 @@ export NO_BRP_CHECK_RPATH="true"
 %dir %{_prefix}
 %endif
 
-%{_libdir}
-%{_includedir}
+%{_libdir}/*
+%{_includedir}/*
 
 
 %changelog

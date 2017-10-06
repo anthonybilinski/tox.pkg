@@ -213,7 +213,7 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %files
 %defattr(-,root,root,-)
 %doc COPYING README.md
-
+%{_tox_libdir}/*
 
 %files devel
 %defattr(-,root,root,-)
@@ -221,8 +221,8 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %if 0%{?suse_version}
 %dir %{_tox_prefix}
 %endif
+%{_tox_includedir}/*
 
-%{_tox_prefix}
 
 
 %files -n tox-bootstrapd

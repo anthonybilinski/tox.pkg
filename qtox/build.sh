@@ -2,7 +2,7 @@
 
 set -e
 
-GIT_REV="v1.6.0"
+GIT_REV="v1.12.0"
 PACKAGE_NAME="qtox"
 PACKAGE_DATE=$(LC_ALL=C date "+%a, %d %b %Y %H:%M:%S %z")
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M")

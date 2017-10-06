@@ -77,7 +77,7 @@ make install DESTDIR=%{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc README.md
-
+%{_libdir}/*
 
 %files devel
 %defattr(-,root,root,-)
@@ -86,9 +86,7 @@ make install DESTDIR=%{buildroot}
 %if 0%{?suse_version}
 %dir %{_prefix}
 %endif
-
-%{_libdir}
-%{_includedir}
+%{_includedir}/*
 
 
 %changelog
