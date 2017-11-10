@@ -1,7 +1,4 @@
 %global _project        tox
-%global _tox_prefix     /usr
-%global _tox_libdir     %{_tox_prefix}/lib
-%global _tox_includedir %{_tox_prefix}/include
 
 %if 0%{?centos} == 7 || 0%{?fedora} >= 15 || 0%{?suse_version} >= 1210
 %define with_systemd 1
@@ -84,9 +81,8 @@ This package contains tox DHT Bootstrap Daemon
 
 
 %build
-export CFLAGS="${RPM_OPT_FLAGS} -Wno-return-type -fPIC -I%{_tox_includedir}"
-export LDFLAGS="${RPM_LD_FLAGS} -L%{_tox_libdir}"
-export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_tox_libdir}/pkgconfig"
+export CFLAGS="${RPM_OPT_FLAGS} -Wno-return-type -fPIC"
+export LDFLAGS="${RPM_LD_FLAGS}"
 
 %if 0%{?centos} == 6
 /usr/bin/autoreconf268 -if
@@ -96,8 +92,8 @@ export PKG_CONFIG_PATH="%(pkg-config --variable pc_path pkg-config):%{_tox_libdi
 
 ./configure \
     --prefix=%{_prefix}             \
-    --libdir=%{_tox_libdir}         \
-    --includedir=%{_tox_includedir} \
+    --libdir=%{_libdir}             \
+    --includedir=%{_includedir}     \
     --disable-silent-rules          \
     --enable-daemon                 \
     --disable-tests                 \
@@ -213,17 +209,13 @@ ln -s -f %{_sysconfdir}/init.d/tox-bootstrapd %{buildroot}%{_sbindir}/rctox-boot
 %files
 %defattr(-,root,root,-)
 %doc COPYING README.md
-
+%{_libdir}/libtox*
 
 %files devel
 %defattr(-,root,root,-)
 
-%if 0%{?suse_version}
-%dir %{_tox_prefix}
-%endif
-
-%{_tox_prefix}
-
+%{_includedir}/*
+%{_libdir}/pkgconfig/
 
 %files -n tox-bootstrapd
 %defattr(-,root,root,-)
