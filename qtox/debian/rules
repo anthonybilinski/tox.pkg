@@ -7,62 +7,21 @@
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 
-PROJECT    = tox
 NAME       = qtox
 PREFIX     = /usr
-LIBDIR     = $(PREFIX)/$(PROJECT)/lib
-INCLUDEDIR = $(PREFIX)/$(PROJECT)/include
-QMAKE_LIBS = -L$(LIBDIR) -lavfilter -lswresample -lpostproc
 DESTDIR    = $(shell pwd)/debian/tmp
 DISTRONAME = $(shell /usr/bin/lsb_release --id --short)
 CODENAME   = $(shell /usr/bin/lsb_release --codename --short)
 
-ifneq (,$(filter Ubuntu, $(DISTRONAME)))
-    QMAKE_FLAGS = ENABLE_SYSTRAY_UNITY_BACKEND=YES
-else
-    QMAKE_FLAGS = ENABLE_SYSTRAY_UNITY_BACKEND=NO
-endif
-
-ifneq (,$(filter wheezy, $(CODENAME)))
-    GCC_DIR     = $(PREFIX)/$(PROJECT)
-    QMAKE_CC    = $(GCC_DIR)/bin/gcc
-    QMAKE_CXX   = $(GCC_DIR)/bin/g++
-    QMAKE_LIBS += -L$(GCC_DIR)/lib -L$(GCC_DIR)/lib64 -latomic
-else
-    QMAKE_CC  = $(CC)
-    QMAKE_CXX = $(CXX)
-endif
-
-ifneq (,$(filter wheezy trusty, $(CODENAME)))
-    QMAKE = $(PREFIX)/$(PROJECT)/bin/qmake
-else
-    QMAKE = qmake
-endif
-
 export QT_SELECT=5
 
-override_dh_auto_configure:
-	debian/patch.sh
-
-	cmake .
 
 override_dh_auto_test:
 	/bin/true
 
-override_dh_auto_install:
-	install -d $(DESTDIR)/usr/bin
-	install -d $(DESTDIR)/usr/share/applications
-
-	install -m755 $(NAME)         $(DESTDIR)/usr/bin/$(NAME)
-	install -m644 $(NAME).desktop $(DESTDIR)/usr/share/applications/$(NAME).desktop
-
-	debian/icons.sh $(NAME) $(DESTDIR)
 
 override_dh_strip:
 	dh_strip --dbg-package=qtox-dbg
-
-override_dh_shlibdeps:
-	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(LIBDIR) dh_shlibdeps
 
 %:
 	dh $@ --parallel
