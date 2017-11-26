@@ -1,8 +1,3 @@
-%global _project    tox
-%global _prefix     /usr
-%global _libdir     %{_prefix}/%{_project}/lib
-%global _includedir %{_prefix}/%{_project}/include
-
 Name:           %PACKAGE%
 Version:        %VERSION%
 Release:        1
@@ -11,14 +6,20 @@ License:        GPL-3
 Group:          Applications/Internet
 URL:            https://github.com/qTox/qTox
 Conflicts:      qtox-alpha
-BuildRequires:  git, glibc-devel, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, openal-devel, libv4l-devel, openssl-devel,
-BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel, ffmpeg-devel >= 2.6.0
-BuildRequires:  libtoxcore-devel
+BuildRequires:  git, glibc-devel, cmake, gtk2-devel, glib2-devel, zlib-devel, qrencode-devel, openal-devel, libv4l-devel, openssl-devel,
+BuildRequires:  libvpx-devel, libsodium-devel >= 0.5.0, sqlcipher-devel
+BuildRequires:  libtoxcore-devel, libexif-devel
 Source0:        https://build.opensuse.org/source/home:qTox/%{name}/%{name}_%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?suse_version}
 BuildRequires:  libopus-devel, libbz2-devel, gdk-pixbuf-devel, libqt5-qtbase-devel >= 5.3.0, libqt5-qttools-devel >= 5.3.0, libqt5-qtsvg-devel >= 5.3.0
+# workaround for openSUSE Leap 42.2+ which breaks ffmpeg-devel package
+# FIXME: doesn't install required packages for some reason
+#BuildRequires:  pkgconfig(libavdevice), pkgconfig(libavfilter), pkgconfig(libswscale), pkgconfig(libpostproc), pkgconfig(libavformat), pkgconfig(libavcodec), pkgconfig(libswresample), pkgconfig(libavutil)
+# using this line instead, altough not recommended
+BuildRequires:  libavcodec-devel, libavformat-devel, libavdevice-devel, libavfilter-devel, libswresample-devel, libpostproc-devel, libswresample-devel
+BuildRequires:  update-desktop-files
 %else
 BuildRequires:  opus-devel, bzip2-devel
 %if 0%{?mageia}
@@ -27,6 +28,7 @@ BuildRequires:  qtbase5-common-devel >= 5.3.0, qttools5 >= 5.3.0, libqt5network-
 BuildRequires:  libqt5sql-devel >= 5.3.0, libqt5xml-devel >= 5.3.0, libqt5svg-devel >= 5.3.0, libqt5opengl-devel >= 5.3.0
 %else
 BuildRequires:  gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-qttools-devel >= 5.3.0, qt5-qtsvg-devel >= 5.3.0
+BuildRequires:  ffmpeg-devel
 %endif
 %endif
 
@@ -34,11 +36,6 @@ BuildRequires:  gdk-pixbuf2-devel, qt5-qtbase-devel >= 5.3.0, qt5-qttools-devel 
 BuildRequires:  libxscrnsaver-devel, libx11-devel, libxext-devel, libxfixes-devel, sane-backends-iscan, libunimrcp-deps
 %else
 BuildRequires:  libXScrnSaver-devel, libX11-devel, libXext-devel, libXfixes-devel
-%endif
-
-# workaround for openSUSE Leap 42.2+ which breaks ffmpeg-devel package
-%if 0%{?suse_version} == 1315 && 0%{?sle_version} >= 120200 && 0%{?is_opensuse} == 1
-BuildRequires:  pkgconfig(libavdevice), pkgconfig(libavfilter), pkgconfig(libswscale), pkgconfig(libpostproc), pkgconfig(libavformat), pkgconfig(libavcodec), pkgconfig(libswresample), pkgconfig(libavutil)
 %endif
 
 %if 0%{?fedora} >= 25
@@ -56,59 +53,31 @@ chats, audio, and video calls.
 %prep
 %setup -q -n %{name}
 
-debian/patch.sh
-
 
 %build
 export QT_SELECT=5
 
-export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/pkgconfig
+# FIXME: This is necessary because the qTox release is faulty
+export CXXFLAGS="-Wno-error"
 
-%global QMAKE_LIBS -L%{_libdir} -lavfilter -lswresample -lpostproc
-
-%global QMAKE_FLAGS ENABLE_SYSTRAY_UNITY_BACKEND=NO
-
-%if 0%{?centos} == 6
-%global GCC_DIR     %{_prefix}/%{_project}
-%global QMAKE_CC    %{GCC_DIR}/bin/gcc
-%global QMAKE_CXX   %{GCC_DIR}/bin/g++
-%global QMAKE_LIBS  %{QMAKE_LIBS} -L%{GCC_DIR}/lib -L%{GCC_DIR}/lib64
-%global QMAKE_FLAGS %{QMAKE_FLAGS} ENABLE_SYSTRAY_GTK_BACKEND=NO
-%else
-%global QMAKE_CC  %{__cc}
-%global QMAKE_CXX %{__cxx}
+%if 0%{?fedora}
+# required because our ffmpeg package is installed into libdir/tox to avoid Conflicts
+export PKG_CONFIG_PATH=%(pkg-config --variable pc_path pkg-config):%{_libdir}/tox/pkgconfig
 %endif
 
-%if 0%{?mageia}
-%global QMAKE qmake
-%else
-%global QMAKE qmake-qt5
-%endif
-
-%{QMAKE} %{QMAKE_FLAGS} \
-    "QMAKE_CPPFLAGS *= ${RPM_OPT_FLAGS}"    \
-    "QMAKE_CFLAGS   *= ${RPM_OPT_FLAGS}"    \
-    "QMAKE_CXXFLAGS *= ${RPM_OPT_FLAGS}"    \
-    "QMAKE_LFLAGS   *= ${RPM_LD_FLAGS}"     \
-    "LIBS           *= %{QMAKE_LIBS}"       \
-    "INCLUDEPATH    *= %{_includedir}"      \
-    "INCLUDEPATH    *= /usr/include/ffmpeg" \
-    "QMAKE_CC        = %{QMAKE_CC}"         \
-    "QMAKE_CXX       = %{QMAKE_CXX}"        \
-    qtox.pro
+%cmake ../ -DENABLE_APPINDICATOR=False
 
 make %{?_smp_mflags}
 
 
 %install
-install -d %{buildroot}%{_bindir}
-install -d %{buildroot}%{_datadir}/applications
+cd build/
 
-install -m755 qtox         %{buildroot}%{_bindir}/qtox
-install -m644 qtox.desktop %{buildroot}%{_datadir}/applications/qtox.desktop
+%make_install
 
-debian/icons.sh qtox %{buildroot}
-
+%if 0%{?suse_version}
+%suse_update_desktop_file -r %{name} Network InstantMessaging
+%endif
 
 %files
 %defattr(-,root,root,-)
@@ -124,6 +93,7 @@ debian/icons.sh qtox %{buildroot}
 %{_datadir}/applications/qtox.desktop
 %{_datadir}/icons/hicolor/*/apps/qtox.png
 %{_datadir}/icons/hicolor/*/apps/qtox.svg
+%{_datadir}/appdata/qTox.appdata.xml
 
 
 %changelog
