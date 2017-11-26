@@ -2,7 +2,7 @@
 
 set -e
 
-GIT_REV="v1.12.1"
+GIT_REV="v1.13.0"
 PACKAGE_NAME="qtox"
 PACKAGE_DATE=$(LC_ALL=C date "+%a, %d %b %Y %H:%M:%S %z")
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M")
@@ -41,9 +41,6 @@ git checkout "${GIT_REV}"
 
 PACKAGE_REVISION=$(git rev-parse HEAD)
 PACKAGE_VERSION="${PACKAGE_VERSION}~${GIT_REV}"
-
-sed -i -r -e "s|GIT_VERSION = (.*)|GIT_VERSION = ${PACKAGE_REVISION}|g" "qtox.pro"
-sed -i -r -e "s|GIT_DESCRIBE = (.*)|GIT_DESCRIBE = `git describe --always --tags`-obs|g" "qtox.pro"
 
 sed -i -e "s/%PACKAGE%/${PACKAGE_NAME}/g"      "debian/changelog"
 sed -i -e "s/%DATE%/${PACKAGE_DATE}/g"         "debian/changelog"
