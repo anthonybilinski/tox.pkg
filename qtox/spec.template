@@ -92,7 +92,7 @@ cd build/
 %{_bindir}/qtox
 %{_datadir}/applications/qtox.desktop
 %{_datadir}/icons/hicolor/*/apps/qtox.png
-%{_datadir}/icons/hicolor/*/apps/qtox.svg
+%{_datadir}/icons/hicolor/*/apps/qtox.svgz
 %{_datadir}/appdata/qTox.appdata.xml
 
 

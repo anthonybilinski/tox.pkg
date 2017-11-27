@@ -7,7 +7,7 @@ pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guide
 arch=('i686' 'x86_64')
 url='https://github.com/qTox/qTox'
 license=('GPL3')
-depends=('desktop-file-utils' 'libxkbcommon-x11' 'libxss' 'opencv' 'libx264' 'ffmpeg' 'openal' 'qt5-svg' 'qrencode' 'sqlcipher' 'toxcore')
+depends=('desktop-file-utils' 'libxkbcommon-x11' 'libxss' 'ffmpeg' 'openal' 'libexif' 'qt5-svg' 'qrencode' 'sqlcipher' 'toxcore')
 makedepends=('git' 'qt5-tools')
 provides=('qtox' 'qtox-git')
 conflicts=('qtox' 'qtox-git')
@@ -16,24 +16,14 @@ sha512sums=('%SHA_512%')
 
 build() {
     cd "${pkgname}"
-    qmake-qt5 qtox.pro
+    mkdir build/ -p
+    cd build/
+    cmake ../
     make
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${pkgname}/build"
 
-    install -Dm755 qtox         "${pkgdir}/usr/bin/qtox"
-    install -Dm644 qtox.desktop "${pkgdir}/usr/share/applications/qtox.desktop"
-
-    cd img/icons
-
-    for SIZE in $(find . -mindepth 1 -type d | sed -e 's|^./||g')
-    do
-        install -d "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps"
-        install -m644 "${SIZE}/qtox.png" "${pkgdir}/usr/share/icons/hicolor/${SIZE}/apps/qtox.png"
-    done
-
-    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    install -m644 "qtox.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/qtox.svg"
+    make install
 }
